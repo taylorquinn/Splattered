@@ -11,23 +11,33 @@ RewriteRule ^working/?$ app/controller/siteController.php?action=working [QSA,L]
 RewriteRule ^signup/?$ app/controller/siteController.php?action=signup [QSA,L]
 RewriteRule ^footer/process/?$ app/controller/siteController.php?action=processLogin [QSA,L]
 RewriteRule ^footer/logout/?$ app/controller/siteController.php?action=processLogout [QSA,L]
+
+
+
+
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
+
+
 
 # Product
 RewriteRule ^paintings/delete/?$ app/controller/productController.php?action=deleteProduct [QSA,L]
 
-RewriteRule ^paintings/view/(\d+)/?$ app/controller/productController.php?action=viewProduct&pid=$
+RewriteRule ^paintings/view/(\d+)/?$ app/controller/productController.php?action=viewProduct&pid=$1 [QSA,L]
 
-RewriteRule ^add/process/?$ app/controller/productController.php?action=addProductProcess&pid=$1 $
+
+RewriteRule ^add/process/?$ app/controller/productController.php?action=addProductProcess&pid=$1 [QSA,L]
 RewriteRule ^add/?$ app/controller/productController.php?action=addProduct&pid=$1 [QSA,L]
+
 
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 
-RewriteRule ^paintings/edit(\d+)/process/?$ app/controller/productController.php?action=editProdu$
 
-RewriteRule ^paintings/edit(\d+)/?$ app/controller/productController.php?action=editProduct&pid=$$
+RewriteRule ^paintings/edit(\d+)/process/?$ app/controller/productController.php?action=editProductProcess&pid=$1 [QSA,L]
 
-RewriteRule ^paintings/?$ app/controller/productController.php?action=products&ptype=paintings [Q$
+RewriteRule ^paintings/edit(\d+)/?$ app/controller/productController.php?action=editProduct&pid=$1 [QSA,L]
+
+RewriteRule ^paintings/?$ app/controller/productController.php?action=products&ptype=paintings [QSA,L]
+
 
 RewriteRule ^checkout/?$ app/controller/productController.php?action=checkout [QSA,L]
