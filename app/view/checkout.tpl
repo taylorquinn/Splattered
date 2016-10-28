@@ -24,7 +24,7 @@
 				</label>
 				<label>ZIP Code: <input type="text" name="zip"></label>
 
-				<input type="submit" name="submit" value="Submit" class="checkout-button">
+			<!--	<input type="submit" name="submit" value="Submit" class="checkout-button">-->
 				</form>
 
         <form action="/cs3744/Splattered/app/controller/paypal_ec_redirect.php" method="POST">
