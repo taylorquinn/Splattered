@@ -3,6 +3,8 @@
 	* Call to GetExpressCheckoutDetails and DoExpressCheckoutPayment APIs
 	*/
 
+  include_once '../global.php';
+
 	require_once ("paypal_functions.php");
 
 	/*
@@ -147,7 +149,7 @@
     			<p>Currency Code: <?php  echo($currencyCode);?> </p>
     			<p>Payment Status: <?php  echo($paymentStatus);?> </p>
     			<p>Payment Type: <?php  echo($paymentType);?> </p>
-    			<h3> Click <a href='/cs3744/Splattered/'>here </a> to return to Home Page</h3>
+    			<h3> Click <a href="<?= BASE_URL ?>">here </a> to return to Home Page</h3>
     			</div>
     		</span>
     		<span class="span3">

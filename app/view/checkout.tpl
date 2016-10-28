@@ -24,10 +24,10 @@
 				</label>
 				<label>ZIP Code: <input type="text" name="zip"></label>
 
-			<!--	<input type="submit" name="submit" value="Submit" class="checkout-button">-->
+				<!-- <input type="submit" name="submit" value="Submit" class="checkout-button"> -->
 				</form>
 
-        <form action="/cs3744/Splattered/app/controller/paypal_ec_redirect.php" method="POST">
+        <form action="<?= BASE_URL ?>/app/controller/paypal_ec_redirect.php" method="POST">
           <input type="hidden" name="PAYMENTREQUEST_0_AMT" value="10.00"></input>
           <input type="hidden" name="currencyCodeType" value="USD"></input>
           <input type="hidden" name="paymentType" value="Sale"></input>
@@ -43,3 +43,4 @@
 
 
 </div>
+<!--  -->
