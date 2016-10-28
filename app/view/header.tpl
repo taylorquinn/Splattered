@@ -14,7 +14,7 @@ function isSelected($pn, $link) {
    <meta name="description" content="Splattered is a site manifesting creativity and aesthetics into a visual commercial interaction between seller and buyer.">
 	<title>Splattered | Paintings</title>
 
-	
+
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-3.1.0.min.js"></script>
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
@@ -30,12 +30,12 @@ function isSelected($pn, $link) {
 
 				<div id="search">
 				<ul id="primary-nav">
-					
+
 					<li><a id="selected-nav" href="<?= BASE_URL ?>/paintings">Paintings</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Photographs</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>
-					<li><a href="<?= BASE_URL ?>/working">Blog</a></li>
+					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
 					<li><a href="<?= BASE_URL ?>/checkout"> <img class = "cart_icon" src="<?= BASE_URL ?>/public/img/cart.jpg"></a></li>
 					<li><input type="text" placeholder="Search products" /> <button>Go</button></li>
 				</ul>
@@ -48,7 +48,7 @@ function isSelected($pn, $link) {
 		</div>
 
 
-		
+
 </div>
 
 
@@ -76,10 +76,3 @@ function isSelected($pn, $link) {
 <!--PAINTINGS IMAGES-->
 <!--HEADER: edited from the image found here : https://www.google.com/search?sa=G&hl=en&q=artist&tbm=isch&tbs=simg:CAQSlQEJSsxSEGfzGFkaiQELEKjU2AQaAggJDAsQsIynCBpiCmAIAxIo2R7PHqgenRGxHtoemxirGOIX5he6MKg5rTqzOa464i64K8Ustyv2IxowRaiO3cGgZwBmpQTEHTrNUqIFrkX1EZn8o34eFEPhc9X9Kji-uZOU47uqfZdoB_1DDIAQMCxCOrv4IGgoKCAgBEgQToChmDA&ved=0ahUKEwiohYfXia7PAhXDPz4KHUQ0DH8Qwg4IGygA -->
 <!--ALL FOR SALE IMAGES ARE MY OWN PICTURES/ ARTWORK-->
-
-
-
-
-
-
-

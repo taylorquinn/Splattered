@@ -13,7 +13,7 @@ class SiteController {
 
 	// route us to the appropriate class method for this action
 	public function route($action) {
-		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') { 
+		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') {
 					session_start();
 				}
 		switch($action) {
@@ -74,7 +74,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
- 
+
 
 	public function contact() {
 		$pageName = 'Contact';
@@ -114,10 +114,10 @@ class SiteController {
         // redirect to home page
         	header('Location: '.BASE_URL);
 
-  	}	
+  	}
 
-	
-  	
+
+
 	public function processLogin($u, $p) {
 		$adminUsername = 'admin';
 		$adminPassword = 'password';
@@ -131,14 +131,14 @@ class SiteController {
 
 			exit();
 		// } else {
-		// 	
+		//
 		} else {
 
 			echo 'Access denied.';
 			// send them back
 			header('Location: '.BASE_URL);
 				echo 'Hooray! Access is granted.';
-			
+
 			exit();
 		}
 

@@ -13,7 +13,7 @@ class ProductController {
 
 	// route us to the appropriate class method for this action
 	public function route($action) {
-		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') { 
+		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') {
 					session_start();
 				}
 		switch($action) {
@@ -21,7 +21,7 @@ class ProductController {
         $productType = $_GET['ptype'];
         if($productType == 'paintings') {
 				    $this->paintings();
-        } 
+        }
 				break;
 
 			case 'viewProduct':
@@ -29,7 +29,7 @@ class ProductController {
 				$this->viewProduct($productID);
 				break;
 
-				
+
 			case 'deleteProduct':
 			// $productID = $_GET['pid'];
 				$this->deleteProduct();
@@ -40,8 +40,8 @@ class ProductController {
 					$productID = $_GET['pid'];
 					$this->editProduct($productID);
 					break;
-					
-						
+
+
 			case 'popupProduct':
 
      		   $productID = $_GET['pid'];
@@ -54,11 +54,11 @@ class ProductController {
 				break;
 
 			case 'addProduct':
-			
+
 					$this->addProduct();
-					
+
 					break;
-			
+
 
 			case 'addProductProcess':
 				$this->addProductProcess();
@@ -67,7 +67,17 @@ class ProductController {
 			case 'checkout':
 				$this->checkout();
 				break;
-				
+
+			// handles blog section
+			case 'blogs':
+	 			$this->blogs();
+	 			break;
+
+	 		case 'viewBlog':
+	 				$this->viewBlog();
+	 				break;
+
+
 
       // redirect to home page if all else fails
      		default:
@@ -91,7 +101,7 @@ class ProductController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/paintings.tpl';
-		
+
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
@@ -102,7 +112,7 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-	
+
   public function working() {
 		$pageName = 'Working';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -146,7 +156,7 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/add.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 
-		
+
 	}
 
 	public function deleteProduct() {
@@ -159,7 +169,7 @@ class ProductController {
 		$username = DB_USER;
 		$password = DB_PASS;
 
-		
+
 
 
 		$conn = mysql_connect($host, $username, $password)
@@ -171,13 +181,13 @@ class ProductController {
 		$query = sprintf("DELETE FROM product WHERE id = %d", $id, $conn);
 		mysql_query($query);
 
-		
+
 
 		header('LOCATION: '.BASE_URL."/paintings");
-		
+
 		//header('Location: '.BASE_URL);
-					
-		
+
+
 						/*
 		mysql_select_db($database);
 
@@ -278,7 +288,7 @@ class ProductController {
 		/*$newProduct = new Product();
 		$newProduct->set('title','Sweatshirt');*/
 
-		
+
 		/*	$newProduct2 = new Product(
 			array(
 				'title' => $title,
@@ -394,6 +404,18 @@ class ProductController {
 		$this->paintings();
 	}
 
-	
+	public function blogs() {
+		$pageName = 'Blogs';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/blogs.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function viewBlog() {
+		$pageName = 'Single Blog';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/single_blog.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
 
 }
