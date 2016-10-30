@@ -1,5 +1,4 @@
 <div id="content2">
-
   <!-- the blog image with its title -->
   <div id="banner">
       <img class="blog_image" src="<?= BASE_URL ?>/public/img/logov2.png" alt="image relating to the blog" />
