@@ -74,7 +74,8 @@ class ProductController {
 	 			break;
 
 	 		case 'viewBlog':
-	 				$this->viewBlog();
+			    $productID = $_GET['pid'];
+	 				$this->viewBlog($productID);
 	 				break;
 
 
@@ -406,13 +407,19 @@ class ProductController {
 
 	public function blogs() {
 		$pageName = 'Blogs';
+
+    $blogs = Blog::getAllProducts();
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/blogs.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
-	public function viewBlog() {
+	public function viewBlog($id) {
 		$pageName = 'Single Blog';
+
+    $b = Blog::loadById($id);
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/single_blog.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
