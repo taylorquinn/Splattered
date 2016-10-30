@@ -15,6 +15,7 @@ class Blog extends DbObject {
         $defaultArgs = array(
             'id' => null,
             'title' => '',
+            'full_post' => null,
             'description' => null,
             'image_url' => null,
             'date_created' => null
@@ -24,6 +25,7 @@ class Blog extends DbObject {
 
         $this->id = $args['id'];
         $this->title = $args['title'];
+        $this->full_post = $args['full_post'];
         $this->description = $args['description'];
         $this->image_url = $args['image_url'];
         $this->date_created = $args['date_created'];
@@ -37,6 +39,7 @@ class Blog extends DbObject {
         // omit id and any timestamps
         $db_properties = array(
             'title' => $this->title,
+            'full_post' => $this->full_post,
             'description' => $this->description,
             'image_url' => $this->image_url,
             );
