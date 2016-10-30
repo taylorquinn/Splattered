@@ -1,14 +1,14 @@
 <?php
+include_once './global.php';
 
   $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
   or die ('Error: Could not connect to MySql database');
   mysql_select_db(DB_DATABASE);
 
 
-  $name=$_POST["name"];
-  $message=$_POST["message"];
 
-  $query=mysql_query("INSERT INTO comment(post_id,comment, user_id) values('$name','$message') ");
+
+  $query=mysql_query("INSERT INTO postComments(post_id,comment, user_id) values(1,'hello', 2) ");
 
   if($query){
     echo "Your comment has been sent";
