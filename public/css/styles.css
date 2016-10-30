@@ -158,6 +158,33 @@ img.icon{
 #footer a:visited {
   color: #fff;
 }
+
+/*BLOG PAGE**********************************************************************************/
+#banner{
+position:relative;
+  padding:20px;
+  width: 100%;
+}
+.blog_image{
+vertical-align:top;
+max-width:100%;
+max-height:100%;
+}
+#bannerText{
+  color: white;
+  padding: 10px 40px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#blog_description{
+  padding: 2% 4%;
+}
+
+
 /*INDEX************************************************************************************/
 
 #tileImages{
@@ -383,7 +410,6 @@ p.price {
 
 }
 
-
 /*POPUP*******************************************/
 #myPopup{
 
@@ -564,8 +590,6 @@ float:right;
      float:top;
     float:left;
     margin-right: 3px;
-
-}
 
 
 /*ADD ITEM PAGE**********************************************************************************/
