@@ -261,11 +261,14 @@ div.product {
   padding: 0 20px 20px 20px;
 }
 
+#content2 {
+  width: 100%;
+}
 
   #product {
-      margin:0 auto; 
+      margin:0 auto;
       padding:0;
-      font-size:20px; 
+      font-size:20px;
       list-style:none;
       background-color:#fff;
   }
@@ -290,7 +293,7 @@ div.product {
       height:270px;
 
   }
-          
+
   .product-img {
       display:block;
       width: 100%;
@@ -361,7 +364,7 @@ p.price {
 
 }
 .sidebarButt{
-  
+
   float:left;
   transform:rotate(90deg);
   width: 700px;
@@ -377,7 +380,7 @@ p.price {
     /*margin: 4px 2px;*/
     cursor: pointer;
     position:absolute;
-  
+
 }
 
 
@@ -388,16 +391,16 @@ p.price {
 }
 
 .popup {
-    display: none; 
+    display: none;
     position: fixed;
     padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
     min-width: 900px;
 }
 
@@ -448,7 +451,7 @@ float:right;
     font-size: 13px;
     cursor: pointer;
     position:absolute;
-    
+
 }
 
 .close {
@@ -485,7 +488,7 @@ float:right;
 
 .large-img{
    width: 40%;
-  
+
   padding: 20px 40px;
   display:block;
   float:left;
@@ -593,22 +596,22 @@ float:right;
 }
 
 #add-information{
-  
+
 float:right;
   width: 48%;
-  
+
 
 }
 .add-text
 {
-   
+
 font-size: 16px;
 width: 100%;
 margin-bottom: 10px;
 }
 
 .add-textbox{
-  
+
 font-size: 16px;
 width:100%;
 height: 400px;
@@ -677,6 +680,3 @@ overflow: scroll;
 .whoops{
   text-align: center;
 }
-
-
-
