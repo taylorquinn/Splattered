@@ -406,6 +406,9 @@ class ProductController {
 
 	public function blogs() {
 		$pageName = 'Blogs';
+
+    $blogs = Blog::getAllProducts();
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/blogs.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -413,6 +416,9 @@ class ProductController {
 
 	public function viewBlog() {
 		$pageName = 'Single Blog';
+
+    $b = Blog::loadById($id);
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/single_blog.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
