@@ -2,16 +2,13 @@
 
 class Blog extends DbObject {
     // name of database table
-    const DB_TABLE = 'blog';
+    const DB_TABLE = 'post';
 
     // database fields
     protected $id;
     protected $title;
     protected $description;
-    protected $price;
-    protected $sizes;
-    protected $img_url;
-    protected $creator_id;
+    protected $image_url;
 
     // constructor
     public function __construct($args = array()) {
@@ -19,10 +16,7 @@ class Blog extends DbObject {
             'id' => null,
             'title' => '',
             'description' => null,
-            'price' => 0,
-            'sizes' => '',
-            'img_url' => null,
-            'creator_id' => 0,
+            'image_url' => null,
             'date_created' => null
             );
 
@@ -31,10 +25,7 @@ class Blog extends DbObject {
         $this->id = $args['id'];
         $this->title = $args['title'];
         $this->description = $args['description'];
-        $this->price = $args['price'];
-        $this->sizes = $args['sizes'];
-        $this->img_url = $args['img_url'];
-        $this->creator_id = $args['creator_id'];
+        $this->image_url = $args['image_url'];
         $this->date_created = $args['date_created'];
 
     }
@@ -47,10 +38,7 @@ class Blog extends DbObject {
         $db_properties = array(
             'title' => $this->title,
             'description' => $this->description,
-            'price' => $this->price,
-            'sizes' => $this->sizes,
-            'img_url' => $this->img_url,
-            'creator_id' => $this->creator_id
+            'image_url' => $this->image_url,
             );
         echo var_dump($this);
         echo "<br>";

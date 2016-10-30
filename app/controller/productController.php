@@ -74,7 +74,8 @@ class ProductController {
 	 			break;
 
 	 		case 'viewBlog':
-	 				$this->viewBlog();
+			    $productID = $_GET['pid'];
+	 				$this->viewBlog($productID);
 	 				break;
 
 
@@ -414,7 +415,7 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
-	public function viewBlog() {
+	public function viewBlog($id) {
 		$pageName = 'Single Blog';
 
     $b = Blog::loadById($id);
