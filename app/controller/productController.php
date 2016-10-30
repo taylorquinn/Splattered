@@ -78,6 +78,10 @@ class ProductController {
 	 				$this->viewBlog($productID);
 	 				break;
 
+			case 'addBlogProcess':
+			    $this->addBlogProcess();
+					break;
+
 
 
       // redirect to home page if all else fails
@@ -423,6 +427,28 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/single_blog.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function addBlogProcess()
+	{
+		$title = $_POST['title'];
+		$description = $_POST['description'];
+		$full_post = $_POST['full_post'];
+		$image_url = $_POST['image_url'];
+
+		$b = new Blog();
+
+		//load the product, make updates, and save to the database
+		$b->set('title', $title);
+		$b->set('description', $description);
+		$b->set('full_post', $full_post);
+		$b->set('id', $id);
+		$b->set('image_url', $image_url);
+		$b->save();
+
+		session_start();
+		$_SESSION['msg'] = "You added the blog called ".$title;
+		header('Location: '.BASE_URL.'/Splattered/');
 	}
 
 }
