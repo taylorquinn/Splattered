@@ -3,8 +3,7 @@
   <html>
      <head>
 
-         <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-         <script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+         <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-3.1.0.min.js"></script>
 
          <script type="text/javascript">
                  $(document).ready(function(){
@@ -12,7 +11,7 @@
 
                             var name=$("#name").val();
                             var comment=$("#message").val();
-
+                            console.log("hello")
                             $.ajax({
                                 type:"post",
                                 url:"<?= BASE_URL ?>/comment.php",
