@@ -7,6 +7,29 @@
 
 <!-- this will be a place to add a blog -->
 
+  <div id="add_blog">
+
+  <h2>Add a Blog Post</h2>
+
+  <!--the form for submitting the information about a new prodcut including a title, description
+      price and image url -->
+  <form id="add_post" action="<?= BASE_URL ?>/Splattered/blogs/process" method="POST">
+
+  <label>Title: <input type="text" name="title" value=""enter product title""></label> <br><br>
+
+  <label>Description: <textarea rows"10" name="description" cols="50"> </textarea></label> <br><br>
+
+  <label>Image URL: <input type="file" name="image_url" accept="image/*"></label> <br><br>
+
+  <br><input type="submit" value = "ADD PRODUCT TO SITE">
+
+  <button type="button"><a href="<?= BASE_URL ?>/YogaMats/">CANCEL ADDITION OF PRODUCT</a></button>
+
+  </form>
+
+  </div>
+
+
 <?php
 foreach ($blogs as $b)
 {
