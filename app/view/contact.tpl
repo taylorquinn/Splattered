@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content2">
 
 <h2>Contact Us</h2>
 
