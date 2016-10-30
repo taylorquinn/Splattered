@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 17, 2016 at 08:45 PM
+-- Generation Time: Oct 30, 2016 at 06:43 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -19,6 +19,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `splattered`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Post`
+--
+
+CREATE TABLE `Post` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `description` text,
+  `image_url` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postComments`
+--
+
+CREATE TABLE `postComments` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -74,6 +100,18 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `pw`) 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Post`
+--
+ALTER TABLE `Post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `postComments`
+--
+ALTER TABLE `postComments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `product`
