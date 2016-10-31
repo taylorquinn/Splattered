@@ -10,7 +10,7 @@
   <!-- the description of the blog -->
   <div class="blog_description">
     <h4>Full Post</h4>
-    <p> <?= $b->get('description') ?></p>
+    <p> <?= $b->get('full_post') ?></p>
   </div>
    <head>
 
