@@ -1,14 +1,14 @@
 <div id="content2">
   <!-- the blog image with its title -->
-  <div id="banner">
+  <div class="banner">
       <img class="blog_image" src="<?= BASE_URL ?>/public/img/<?= $b->get('image_url') ?> " alt="image relating to the blog" />
-      <div id="bannerText">
-        <p id="blog_title"> <?= $b->get('title') ?></p>
+      <div class="bannerText">
+        <p class="blog_title"> <?= $b->get('title') ?></p>
       </div>
   </div>
 
   <!-- the description of the blog -->
-  <div id="blog_description">
+  <div class="blog_description">
     <h4>Full Post</h4>
     <p> <?= $b->get('description') ?></p>
   </div>
