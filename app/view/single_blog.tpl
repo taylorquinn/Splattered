@@ -20,7 +20,7 @@
 
                    $.ajax({
                      type:"post",
-                     url:"<?= BASE_URL ?>/app/model/comment.php",
+                     url:"<?= BASE_URL ?>/app/controller/comment.php",
                      data:"action=showcomment"+"&post_id="+post_id,
                      success:function(data){
                           $("#comment").html(data);
@@ -38,7 +38,7 @@
 
                           $.ajax({
                               type:"post",
-                              url:"<?= BASE_URL ?>/app/model/comment.php",
+                              url:"<?= BASE_URL ?>/app/controller/comment.php",
                               data:"name="+name+"&message="+message+"&action=addcomment"+"&post_id="+post_id,
                               success:function(data){
                                  $("#info").html(data);
