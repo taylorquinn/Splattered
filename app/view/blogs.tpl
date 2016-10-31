@@ -2,7 +2,7 @@
 
 <!-- the header image -->
   <div id="header_image2">
-  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/placeholder_blog.jpg" alt="Header image" />'; ?>
+  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />'; ?>
   </div>
 
 <!-- this will be a place to add a blog -->
