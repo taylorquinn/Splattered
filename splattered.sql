@@ -79,7 +79,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `title`, `description`, `sizes`, `price`, `img_url`, `date_created`, `creator_id`) VALUES
-(16, 'Mountains', 'This is a painting of a view from Hurricane Ridge, in Olympic National Park.', 'Small', '30.00', 'mountains.jpg', '2016-10-17 18:23:06', 1),
+(16, 'Mountains', 'This is a painting of a view from Hurricane Ridge, in Olympic National Park.', 'Small', '30.00', 'mountains.JPG', '2016-10-17 18:23:06', 1),
 (22, 'Ballerina', 'Classic ballerina dancing picture', 'Medium, Small', '23.00', 'dancer.jpg', '2016-10-17 18:29:53', 1),
 (29, 'Girl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '23.00', 'girl.jpg', '2016-10-17 18:44:24', 1),
 (30, 'Globe', 'And thus, the adventure begins', 'Medium', '23.00', 'globe.jpg', '2016-10-17 18:39:26', 1),
