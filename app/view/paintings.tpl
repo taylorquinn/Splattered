@@ -38,7 +38,9 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 	<div class="product2">
 		<!--<p>Available size(s): <?= $row['sizes'] ?></p>-->
 		<p class="product-p">$<?= $row['price'] ?></p>
-		 <a><input type="image" src="<?= BASE_URL ?>/public/img/zoomIn.jpg" name="saveForm" class="product-icon" id="popupButt" action="" onclick="popupAppear()"/>
+		 <a><input type="image" src="<?= BASE_URL ?>/public/img/zoomIn.jpg" name="saveForm" class="product-icon" id="popupButt" action="" onclick="location.href='<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?>'"></a>
+		 <!--onclick = popup.Appear()-->
+
 
 
 		 	<form method="post" action="https://www.paypal.com/cgi-bin/webscr"  style=" display: inline-block; text-align:  left;">
