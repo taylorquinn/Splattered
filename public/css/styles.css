@@ -184,7 +184,7 @@ max-height:100%;
 
 .bannerText{
   color: white;
-  padding: 10px 40px;
+  padding: 2px 50px;
   background: black;
   position: absolute;
   top: 50%;
@@ -348,7 +348,7 @@ div.product {
      width: 60%;
 
      color: black;
-     font-size: 12px;
+     font-size: 16px;
   }
 
 .product-icon{
