@@ -37,18 +37,18 @@ if(isset($_SESSION['user']))
 <?php
 foreach ($blogs as $b)
 {
-  echo "<div id='banner'>
-      <img class='blog_image' alt='This is the image related to the blog post' src=".BASE_URL."/public/img/".$b->get('image_url').">
-      <a href=".BASE_URL."/blogs/view/".$b->get('id')."><div id='bannerText'>
-        <p id='blog_title'>".$b->get('title')."
+  echo '<div class="banner">
+      <img class="blog_image" alt="'.$b->get("title").'" src="'.BASE_URL.'/public/img/'.$b->get("image_url").'">
+      <a href="'.BASE_URL.'/blogs/view/"'.$b->get("id").'><div class="bannerText">
+        <p class="blog_title">'.$b->get("title").'
         </p>
       </div></a>
   </div>
 
-  <div id='blog_description'>
+  <div class="blog_description">
     <h4>Description</h4>
-    <p>".$b->get('description')."</p>
-  </div>";
+    <p>'.$b->get("description").'</p>
+  </div>';
 }
 ?>
 
