@@ -12,9 +12,6 @@
     <h4>Full Post</h4>
     <p> <?= $b->get('full_post') ?></p>
   </div>
-   <head>
-
-       <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-3.1.0.min.js"></script>
 
        <script type="text/javascript">
                $(document).ready(function(){
@@ -23,10 +20,11 @@
 
                    $.ajax({
                      type:"post",
-                     url:"<?= BASE_URL ?>/app/comment.php",
+                     url:"<?= BASE_URL ?>/app/model/comment.php",
                      data:"action=showcomment"+"&post_id="+post_id,
                      success:function(data){
                           $("#comment").html(data);
+                          $("#new_comment")[0].reset();
                      }
                    });
                  }
@@ -40,7 +38,7 @@
 
                           $.ajax({
                               type:"post",
-                              url:"<?= BASE_URL ?>/app/comment.php",
+                              url:"<?= BASE_URL ?>/app/model/comment.php",
                               data:"name="+name+"&message="+message+"&action=addcomment"+"&post_id="+post_id,
                               success:function(data){
                                  $("#info").html(data);
@@ -53,21 +51,18 @@
 
                });
        </script>
-   </head>
 
-   <body>
      <br>
-     <h1 id = "comment"> Comments </h1>
-        <form>
+     <h1 id = "comment">Please Comment</h1>
+        <form id="new_comment">
 
                name : <input type="text" name="name" id="name"/>
                </br>
                message : <input type="text" name="message" id="message" />
                </br>
-               <input type="button" value="Send Comment" id="button">
+               <input type="button" value="Comment" id="button">
 
                <div id="info" />
         </form>
-   </body>
 
 </div>

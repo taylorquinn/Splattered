@@ -37,15 +37,15 @@ $(document).ready(function(){
 
 
 function addItems(){
-  
+
     var $inputs = $('#myForm :input');
 
     var numberWrong = 0;
     $inputs.each(function() {
-    
+
 
         if(this.name != "butt-add" && this.name != "butt-can"){
-           
+
            console.log(this.name, ": ", $(this).val());
 
 
@@ -60,7 +60,7 @@ function addItems(){
 
 });
 
-    
+
     if(numberWrong != 0){
       errorAppear();
     }
@@ -75,8 +75,8 @@ function addItems(){
 
       }
 
-  
-    
+
+
 
 
 }
@@ -90,7 +90,7 @@ function clearFilters(){
        $(this).attr('checked', false);
 
     });
-    
+
 }
 
  function sidebarAppear(){
@@ -114,7 +114,7 @@ function clearFilters(){
     // document.getElementById("sidebar").style.display = "none";
      //document.getElementById("content").style.width = '90%';
      //document.getElementById("sidebarButton").style.display = "block";
-     
+
    console.log("Tried to make invisible");
  }
 
@@ -152,7 +152,7 @@ window.onclick = function(event) {
 
  function deleteAppear(id) {
    $("#myDeletePopup").css("display", "block");
-   
+
     document.getElementById("id_number").value = id;
 
     console.log("did this!!!!!!!!!!!" + id);
@@ -204,4 +204,4 @@ function successClose() {
     console.log("did this. appear");
 }
 
-
+//ajax for commenting on the blog

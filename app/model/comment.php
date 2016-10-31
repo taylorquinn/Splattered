@@ -1,5 +1,5 @@
 <?php
-include_once './global.php';
+include_once '../global.php';
 
   $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
   or die ('Error: Could not connect to MySql database');
@@ -21,10 +21,7 @@ include_once './global.php';
     $name = $_POST['name'];
     $query=mysql_query("INSERT INTO postComments(post_id,comment, user_name) values('$post_id','$message', '$name') ");
 
-    if($query){
-      echo "Your comment has been sent";
-    }
-    else{
+    if(!$query){
       echo "Error in sending your comment";
     }
   }
