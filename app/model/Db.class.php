@@ -10,7 +10,8 @@ class Db {
 		$database = DB_DATABASE;
 		$username = DB_USER;
 		$password = DB_PASS;
-
+    echo $host;
+    echo $username;
 		$conn = mysql_connect($host, $username, $password)
 			or die ('Error: Could not connect to MySql database');
 
@@ -87,7 +88,7 @@ class Db {
 	}
 
 	//Execute operations like UPDATE or INSERT
-	public function execute($query) {		
+	public function execute($query) {
 		$ex = mysql_query($query);
 		if(!$ex)
 			die ('Query failed:' . mysql_error());

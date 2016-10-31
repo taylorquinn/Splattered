@@ -1,16 +1,16 @@
 <div id="content2">
   <!-- the blog image with its title -->
-  <div class="banner">
+  <div id="banner">
       <img class="blog_image" src="<?= BASE_URL ?>/public/img/<?= $b->get('image_url') ?> " alt="image relating to the blog" />
-      <div class="bannerText">
-        <p clas="blog_title"> <?= $b->get('title') ?></p>
+      <div id="bannerText">
+        <p id="blog_title"> <?= $b->get('title') ?></p>
       </div>
   </div>
 
   <!-- the description of the blog -->
-  <div class="blog_description">
+  <div id="blog_description">
     <h4>Full Post</h4>
-    <p> <?= $b->get('full_post') ?></p>
+    <p> <?= $b->get('description') ?></p>
   </div>
    <head>
 
@@ -20,6 +20,7 @@
                $(document).ready(function(){
                  function showComment(){
                    var post_id = <?= $b->get('id') ?>;
+
                    $.ajax({
                      type:"post",
                      url:"<?= BASE_URL ?>/app/comment.php",
