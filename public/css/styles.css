@@ -85,7 +85,7 @@ img.head-image{
 
 }
 
-img.cart_icon{
+.cart_icon{
   max-width: 20px;
 }
 
@@ -160,17 +160,23 @@ img.icon{
 }
 
 /*BLOG PAGE**********************************************************************************/
-#banner{
-position:relative;
+#add_blog{
+  padding: 2% 4%;
+}
+
+.banner{
+  position:relative;
   padding:20px;
   width: 100%;
 }
+
 .blog_image{
 vertical-align:top;
 max-width:100%;
 max-height:100%;
 }
-#bannerText{
+
+.bannerText{
   color: white;
   padding: 10px 40px;
   background: black;
@@ -180,7 +186,7 @@ max-height:100%;
   transform: translate(-50%, -50%);
 }
 
-#blog_description{
+.blog_description{
   padding: 2% 4%;
 }
 

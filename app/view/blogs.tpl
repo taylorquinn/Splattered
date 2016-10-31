@@ -2,49 +2,53 @@
 
 <!-- the header image -->
   <div id="header_image2">
-    <img class="head-image2" src="<?= BASE_URL ?>/public/img/placeholder_blog.jpg" alt="Header image" />
+  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/placeholder_blog.jpg" alt="Header image" />'; ?>
   </div>
 
 <!-- this will be a place to add a blog -->
 
-  <div id="add_blog">
+<?php
+if(isset($_SESSION['user']))
+{
+  echo '<div id="add_blog">
 
   <h2>Add a Blog Post</h2>
 
   <!--the form for submitting the information about a new prodcut including a title, description
       price and image url -->
-  <form id="add_post" action="<?= BASE_URL ?>/Splattered/blogs/process" method="POST">
+  <form id="add_post" action="',BASE_URL,'/blogs/add/process" method="POST">
 
-  <label>Title: <input type="text" name="title" value=""enter product title""></label> <br><br>
+  <label>Title: <input type="text" name="title" value=""></label> <br><br>
+
+  <label>Full Post: <textarea rows"10" name="full_post" cols="50"> </textarea></label> <br><br>
 
   <label>Description: <textarea rows"10" name="description" cols="50"> </textarea></label> <br><br>
 
-  <label>Image URL: <input type="file" name="image_url" accept="image/*"></label> <br><br>
+  <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
 
-  <br><input type="submit" value = "ADD PRODUCT TO SITE">
-
-  <button type="button"><a href="<?= BASE_URL ?>/YogaMats/">CANCEL ADDITION OF PRODUCT</a></button>
+  <br><input type="submit" value = "Add Blog Post">
 
   </form>
 
-  </div>
-
+</div>';
+}
+?>
 
 <?php
 foreach ($blogs as $b)
 {
-  echo "<div id='banner'>
-      <img class='blog_image' alt=".$b->get('title')." src=".BASE_URL."/public/img/".$b->get('image_url')."/>
-      <a href=".BASE_URL."/blogs/view/".$b->get('id')."><div id='bannerText'>
-        <p id='blog_title'>".$b->get('title')."
+  echo '<div class="banner">
+      <img class="blog_image" alt="'.$b->get("title").'" src="'.BASE_URL.'/public/img/'.$b->get("image_url").'">
+      <a href="'.BASE_URL.'/blogs/view/"'.$b->get("id").'><div class="bannerText">
+        <p class="blog_title">'.$b->get("title").'
         </p>
       </div></a>
   </div>
 
-  <div id='blog_description'>
+  <div class="blog_description">
     <h4>Description</h4>
-    <p>".$b->get('description')."</p>
-  </div>";
+    <p>'.$b->get("description").'</p>
+  </div>';
 }
 ?>
 
