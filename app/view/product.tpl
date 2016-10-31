@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content-product">
 
 <!--h2>Product Details</h2>
 
