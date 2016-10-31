@@ -40,7 +40,24 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 		<p class="product-p">$<?= $row['price'] ?></p>
 		 <a><input type="image" src="<?= BASE_URL ?>/public/img/zoomIn.jpg" name="saveForm" class="product-icon" id="popupButt" action="" onclick="popupAppear()"/>
 
-		<a href="#"> <img class = "product-icon2" src="<?= BASE_URL ?>/public/img/addToCart.png"></a>
+
+		 	<form method="post" action="https://www.paypal.com/cgi-bin/webscr"  style=" display: inline-block; text-align:  left;">
+							<input type="hidden" name="cmd" value="_cart">
+							<input type="hidden" name="add" value="1">
+							<input type="hidden" name="business" value="ktquinn13@gmail.com">
+							<input type="hidden" name="item_name" value=<?= $row['title'] ?>>
+							<input type="hidden" name="item_number" value=<?= $row['id'] ?>>
+							<input type="hidden" name="amount" value=<?= $row['price'] ?>>
+							<input type="hidden" name="shipping" value="1.00">
+							<input type="hidden" name="shipping2" value="0.50">
+							<input type="hidden" name="handling" value="2.00 ">
+							<input type="hidden" name="currency_code" value="USD">
+							<input type="hidden" name="return" value="">
+							<input type="hidden" name="undefined_quantity" value="1">
+							<input type="image" src="<?= BASE_URL ?>/public/img/addToCart.png"  style=" width: 25px;" border="0" name="submit" width="87" height="23" alt="+cart">
+						</form> 
+
+		<!--<a href="#"> <img class = "product-icon2" src="<?= BASE_URL ?>/public/img/addToCart.png"></a>-->
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
 

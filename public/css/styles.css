@@ -343,9 +343,9 @@ div.product {
 
   .product-p{
     margin-top: -20px;
-    text-align: center;
+    text-align: left;
     display:inline-block;
-     width: 70%;
+     width: 60%;
 
      color: black;
      font-size: 12px;
