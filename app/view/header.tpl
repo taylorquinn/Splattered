@@ -46,7 +46,7 @@ function isSelected($pn, $link) {
 						<input type="hidden" name="business" value="ktquinn13@gmail.com">
 						<!-- Replace value with the web page you want the customer to return to -->
 						<input type="hidden" name="shopping_url" value="http://www.splattered.me/Splattered">
-						<input type="image"  src="<?= BASE_URL ?>/public/img/cart.jpg" border="0" name="submit" style="width:20px" alt="View Cart">
+						<input type="image"  src="<?= BASE_URL ?>/public/img/cart.jpg" border="0" name="submit" style="width:15px" alt="View Cart">
 						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 						</form> 
 						<!--  End of View Cart Button Code  -->
