@@ -27,6 +27,24 @@
 				<!-- <input type="submit" name="submit" value="Submit" class="checkout-button"> -->
 				</form>
 
+
+				<!--  Start of View Cart Button Code  -->
+				<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
+				<input type="hidden" name="cpp_header_image" value="https://yourwebsite.com/logo.jpg"> 
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="display" value="1">
+				<!-- Replace "business" value with your PayPal Email Address or Account ID -->
+				<input type="hidden" name="business" value="ktquinn13@gmail.com">
+				<!-- Replace value with the web page you want the customer to return to -->
+				<input type="hidden" name="shopping_url" value="http://www.splattered.me/Splattered">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form> 
+				<!--  End of View Cart Button Code  -->
+
+
+
         <form action="<?= BASE_URL ?>/app/controller/paypal_ec_redirect.php" method="POST">
           <input type="hidden" name="PAYMENTREQUEST_0_AMT" value="10.00"></input>
           <input type="hidden" name="currencyCodeType" value="USD"></input>

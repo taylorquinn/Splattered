@@ -57,7 +57,25 @@
 						  <option value="2">2</option>
 						  <option value="3">3</option>
 						</select></li>
-					<li><BUTTON class= "checkout-button">Add to Cart</BUTTON></li>
+					<!--<li><BUTTON class= "checkout-button">Add to Cart</BUTTON></li>-->
+
+
+					<li>	<form method="post" action="https://www.paypal.com/cgi-bin/webscr">
+							<input type="hidden" name="cmd" value="_cart">
+							<input type="hidden" name="add" value="1">
+							<input type="hidden" name="business" value="ktquinn13@gmail.com">
+							<input type="hidden" name="item_name" value=<?= $p->get('title') ?>>
+							<input type="hidden" name="item_number" value=<?= $p->get('id') ?>>
+							<input type="hidden" name="amount" value=<?= $p->get('price') ?>>
+							<input type="hidden" name="shipping" value="1.00">
+							<input type="hidden" name="shipping2" value="0.50">
+							<input type="hidden" name="handling" value="2.00 ">
+							<input type="hidden" name="currency_code" value="USD">
+							<input type="hidden" name="return" value="">
+							<input type="hidden" name="undefined_quantity" value="1">
+							<input type="image" src="http://www.paypalobjects.com/en_US/i/btn/x-click-but22.gif" border="0" name="submit" width="87" height="23" alt="Make payments with PayPal - it's fast, free and secure!">
+						</form> </li>
+
 
 					 <?php if( !isset($_SESSION['user']) || $_SESSION['user'] == '') { ?>
 	  		    

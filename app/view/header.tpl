@@ -36,7 +36,22 @@ function isSelected($pn, $link) {
 					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>
 					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
-					<li><a href="<?= BASE_URL ?>/checkout"> <img class = "cart_icon" src="<?= BASE_URL ?>/public/img/cart.jpg"></a></li>
+					<li>	<!--  Start of View Cart Button Code  -->
+						<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
+						<input type="hidden" name="cpp_header_image" value="https://yourwebsite.com/logo.jpg"> 
+						<input type="hidden" name="cmd" value="_cart">
+						<input type="hidden" name="display" value="1">
+						<!-- Replace "business" value with your PayPal Email Address or Account ID -->
+						<input type="hidden" name="business" value="ktquinn13@gmail.com">
+						<!-- Replace value with the web page you want the customer to return to -->
+						<input type="hidden" name="shopping_url" value="http://www.splattered.me/Splattered">
+						<input type="image"  src="<?= BASE_URL ?>/public/img/cart.jpg" border="0" name="submit" style="width:20px" alt="View Cart">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form> 
+						<!--  End of View Cart Button Code  -->
+					</li>
+					<!--<li><a href="<?= BASE_URL ?>/checkout"> <img class = "cart_icon" src="<?= BASE_URL ?>/public/img/cart.jpg"></a></li>-->
 					<li><input type="text" placeholder="Search products" /> <button>Go</button></li>
 				</ul>
 
