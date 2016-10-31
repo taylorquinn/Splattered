@@ -9,8 +9,8 @@
 
   <!-- the description of the blog -->
   <div class="blog_description">
-    <h4>Full Post</h4>
-    <p> <?= $b->get('full_post') ?></p>
+   <!-- <h4>Full Post</h4>-->
+    <p class = "blog-text"> <?= $b->get('full_post') ?></p>
   </div>
 
        <script type="text/javascript">
