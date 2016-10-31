@@ -107,6 +107,13 @@ img.head-image{
   padding: 5px;
 }
 
+
+#primary-nav li input{
+  text-decoration: none;
+  color: #666;
+  padding: 5px;
+}
+
 #primary-nav li a:hover {
   color: #000;
 }
