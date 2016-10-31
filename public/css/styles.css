@@ -176,6 +176,14 @@ img.icon{
   width: 100%;
 }
 
+.blog-text
+{
+    line-height: 1.5;
+      width: 80%;
+    margin: 0px 10% 20px 10%;
+    border-top: 1px solid #ccc;
+}
+
 .blog_image{
 vertical-align:top;
 max-width:100%;
