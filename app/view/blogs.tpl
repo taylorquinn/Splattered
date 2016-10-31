@@ -2,7 +2,7 @@
 
 <!-- the header image -->
   <div id="header_image2">
-    <img class="head-image2" src="<?= BASE_URL ?>/public/img/placeholder_blog.jpg" alt="Header image" />
+  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/placeholder_blog.jpg" alt="Header image" />'; ?>
   </div>
 
 <!-- this will be a place to add a blog -->
@@ -16,7 +16,7 @@ if(isset($_SESSION['user']))
 
   <!--the form for submitting the information about a new prodcut including a title, description
       price and image url -->
-  <form id="add_post" action=".BASE_URL."/blogs/add/process method="POST">
+  <form id="add_post" action="',BASE_URL,'/blogs/add/process" method="POST">
 
   <label>Title: <input type="text" name="title" value=""></label> <br><br>
 

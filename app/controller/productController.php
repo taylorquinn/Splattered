@@ -448,7 +448,7 @@ class ProductController {
 
 		session_start();
 		$_SESSION['msg'] = "You added the blog called ".$title;
-		header('Location: '.BASE_URL.'/Splattered/');
+		header('Location: '.BASE_URL.'/blogs');
 	}
 
 }
