@@ -39,7 +39,7 @@ foreach ($blogs as $b)
 {
   echo '<div class="banner">
       <img class="blog_image" alt="'.$b->get("title").'" src="'.BASE_URL.'/public/img/'.$b->get("image_url").'">
-      <a href="'.BASE_URL.'/blogs/view/"'.$b->get("id").'><div class="bannerText">
+      <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"><div class="bannerText">
         <p class="blog_title">'.$b->get("title").'
         </p>
       </div></a>
