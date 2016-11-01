@@ -60,7 +60,7 @@
                </br>
                message : <input type="text" name="message" id="message" />
                </br>
-               <input type="button" value="Comment" id="button">
+               <input type="button" value="POST A COMMENT" id="button">
 
                <div id="info" />
         </form>
