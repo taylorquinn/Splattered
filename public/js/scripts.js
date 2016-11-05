@@ -118,7 +118,7 @@ function clearFilters(){
    console.log("Tried to make invisible");
  }
 
-/*var popup = document.getElementById('myPopup');
+/*var popup = document.getElementById('myLoginPopup');
 
 // Get the button that opens the modal
 var btn = document.getElementById("popupButt");*/
@@ -145,12 +145,17 @@ window.onclick = function(event) {
     }
   }*/
 
-  function loginAppear() {
-   $("#myPopup").css("display", "block");
+function loginAppear() {
+   $("#myLoginPopup").css("display", "block");
     console.log("did this.");
 }
 
- function deleteAppear(id) {
+function signupAppear() {
+   $("#mySignupPopup").css("display", "block");
+    console.log("did this.");
+}
+
+function deleteAppear(id) {
    $("#myDeletePopup").css("display", "block");
 
     document.getElementById("id_number").value = id;
@@ -176,7 +181,12 @@ function logoutClose() {
 
 // When the user clicks on <span> (x), close the modal
 function loginClose() {
-    $("#myPopup").css("display", "none");
+    $("#myLoginPopup").css("display", "none");
+    console.log("did this. appear");
+}
+
+function signupClose() {
+    $("#mySignupPopup").css("display", "none");
     console.log("did this. appear");
 }
 

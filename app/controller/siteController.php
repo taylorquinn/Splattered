@@ -58,6 +58,15 @@ class SiteController {
 				$this->signup();
 				break;
 
+      case 'processSignup':
+        $firstName = $_POST['fname'];
+        $lastName = $_POST['lname'];
+        $email = $_POST['email'];
+				$username = $_POST['un'];
+				$password = $_POST['pw'];
+				$this->processSignup($firstName, $lastName, $email, $username, $password);
+				break;
+
 			// redirect to home page if all else fails
       default:
         header('Location: '.BASE_URL);
@@ -116,32 +125,68 @@ class SiteController {
 
   	}
 
+	// public function processLogin($u, $p) {
+	// 	$adminUsername = 'admin';
+	// 	$adminPassword = 'password';
+	// 	if(($u == $adminUsername) && ($p == $adminPassword)) {
+	// 		session_start();
+	// 		$_SESSION['user'] = $u;
+	// 		echo 'Hooray! Access is granted.';
+  //
+	// 		header('Location: '.BASE_URL);
+	// 			echo 'Hooray! Access is granted.';
+  //
+	// 		exit();
+	// 	// } else {
+	// 	//
+	// 	} else {
+  //
+	// 		echo 'Access denied.';
+	// 		// send them back
+	// 		header('Location: '.BASE_URL);
+	// 			echo 'Hooray! Access is granted.';
+  //
+	// 		exit();
+	// 	}
+  //
+	// }
 
+  public function processLogin($u, $p) {
+    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+      or die ('Error: Could not connect to MySql database');
+    mysql_select_db(DB_DATABASE);
 
-	public function processLogin($u, $p) {
-		$adminUsername = 'admin';
-		$adminPassword = 'password';
-		if(($u == $adminUsername) && ($p == $adminPassword)) {
-			session_start();
+    $q = "SELECT * FROM user WHERE username='$u' && pw='$p' ";
+    $result = mysql_query($q);
+
+    $numberOfRows = mysql_num_rows($result);
+
+    if($numberOfRows == 1) {
+      session_start();
 			$_SESSION['user'] = $u;
-			echo 'Hooray! Access is granted.';
-
 			header('Location: '.BASE_URL);
-				echo 'Hooray! Access is granted.';
-
 			exit();
-		// } else {
-		//
-		} else {
-
-			echo 'Access denied.';
-			// send them back
+    } else {
+      // send them back
 			header('Location: '.BASE_URL);
-				echo 'Hooray! Access is granted.';
-
+      $this->login();
 			exit();
-		}
+    }
 
+	}
+
+  public function processSignup($firstName, $lastName, $email, $username, $password) {
+    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+    $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw) VALUES ('$firstName','$lastName','$email', '$username', '$password')");
+		mysql_query($q);
+
+    session_start();
+    $_SESSION['user'] = $username;
+    header('Location: '.BASE_URL);
+    exit();
 	}
 
 }
