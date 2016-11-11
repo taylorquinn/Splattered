@@ -20,31 +20,28 @@
 
  		<div class="popup-content">
 	  		    <span class="close" onclick="deleteClose()">×</span>
-	  		
-	  		  
-	  		   <form  method="POST">	
-	  		  		 
-	  		   
-					
+
+
+	  		   <form  method="POST">
+
+
+
 				</form>
 
 	  		    <form  action="<?= BASE_URL ?>/paintings/delete" method="POST">
 	  		  	  <h2>Are you sure you want to delete this?</h2>
-	  		   	
+
 
 	  		   	 <input type="id_number" value="15" id="id_number" name= "id_number"/>
 
-				  
+
 				  <input class= "close1" type="submit" value="Delete" />
-				
+
 				</form>
 				  <button class= "close" onclick="deleteClose()">Cancel</button>
 
-	  		    
-	  		   	
+
+
 		</div>
 
 </div>-->
-
-
-

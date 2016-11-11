@@ -62,6 +62,13 @@ class Profile extends DbObject {
         return $obj;
     }
 
+    // load object by ID
+    public static function loadByUsername($username) {
+        $db = Db::instance();
+        $obj = $db->fetchByUsername($username, __CLASS__, self::DB_TABLE);
+        return $obj;
+    }
+
     // load all products
     public static function getAllProducts($limit=null) {
         $query = sprintf(" SELECT username FROM %s ORDER BY first_name DESC ",
