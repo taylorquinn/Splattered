@@ -5,6 +5,8 @@
   <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />'; ?>
   </div>
 
+
+
 <!-- this will be a place to add a blog -->
 
 <?php
@@ -20,13 +22,19 @@ if(isset($_SESSION['user']))
 
   <label>Title: <input type="text" name="title" value=""></label> <br><br>
 
-  <label>Full Post: <textarea rows"10" name="full_post" cols="50"> </textarea></label> <br><br>
+  <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> <br><br>
 
-  <label>Description: <textarea rows"10" name="description" cols="50"> </textarea></label> <br><br>
+  <label>Description: <textarea rows="10" name="description" cols="50"> </textarea></label> <br><br>
 
   <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
 
+
+
+
+
   <br><input type="submit" value = "Add Blog Post">
+
+
 
   </form>
 

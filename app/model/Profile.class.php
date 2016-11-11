@@ -1,38 +1,35 @@
 <?php
 
-class Blog extends DbObject {
+class Profile extends DbObject {
     // name of database table
-    const DB_TABLE = 'post';
+    const DB_TABLE = 'user';
 
     // database fields
-    protected $id;
-    protected $title;
-    protected $description;
-    protected $image_url;
     protected $username;
-
+    protected $first_name;
+    protected $last_name;
+    protected $bio;
+    protected $profpic;
 
     // constructor
     public function __construct($args = array()) {
         $defaultArgs = array(
             'id' => null,
-            'title' => '',
-            'full_post' => null,
-            'description' => null,
-            'image_url' => null,
-            'date_created' => null,
-            'username'=>null
+            'first_name' => null,
+            'last_name' => null,
+            'username' => null,
+            'profpic' => null,
+            'bio' => null
             );
 
         $args += $defaultArgs;
 
         $this->id = $args['id'];
-        $this->title = $args['title'];
-        $this->full_post = $args['full_post'];
-        $this->description = $args['description'];
-        $this->image_url = $args['image_url'];
-        $this->date_created = $args['date_created'];
-        $this->username=$args['username'];
+        $this->first_name = $args['first_name'];
+        $this->last_name = $args['last_name'];
+        $this->username = $args['username'];
+        $this->profpic = $args['profpic'];
+        $this->bio = $args['bio'];
 
     }
 
@@ -42,11 +39,11 @@ class Blog extends DbObject {
         $db = Db::instance();
         // omit id and any timestamps
         $db_properties = array(
-            'title' => $this->title,
-            'full_post' => $this->full_post,
-            'description' => $this->description,
-            'image_url' => $this->image_url,
-            'username' => $this->username
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'username' => $this->username,
+            'profpic' => $this->profpic,
+            'bio' => $this->bio,
             );
         echo var_dump($this);
         echo "<br>";
@@ -67,9 +64,9 @@ class Blog extends DbObject {
 
     // load all products
     public static function getAllProducts($limit=null) {
-        $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",
+        $query = sprintf(" SELECT username FROM %s ORDER BY first_name DESC ",
             self::DB_TABLE
-            );
+            ); //changed select id to select username
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))
@@ -77,7 +74,7 @@ class Blog extends DbObject {
         else {
             $objects = array();
             while($row = mysql_fetch_assoc($result)) {
-                $objects[] = self::loadById($row['id']);
+                $objects[] = self::loadById($row['username']); //changed id to username
             }
             return ($objects);
         }

@@ -15,6 +15,10 @@ RewriteRule ^footer/signup/?$ app/controller/siteController.php?action=processSi
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 
 
+RewriteRule ^profile/(.*)/?$ app/controller/siteController.php?action=viewProfile [QSA,L]
+
+
+
 
 # Product
 RewriteRule ^paintings/delete/?$ app/controller/productController.php?action=deleteProduct [QSA,L]

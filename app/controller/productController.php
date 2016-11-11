@@ -73,14 +73,15 @@ class ProductController {
 	 			$this->blogs();
 	 			break;
 
-	 		case 'viewBlog':
-			    $productID = $_GET['pid'];
-	 				$this->viewBlog($productID);
-	 				break;
-
+	 	
 			case 'addBlogProcess':
 			    $this->addBlogProcess();
 					break;
+
+			case 'viewBlog':
+			  	  $productID = $_GET['pid']; 
+	 				$this->viewBlog($productID); //should send in the username as the id
+	 				break;
 
 
 
@@ -422,7 +423,7 @@ class ProductController {
 	public function viewBlog($id) {
 		$pageName = 'Single Blog';
 
-    $b = Blog::loadById($id);
+   		$b = Blog::loadById($id);
 		
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -430,6 +431,8 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+
+	
 	public function addBlogProcess()
 	{
 		$title = $_POST['title'];
