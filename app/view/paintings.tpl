@@ -63,27 +63,27 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
 
-		<?php if( !isset($_SESSION['user']) || $_SESSION['user'] == '') { ?>
+		<?php if( $_SESSION['user'] == 'admin') { ?>
+			
+			<ul class="editbuttons"><li>
+			<form action="<?= BASE_URL ?>/paintings/edit<?= $row['id'] ?>" method="POST">
+		
+	   			 <input type="submit" class= "edit-button2" value="Edit" />
+			</form></li>
+			<li>
+		
 
+			<button class="edit-button2" onclick = "deleteAppear(<?=$row['id']?>)">Delete</button>
+			</li>
+
+
+			
+			</ul>
 
 		<?php } else {?>
 
 		   
 
-		<ul class="editbuttons"><li>
-		<form action="<?= BASE_URL ?>/paintings/edit<?= $row['id'] ?>" method="POST">
-	
-   			 <input type="submit" class= "edit-button2" value="Edit" />
-		</form></li>
-		<li>
-	
-
-		<button class="edit-button2" onclick = "deleteAppear(<?=$row['id']?>)">Delete</button>
-		</li>
-
-
-		
-		</ul>
 
 		<?php } ?>
 

@@ -93,7 +93,6 @@ class SiteController {
 
 		
 		include_once SYSTEM_PATH.'/view/header.tpl';
-		echo "broke";
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 
 		include_once SYSTEM_PATH.'/view/footer.tpl';

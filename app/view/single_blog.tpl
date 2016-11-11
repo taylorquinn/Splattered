@@ -13,7 +13,7 @@
   <!-- the description of the blog -->
   <div class="blog_description">
    <!-- <h4>Full Post</h4>-->
-    <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> ""> <p class = "blog-author"> <?= $b->get('username') ?></p> </a> 
+     By: <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> ""> <p class = "blog-author"> <?= $b->get('username') ?></p> </a> 
     <p class = "blog-text"> <?= $b->get('full_post') ?></p>
   </div>
 
