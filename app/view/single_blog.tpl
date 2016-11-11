@@ -51,18 +51,18 @@
 
                });
        </script>
+<?php
+if(isset($_SESSION['user']))
+{ echo'<br><h1 id = "comment">Please Comment</h1><form id="new_comment">
 
-     <br>
-     <h1 id = "comment">Please Comment</h1>
-        <form id="new_comment">
-
-               name : <input type="text" name="name" id="name"/>
+              name : <input type="text" name="name" id="name"/>
                </br>
                message : <input type="text" name="message" id="message" />
                </br>
                <input type="button" value="POST A COMMENT" id="button">
-
                <div id="info" />
-        </form>
+               </form>';
+}
+?>
 
 </div>
