@@ -57,16 +57,20 @@ class Profile extends DbObject {
 
     // load object by ID
     public static function loadById($id) {
+
         $db = Db::instance();
-        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+
+        //$obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        $obj = $db->fetchById(1, __CLASS__, self::DB_TABLE);
+        echo var_dump($obj);
         return $obj;
     }
 
     // load all products
     public static function getAllProducts($limit=null) {
-        $query = sprintf(" SELECT username FROM %s ORDER BY first_name DESC ",
+         $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",
             self::DB_TABLE
-            ); //changed select id to select username
+            );
         $db = Db::instance();
         $result = $db->lookup($query);
         if(!mysql_num_rows($result))

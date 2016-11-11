@@ -1,20 +1,14 @@
 <div id="content2">
 
-  <?php  echo var_dump($p->get('first_name'))?>
+  <?php  echo var_dump($p->get('username'))?>
   <!-- the blog image with its title -->
-  <div class="banner">
-      <img class="blog_image" src="<?= BASE_URL ?>/public/img/<?= $b->get('image_url') ?> " alt="image relating to the blog" />
-      <div class="bannerText">
-        <p class="blog_title"> <?= $p->get('first_name') ?></p>
+  
+      <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
+     
+        <p class="title"> <?= $p->get('first_name') ?></p>
+          <p class = "text"> <?= $p->get('last_name') ?></p>
 
-      </div>
-  </div>
-
-  <!-- the description of the blog -->
-  <div class="blog_description">
-   <!-- <h4>Full Post</h4>-->
-    <p class = "blog-text"> <?= $p->get('last_name') ?></p>
-  </div>
+ 
 
 <!--<div id="myDeletePopup" class="popup">
 
