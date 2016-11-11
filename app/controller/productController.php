@@ -440,6 +440,7 @@ class ProductController {
 		$full_post = $_POST['full_post'];
 		$image_url = $_POST['image_url'];
 
+
 		$b = new Blog();
 
 		//load the product, make updates, and save to the database
@@ -448,6 +449,8 @@ class ProductController {
 		$b->set('full_post', $full_post);
 		$b->set('id', $id);
 		$b->set('image_url', $image_url);
+		$b->set('username', $_SESSION['user']);
+
 		$b->save();
 
 		session_start();

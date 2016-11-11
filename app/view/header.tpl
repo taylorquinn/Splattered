@@ -36,6 +36,12 @@ function isSelected($pn, $link) {
 					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>
 					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
+
+					<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { ?>
+					<li><a href="<?= BASE_URL ?>/profile/<?= $_SESSION['user'] ?>">Profile</a></li>
+					<?php } ?>
+
+
 					<li>	<!--  Start of View Cart Button Code  -->
 						<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" style="width: 20px; display: inline; padding-top: 20px;" method="post">
 						<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->

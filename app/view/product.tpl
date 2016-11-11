@@ -77,20 +77,20 @@
 						</form> </li>
 
 
-					 <?php if( !isset($_SESSION['user']) || $_SESSION['user'] == '') { ?>
-	  		    
-					<?php } else {?>
-					<li>
+					 <?php if($_SESSION['user'] == 'admin') { ?>
+	  		    		<li>
 						<form action="<?= BASE_URL ?>/paintings/edit<?= $p->get('id') ?>" method="POST">
 		   					 <input type="submit" class = "edit-button" value="Edit" />
 						</form>
-					</li>
+						</li>
 
-					<li>
-	
+						<li>
+			
 
-				<button class="edit-button2" onclick = "deleteAppear(<?= $p->get('id')?>)">Delete</button>
-				</li>
+						<button class="edit-button2" onclick = "deleteAppear(<?= $p->get('id')?>)">Delete</button>
+						</li>
+					<?php } else {?>
+					
 
 					<?php } ?>
 	  		    </ul>
