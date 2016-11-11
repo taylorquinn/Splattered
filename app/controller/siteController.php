@@ -48,6 +48,14 @@ class SiteController {
 				$this->logout();
 				break;
 
+			
+			case 'viewProfile':
+				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
+				//echo var_dump($urlparts);
+				//echo $urlparts[count($urlparts)-1];
+				$this->viewProfile($urlparts[count($urlparts)-1]);
+	 			break;
+
 			case 'processLogin':
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
@@ -76,6 +84,21 @@ class SiteController {
 
 	}
 
+
+	public function viewProfile($username) {
+		$pageName = 'Profile Page';
+
+        $p = Profile::loadById($username);//should be username??		
+
+
+		
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		echo "broke";
+		include_once SYSTEM_PATH.'/view/profile.tpl';
+
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
   public function home() {
 		$pageName = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -83,6 +106,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+	
 
 
 	public function contact() {
