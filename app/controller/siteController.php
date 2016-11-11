@@ -88,9 +88,7 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
-        $p = Profile::loadById($username);//should be username??		
-
-
+        $p = Profile::loadByUsername($username);//should be username??		
 		
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
