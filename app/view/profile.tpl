@@ -2,13 +2,31 @@
 
   <?php  echo var_dump($p->get('username'))?>
   <!-- the blog image with its title -->
-  
+
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
-     
+
         <p class="title"> <?= $p->get('first_name') ?></p>
           <p class = "text"> <?= $p->get('last_name') ?></p>
 
- 
+
+
+
+          <?php
+           if(!isset($_SESSION['email'])): ?>
+          <li class = "header-list"><a  class = "link" <?= isSelected($pageName, 'login') ?> href = "<?=BASE_URL ?>/login">Login</a>
+
+          </li>
+          <li class = "header-list"><a <?= isSelected($pageName, 'register') ?> href = "<?=BASE_URL ?>/register" class = "link">Register</a></li>
+          <?php endif; ?>
+
+
+
+
+
+
+
+
+
 
 <!--<div id="myDeletePopup" class="popup">
 
