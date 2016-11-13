@@ -8,9 +8,9 @@ class User extends DbObject {
     protected $id;
     protected $username;
     protected $pw;
+    protected $email;
     protected $first_name;
     protected $last_name;
-    protected $email;
 
     // constructor
     public function __construct($args = array()) {
@@ -55,22 +55,10 @@ class User extends DbObject {
     }
 
     // load user by username
-    public static function loadByUsername($username=null) {
-        if($username === null)
-            return null;
-
-        $query = sprintf(" SELECT id FROM %s WHERE username = '%s' ",
-            self::DB_TABLE,
-            $username
-            );
-        $db = Db::instance();
-        $result = $db->lookup($query);
-        if(!mysql_num_rows($result))
-            return null;
-        else {
-            $row = mysql_fetch_assoc($result);
-            $obj = self::loadById($row['id']);
-            return ($obj);
+    public static function loadByUsername($username) {
+      $db = Db::instance();
+      $obj = $db->fetchByUsername($username, __CLASS__, self::DB_TABLE);
+      return $obj;
         }
     }
 

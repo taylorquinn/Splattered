@@ -12,11 +12,8 @@
 
 
           <?php
-           if(!isset($_SESSION['email'])): ?>
-          <li class = "header-list"><a  class = "link" <?= isSelected($pageName, 'login') ?> href = "<?=BASE_URL ?>/login">Login</a>
-
-          </li>
-          <li class = "header-list"><a <?= isSelected($pageName, 'register') ?> href = "<?=BASE_URL ?>/register" class = "link">Register</a></li>
+           if(!isset($_SESSION['user'])): ?>
+          
           <?php endif; ?>
 
 
