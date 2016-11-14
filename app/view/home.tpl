@@ -1,7 +1,27 @@
 
+<div>
+  <?php if(isset($_SESSION['user'])): ?>
+    <?php while($row = mysql_fetch_assoc($result)): ?>
+      <?php
+      $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+        or die ('Error: Could not connect to MySql database');
+      mysql_select_db(DB_DATABASE);
+
+      $prof = Profile::loadById($row['followed_id']);
+      $followedUser = $prof->get('username');
+
+      $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
+      $resulttwo = mysql_query($qtwo);
+      ?>
+      <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+        <p><?= $row2['description'] ?></p>
+      <?php endwhile; ?>
+    <?php endwhile; ?>
+  <?php endif; ?>
+</div>
 
 <div id="header_image">
-				<img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" /> 
+				<img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" />
 
 				 <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
 			</div>
@@ -9,14 +29,14 @@
 
 	<div id= "tileImages">
 		<ul id="tiles">
-					
+
 					<li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
 						<!--edited from the image found here: https://www.google.com/search?sa=G&hl=en&q=side+braid&tbm=isch&tbs=simg:CAQSlQEJoIMPJccrmF0aiQELEKjU2AQaAggDDAsQsIynCBpiCmAIAxIo6RmGD7cPyhnJELQPoQ_1UEIoP1w_1eMNkw3zDgMOEwyCXiMPM71S7bMBowfjlhgnYthk6MjBxNqmzMtdnOX039F_18vRhoU7RcO-UtPcjMMStEtTzbhNEEa_1j24IAQMCxCOrv4IGgoKCAgBEgQ_1pMqMDA&ved=0ahUKEwjt1MnGia7PAhXEez4KHQD9CHgQwg4IGygA-->
 					<li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
 						<!--edited from the image found here: https://lh3.googleusercontent.com/OCWLteVrjHjzDUVIRRIbIrbYZuYXXzTSz0a0akUn0V1u4WPICt3dmR8X28sen953deeSTFQ=s85-->
 					<li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/stairs.jpg" alt="Home Decor" /></a> </li>
 						<!--edited from the image found here: https://lh3.googleusercontent.com/7S9F_10_tSqAwFJNUV3a0KJ0e8c-XZxTp_hxWP-DBHmocVRL7yXbwzIrLPCJjm-zgLdRmA=s85-->
-					
+
 		</ul>
 	</div>
 
@@ -31,13 +51,13 @@
 	<h2>Most Popular Items</h2>
 	<div id="popular">
 		<ul id="popular">
-					
+
 					<li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
 					<li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
 					<li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/stairs.jpg" alt="Home Decor" /></a> </li>
 					<li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
 					<li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
-					
+
 		</ul>
 		</div>
 		</div>

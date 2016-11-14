@@ -40,13 +40,13 @@
 
 
 
-		
+
 
 			<img class="large-img" src="<?= BASE_URL ?>/public/img/<?= $p->get('img_url')?>" >
-			
-	
-		
-			
+
+
+
+
 			    <ul class="product-checkout">
 		    		<li><p class="checkout-title"><?= $p->get('title') ?></p></li>
 	  		    	<li><p class="checkout-price"></p><?= $p->get('price') ?></li>
@@ -77,7 +77,11 @@
 						</form> </li>
 
 
-					 <?php if($_SESSION['user'] == 'admin') { ?>
+					 <?php
+             $p = Profile::loadByUsername($_SESSION['user']);
+
+             if($p->get('status') == 2) {
+           ?>
 	  		    		<li>
 						<form action="<?= BASE_URL ?>/paintings/edit<?= $p->get('id') ?>" method="POST">
 		   					 <input type="submit" class = "edit-button" value="Edit" />
@@ -85,12 +89,12 @@
 						</li>
 
 						<li>
-			
+
 
 						<button class="edit-button2" onclick = "deleteAppear(<?= $p->get('id')?>)">Delete</button>
 						</li>
 					<?php } else {?>
-					
+
 
 					<?php } ?>
 	  		    </ul>
@@ -104,31 +108,28 @@
 
  		<div class="popup-content">
 	  		    <span class="close" onclick="deleteClose()">×</span>
-	  		
-	  		  
-	  		   <form  method="POST">	
-	  		  		 
-	  		   
-					
+
+
+	  		   <form  method="POST">
+
+
+
 				</form>
 
 	  		    <form  action="<?= BASE_URL ?>/paintings/delete" method="POST">
 	  		  	  <h2>Are you sure you want to delete this?</h2>
-	  		   	
+
 
 	  		   	 <input type="id_number" value="15" id="id_number" name= "id_number"/>
 
-				  
+
 				  <input class= "close1" type="submit" value="Delete" />
-				
+
 				</form>
 				  <button class= "close" onclick="deleteClose()">Cancel</button>
 
-	  		    
-	  		   	
+
+
 		</div>
 
 </div>
-
-
-

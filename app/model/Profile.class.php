@@ -18,6 +18,7 @@ class Profile extends DbObject {
             'first_name' => null,
             'last_name' => null,
             'username' => null,
+            'status' => null,
             'profpic' => null,
             'bio' => null
             );
@@ -28,6 +29,7 @@ class Profile extends DbObject {
         $this->first_name = $args['first_name'];
         $this->last_name = $args['last_name'];
         $this->username = $args['username'];
+        $this->status = $args['status'];
         $this->profpic = $args['profpic'];
         $this->bio = $args['bio'];
 
@@ -42,6 +44,7 @@ class Profile extends DbObject {
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'username' => $this->username,
+            'status' => $this->status,
             'profpic' => $this->profpic,
             'bio' => $this->bio,
             );
@@ -61,8 +64,8 @@ class Profile extends DbObject {
         $db = Db::instance();
 
         //$obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
-        $obj = $db->fetchById(1, __CLASS__, self::DB_TABLE);
-        echo var_dump($obj);
+        $obj = $db->fetchById($id, __CLASS__, self::DB_TABLE);
+        // echo var_dump($obj);
         return $obj;
     }
 

@@ -9,6 +9,7 @@ $action = $_GET['action'];
 $pc = new ProductController();
 $pc->route($action);
 
+
 class ProductController {
 
 	// route us to the appropriate class method for this action
@@ -113,6 +114,28 @@ class ProductController {
 			$sql = "INSERT INTO `follow` (`follower_id`, `followed_id`)
 			VALUES ('$myUser', '$userVariable')";
 			$result = mysql_query($sql);
+			if(isset($_SESSION['user'])) {
+	      $username = $_SESSION['user'];
+	      $uid = -1; // if no user is logged in, set the id to -1
+
+	      $q = "SELECT * FROM user WHERE username='$username' ";
+	      $result = mysql_query($q);
+
+	      $numberOfRows = mysql_num_rows($result);
+
+	      if($numberOfRows == 1) {
+	        $p = Profile::loadByUsername($username);
+	        $uid = $p->get('id');
+
+	        $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+	        $result = mysql_query($q);
+
+	        // echo $q;
+	      } else {
+	        echo "NO USER IS LOGGED IN";
+	      }
+	    }
+
 			include_once SYSTEM_PATH.'/view/header.tpl';
 			include_once SYSTEM_PATH.'/view/home.tpl';
 			include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -135,9 +158,31 @@ class ProductController {
 			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
 			echo($q);
 	 mysql_query($q);
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/home.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
+	 if(isset($_SESSION['user'])) {
+		 $username = $_SESSION['user'];
+		 $uid = -1; // if no user is logged in, set the id to -1
+
+		 $q = "SELECT * FROM user WHERE username='$username' ";
+		 $result = mysql_query($q);
+
+		 $numberOfRows = mysql_num_rows($result);
+
+		 if($numberOfRows == 1) {
+			 $p = Profile::loadByUsername($username);
+			 $uid = $p->get('id');
+
+			 $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+			 $result = mysql_query($q);
+
+			 // echo $q;
+		 } else {
+			 echo "NO USER IS LOGGED IN";
+		 }
+	 }
+
+	 include_once SYSTEM_PATH.'/view/header.tpl';
+	 include_once SYSTEM_PATH.'/view/home.tpl';
+	 include_once SYSTEM_PATH.'/view/footer.tpl';
 
 	}
 
