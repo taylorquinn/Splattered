@@ -19,9 +19,12 @@
 
 			<li><a href='<?= BASE_URL ?>/'>Home</a> | <a href='<?= BASE_URL ?>/working'>About Us</a> | <a href='<?= BASE_URL ?>/working'>Shipping & Returns</a> | <a href='<?= BASE_URL ?>/working'>Terms & Conditions</a> | <a onclick="signupAppear()"><u name = "sign_up">Sign up</u></a> | <a onclick="loginAppear()"><u name = "log_in">Log in </u></a> </li>
 
-			<?php } 
+			<?php }
 
-			else if($_SESSION['user'] == 'admin') {
+			else {
+        $p = Profile::loadByUsername($_SESSION['user']);
+
+        if($p->get('status') == 2) {
 
 
 			?>
@@ -29,14 +32,14 @@
 
 			<li><a href='<?= BASE_URL ?>/'>Home</a> | <a href='<?= BASE_URL ?>/working'>About Us</a> | <a href='<?= BASE_URL ?>/working'>Shipping & Returns</a> | <a href='<?= BASE_URL ?>/working'>Terms & Conditions</a> | <a onclick="location.href='<?= BASE_URL ?>/add'"><u name = "add_item">Add Item</u></a> | <a onclick="logoutAppear()"><u name = "log_in">Log out</u></a> </li>
 
-			<?php } 
+			<?php }
 
 			else {?>
 
 
 			<li><a href='<?= BASE_URL ?>/'>Home</a> | <a href='<?= BASE_URL ?>/working'>About Us</a> | <a href='<?= BASE_URL ?>/working'>Shipping & Returns</a> | <a href='<?= BASE_URL ?>/working'>Terms & Conditions</a> | <a onclick="logoutAppear()"><u name = "log_in">Log out</u></a> </li>
 
-			<?php } ?>
+			<?php }} ?>
 
 		</ul>
 		</div>
