@@ -88,6 +88,32 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
+		$myUsername =  Profile::loadByUsername($_SESSION['user']);
+		$p = Profile::loadByUsername($username);
+
+
+		$userVariable = $p->get('id');
+		$myUser = $myUsername->get('id');
+		$q = "SELECT * FROM follow where follower_id = '$myUser' AND followed_id = '$userVariable'; ";
+		$result = mysql_query($q);
+		if (mysql_num_rows($result) == 0) {
+				$following = false;
+		 }
+		 else {
+			 $following = true;
+		 }
+
+		 $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			 or die ('Error: Could not connect to MySql database');
+		 mysql_select_db(DB_DATABASE);
+
+		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
+		 $result = mysql_query($q);
+		 $follow = array();
+ 		while($row = mysql_fetch_assoc($result)) {
+ 			$follow['followed_id'] = $row['followed_id'];
+ 		}
+
     $p = Profile::loadByUsername($username);
 
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)

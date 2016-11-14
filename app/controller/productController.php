@@ -9,6 +9,7 @@ $action = $_GET['action'];
 $pc = new ProductController();
 $pc->route($action);
 
+
 class ProductController {
 
 	// route us to the appropriate class method for this action
@@ -73,15 +74,22 @@ class ProductController {
 	 			$this->blogs();
 	 			break;
 
-	 	
+
 			case 'addBlogProcess':
 			    $this->addBlogProcess();
 					break;
 
 			case 'viewBlog':
-			  	  $productID = $_GET['pid']; 
+			  	  $productID = $_GET['pid'];
 	 				$this->viewBlog($productID); //should send in the username as the id
 	 				break;
+			case 'follow':
+					$id = $_GET['pid'];
+					$this->followUser($id);
+					break;
+			case 'unfollow':
+					$id = $_GET['pid'];
+					$this->unfollowUser($id);
 
 
 
@@ -93,7 +101,90 @@ class ProductController {
 
 	}
 
+	public function followUser($pid) {
+			$pageName = 'Home';
+			$myUsername =  Profile::loadByUsername($_SESSION['user']);
+			$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+				or die ('Error: Could not connect to MySql database');
+			mysql_select_db(DB_DATABASE);
 
+
+			$userVariable = $pid;
+			$myUser = $myUsername->get('id');
+			$sql = "INSERT INTO `follow` (`follower_id`, `followed_id`)
+			VALUES ('$myUser', '$userVariable')";
+			$result = mysql_query($sql);
+			if(isset($_SESSION['user'])) {
+	      $username = $_SESSION['user'];
+	      $uid = -1; // if no user is logged in, set the id to -1
+
+	      $q = "SELECT * FROM user WHERE username='$username' ";
+	      $result = mysql_query($q);
+
+	      $numberOfRows = mysql_num_rows($result);
+
+	      if($numberOfRows == 1) {
+	        $p = Profile::loadByUsername($username);
+	        $uid = $p->get('id');
+
+	        $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+	        $result = mysql_query($q);
+
+	        // echo $q;
+	      } else {
+	        echo "NO USER IS LOGGED IN";
+	      }
+	    }
+
+			include_once SYSTEM_PATH.'/view/header.tpl';
+			include_once SYSTEM_PATH.'/view/home.tpl';
+			include_once SYSTEM_PATH.'/view/footer.tpl';
+
+	}
+
+	public function unfollowUser($pid) {
+		$pageName = 'Home';
+		$myUsername =  Profile::loadByUsername($_SESSION['user']);
+		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+
+		$userVariable = $pid;
+		echo($pid);
+		$myUser = $myUsername->get('id');
+		echo($myUser);
+		$q = sprintf("DELETE FROM follow WHERE follower_id = %d AND followed_id = %d  ",
+			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
+			echo($q);
+	 mysql_query($q);
+	 if(isset($_SESSION['user'])) {
+		 $username = $_SESSION['user'];
+		 $uid = -1; // if no user is logged in, set the id to -1
+
+		 $q = "SELECT * FROM user WHERE username='$username' ";
+		 $result = mysql_query($q);
+
+		 $numberOfRows = mysql_num_rows($result);
+
+		 if($numberOfRows == 1) {
+			 $p = Profile::loadByUsername($username);
+			 $uid = $p->get('id');
+
+			 $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+			 $result = mysql_query($q);
+
+			 // echo $q;
+		 } else {
+			 echo "NO USER IS LOGGED IN";
+		 }
+	 }
+
+	 include_once SYSTEM_PATH.'/view/header.tpl';
+	 include_once SYSTEM_PATH.'/view/home.tpl';
+	 include_once SYSTEM_PATH.'/view/footer.tpl';
+
+	}
 
   public function paintings() {
 		$pageName = 'Paintings';
@@ -424,7 +515,7 @@ class ProductController {
 		$pageName = 'Single Blog';
 
    		$b = Blog::loadById($id);
-		
+
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/single_blog.tpl';
@@ -432,7 +523,7 @@ class ProductController {
 	}
 
 
-	
+
 	public function addBlogProcess()
 	{
 		$title = $_POST['title'];
