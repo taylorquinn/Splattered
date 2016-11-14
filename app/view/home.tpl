@@ -99,7 +99,7 @@
       <!--<?php }} ?>-->
 				 <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
 			</div>
-		</div>
+	
 
 	<div id= "tileImages">
 		<ul id="tiles">
