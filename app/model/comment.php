@@ -32,6 +32,7 @@ include_once '../global.php';
 
     $message = $_POST['message'];
     $name = $_POST['name'];
+
     $query=mysql_query("INSERT INTO postComments(post_id,comment, user_name) values('$post_id','$message', '$name') ");
 
     if(!$query){
