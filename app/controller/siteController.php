@@ -114,25 +114,14 @@ class SiteController {
  			$follow['followed_id'] = $row['followed_id'];
  		}
 
+    $p = Profile::loadByUsername($username);
 
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
 
-    $q = "SELECT * FROM user WHERE username='$username' ";
+    $q = "SELECT * FROM post WHERE username='$username' ";
     $result = mysql_query($q);
-
-    $numberOfRows = mysql_num_rows($result);
-
-    if($numberOfRows == 1) {
-      $p = Profile::loadByUsername($username);
-      $uid = $p->get('id');
-
-      $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-      $result = mysql_query($q);
-    } else {
-      echo "NO USER IS LOGGED IN";
-    }
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';

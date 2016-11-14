@@ -14,7 +14,7 @@
       $resulttwo = mysql_query($qtwo);
       ?>
       <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-        <p><?= $row2['description'] ?></p>
+        <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
       <?php endwhile; ?>
     <?php endwhile; ?>
   <?php endif; ?>
