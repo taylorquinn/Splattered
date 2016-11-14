@@ -50,16 +50,8 @@
   <?php endif; ?>
 </div>
 
-
-
 <div id="header_image">
-        <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { ?>
-         <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" width = 100%/>
-          <?php } ?>
-          else {
-          <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" width = 68% />
-          <?php }} ?>
-				
+				<img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" />
 
 				 <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
 			</div>
