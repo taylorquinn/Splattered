@@ -55,7 +55,7 @@ h1 img{
 @media all and (max-width: 414px) {
   #primary-nav li {
     display: block;
-    font-size: 20pt;
+    font-size: 15px;
   }
 }
 
@@ -210,6 +210,9 @@ max-height:100%;
 #activity_feed{
   border: 3px solid #ccc;
     background: rgba(83, 121, 132, 0.2);
+    width: 30%;
+    display: inline-block;
+    float: right;
 }
 
 #activity_feed h2{
@@ -265,7 +268,8 @@ img.tile{
 #header_image{
     display:inline-block;
     position:relative;
-    width: 100%;
+    /*width: 100%;*/
+    float: left;
 }
 
 #header_image2{
