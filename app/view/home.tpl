@@ -3,7 +3,7 @@
       if( !isset($_SESSION['user']) || $_SESSION['user'] == '') {?>
       }
       else{-->
-        <div id ="activity_feed">
+  <!--      <div id ="activity_feed">
           <h2>Activity Feed</h2>
           <?php if(isset($_SESSION['user'])): ?>
             <h3>Your posts</h3>
@@ -79,7 +79,7 @@
             <h3>Products added by people you follow</h3>
           <?php endif; ?>
         </div>
-
+-->
 
      <!-- <?php }} ?>-->
 
