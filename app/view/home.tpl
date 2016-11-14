@@ -1,6 +1,6 @@
 
 
-<div>
+<div id="activity_feed">
   <h2>Activity Feed</h2>
   <?php if(isset($_SESSION['user'])): ?>
     <h3>Your posts</h3>
