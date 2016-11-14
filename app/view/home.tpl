@@ -1,6 +1,36 @@
 
 <div>
+  <h2>Activity Feed</h2>
   <?php if(isset($_SESSION['user'])): ?>
+    <h3>Your posts</h3>
+    <?php while($row = mysql_fetch_assoc($result)): ?>
+      <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+    <?php endwhile; ?>
+    <h3>People who followed you</h3>
+    <h3>People you follow</h3>
+    <h3>Comments from your posts</h3>
+    <h3>Items you added</h3>
+    <!-- <h3>Items you edited</h3> -->
+    <h3>Posts from people you follow</h3>
+    <?php
+    $username = $_SESSION['user'];
+    $uid = -1; // if no user is logged in, set the id to -1
+
+    $q = "SELECT * FROM user WHERE username='$username' ";
+    $result = mysql_query($q);
+
+    $numberOfRows = mysql_num_rows($result);
+
+    if($numberOfRows == 1) {
+      $p = Profile::loadByUsername($username);
+      $uid = $p->get('id');
+
+      $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+      $result = mysql_query($q);
+    } else {
+      echo "NO USER IS LOGGED IN";
+    }
+    ?>
     <?php while($row = mysql_fetch_assoc($result)): ?>
       <?php
       $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
