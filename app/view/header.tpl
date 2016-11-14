@@ -31,34 +31,6 @@ function isSelected($pn, $link) {
 				<div id="search">
 				<ul id="primary-nav" style= "font-size: 15px;">
 
-					<li><a id="selected-nav" href="http://splattered.me/Splattered/paintings">Paintings</a></li>
-					<li><a href="http://splattered.me/Splattered/working">Photographs</a></li>
-					<li><a href="http://splattered.me/Splattered/working">Clothing &amp; Accessories</a></li>
-					<li><a href="http://splattered.me/Splattered/working">Home &amp; Decor</a></li>
-					<li><a href="http://splattered.me/Splattered/blogs">Blog</a></li>
-
-										<li><a href="http://splattered.me/Splattered/profile/taylorq">Profile</a></li>
-					
-
-					<li>	<!--  Start of View Cart Button Code  -->
-						<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" style="width: 20px; display: inline; padding-top: 20px;" method="post">
-						<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
-							<input type="hidden" name="cpp_header_image" value="https://yourwebsite.com/logo.jpg"> 
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<!-- Replace "business" value with your PayPal Email Address or Account ID -->
-							<input type="hidden" name="business" value="ktquinn13@gmail.com">
-							<!-- Replace value with the web page you want the customer to return to -->
-							<input type="hidden" name="shopping_url" value="http://www.splattered.me/Splattered">
-							<input type="image" src="http://splattered.me/Splattered/public/img/cart.jpg" border="0" style="width: 20px;" name="submit" alt="View Cart">
-							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form> 
-						<!--  End of View Cart Button Code  -->
-					</li>
-					<!--<li><a href="http://splattered.me/Splattered/checkout"> <img class = "cart_icon" src="http://splattered.me/Splattered/public/img/cart.jpg"></a></li>-->
-					<li><input type="text" placeholder="Search products"> <button>Go</button></li>
-				</ul>
-
 					<li><a id="selected-nav" href="<?= BASE_URL ?>/paintings">Paintings</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Photographs</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
