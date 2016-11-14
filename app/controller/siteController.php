@@ -48,7 +48,7 @@ class SiteController {
 				$this->logout();
 				break;
 
-			
+
 			case 'viewProfile':
 				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
 				//echo var_dump($urlparts);
@@ -88,8 +88,34 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
-        $p = Profile::loadByUsername($username);//should be username??		
-		
+		$myUsername =  Profile::loadByUsername($_SESSION['user']);
+		$p = Profile::loadByUsername($username);
+
+
+		$userVariable = $p->get('id');
+		$myUser = $myUsername->get('id');
+		$q = "SELECT * FROM follow where follower_id = '$myUser' AND followed_id = '$userVariable'; ";
+		$result = mysql_query($q);
+		if (mysql_num_rows($result) == 0) {
+				$following = false;
+		 }
+		 else {
+			 $following = true;
+		 }
+
+		 $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			 or die ('Error: Could not connect to MySql database');
+		 mysql_select_db(DB_DATABASE);
+
+		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
+		 $result = mysql_query($q);
+		 $follow = array();
+ 		while($row = mysql_fetch_assoc($result)) {
+ 			$follow['followed_id'] = $row['followed_id'];
+ 		}
+
+
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 
@@ -103,7 +129,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-	
+
 
 
 	public function contact() {

@@ -15,11 +15,17 @@
 
 
   <?php if(isset($_SESSION['user'])): ?>
+    <?php if($_SESSION['user'] != $p->get('username')): ?>
 
+          <?php if($following == false): ?>
+                          <button class="buttonFollow buttonFollow2"><a class = "followLink" href = "<?= BASE_URL ?>/follow/<?= $p->get('id') ?>">Follow</a></button>
+          <?php endif; ?>
+          <?php if($following == true): ?>
+                          <button class="buttonFollow buttonFollow2"><a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $p->get('id') ?>">Unfollow</a></button>
+          <?php endif; ?>
+    <?php endif; ?>
+ <?php endif; ?>
 
-
-                    <button id="followButton">Blue</button>
-
-  <?php endif; ?>
-
-<div id="random">hello</div>
+ <?php if($_SESSION['user'] == $p->get('username')): ?>
+   
+ <?php endif; ?>
