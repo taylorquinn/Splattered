@@ -85,6 +85,16 @@ img.head-image{
 
 }
 
+img.head-image2{
+  /*float: center;*/
+ 
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+
+}
+
+
 .cart_icon{
   max-width: 20px;
 }
