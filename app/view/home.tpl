@@ -94,7 +94,7 @@
 				<img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" />
         }
       else{-->
-       <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" style= "width: 68%"/>
+       <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" />
 
       <!--<?php }} ?>-->
 				 <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
