@@ -14,7 +14,7 @@
 </div>
 
 <?php while($row = mysql_fetch_assoc($result)): ?>
-  <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['description'] ?></p> </a>
+  <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
 <?php endwhile; ?>
 
 
