@@ -1,5 +1,10 @@
 
 
+      <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
+
+
+      ?>
+
 <div id="activity_feed">
   <h2>Activity Feed</h2>
   <?php if(isset($_SESSION['user'])): ?>
@@ -76,6 +81,12 @@
     <h3>Products added by people you follow</h3>
   <?php endif; ?>
 </div>
+
+<?php } ?>
+
+   
+
+
 <div id="header_image">
         <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" /> 
 
