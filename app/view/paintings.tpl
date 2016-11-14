@@ -1,5 +1,5 @@
 
-<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" /> 
+<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />
 <div id="content">
 
 
@@ -13,11 +13,11 @@ $str = $row['sizes'];
 $newStr = "";
 for( $i = 0; $i <= strlen( $str ); $i++ ) {
     $char = substr( $str, $i, 1 );
-  	
+
     if ($char!=","){
-     
+
     $newStr .= $char;
-    
+
     }
 
 
@@ -57,32 +57,36 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 							<input type="hidden" name="return" value="">
 							<input type="hidden" name="undefined_quantity" value="1">
 							<input type="image" src="<?= BASE_URL ?>/public/img/addToCart.png"  style=" width: 25px;" border="0" name="submit" width="87" height="23" alt="+cart">
-						</form> 
+						</form>
 
 		<!--<a href="#"> <img class = "product-icon2" src="<?= BASE_URL ?>/public/img/addToCart.png"></a>-->
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
 
-		<?php if( $_SESSION['user'] == 'admin') { ?>
-			
+		<?php
+      $p = Profile::loadByUsername($_SESSION['user']);
+
+      if($p->get('status') == 2) {
+    ?>
+
 			<ul class="editbuttons"><li>
 			<form action="<?= BASE_URL ?>/paintings/edit<?= $row['id'] ?>" method="POST">
-		
+
 	   			 <input type="submit" class= "edit-button2" value="Edit" />
 			</form></li>
 			<li>
-		
+
 
 			<button class="edit-button2" onclick = "deleteAppear(<?=$row['id']?>)">Delete</button>
 			</li>
 
 
-			
+
 			</ul>
 
 		<?php } else {?>
 
-		   
+
 
 
 		<?php } ?>
@@ -99,34 +103,34 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 </div>
 
 
-<div> 
+<div>
 
 <div id="myDeletePopup" class="popup">
 
  		<div class="popup-content">
 	  		    <span class="close" onclick="deleteClose()">×</span>
-	  		
-	  		  
-	  		   <form  method="POST">	
-	  		  		 
-	  		   
-					
+
+
+	  		   <form  method="POST">
+
+
+
 				</form>
 
 	  		    <form  action="<?= BASE_URL ?>/paintings/delete" method="POST">
 	  		  	  <h2>Are you sure you want to delete this?</h2>
-	  		   	
+
 
 	  		   	 <input type="id_number" value="15" id="id_number" name= "id_number"/>
 
-				  
+
 				  <input class= "close1"  type="submit" value="Delete" />
-				
+
 				</form>
 				  <button class= "close" onclick="deleteClose()">Cancel</button>
 
-	  		    
-	  		   	
+
+
 		</div>
 
 </div>
@@ -163,7 +167,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 			<label><input type="checkbox" name="color" value="watercolor" /> Watercolor</label>
 			<label><input type="checkbox" name="color" value="acrylic" checked="checked" /> Acrylic</label>
 			<label><input type="checkbox" name="color" value="oil" checked="checked" /> Oil</label>
-			
+
 
 			<h4>Size (in.)</h4>
 			<label><input type="checkbox" name="size" value="s" checked="checked" /> 4x6</label>
@@ -185,4 +189,3 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 		<div id="sidebarButton" >
 		<button class="sidebarButt" onclick="sidebarAppear()">View Sidebar</button>
 		</div>
-

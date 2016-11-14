@@ -48,7 +48,7 @@ class SiteController {
 				$this->logout();
 				break;
 
-			
+
 			case 'viewProfile':
 				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
 				//echo var_dump($urlparts);
@@ -88,8 +88,25 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
-        $p = Profile::loadByUsername($username);//should be username??		
-		
+    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+    $q = "SELECT * FROM user WHERE username='$username' ";
+    $result = mysql_query($q);
+
+    $numberOfRows = mysql_num_rows($result);
+
+    if($numberOfRows == 1) {
+      $p = Profile::loadByUsername($username);
+      $uid = $p->get('id');
+
+      $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+      $result = mysql_query($q);
+    } else {
+      echo "NO USER IS LOGGED IN";
+    }
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 
@@ -98,12 +115,39 @@ class SiteController {
 
   public function home() {
 		$pageName = 'Home';
+
+    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+    if(isset($_SESSION['user'])) {
+      $username = $_SESSION['user'];
+      $uid = -1; // if no user is logged in, set the id to -1
+
+      $q = "SELECT * FROM user WHERE username='$username' ";
+      $result = mysql_query($q);
+
+      $numberOfRows = mysql_num_rows($result);
+
+      if($numberOfRows == 1) {
+        $p = Profile::loadByUsername($username);
+        $uid = $p->get('id');
+
+        $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+        $result = mysql_query($q);
+
+        // echo $q;
+      } else {
+        echo "NO USER IS LOGGED IN";
+      }
+    }
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
-	
+
 
 
 	public function contact() {
