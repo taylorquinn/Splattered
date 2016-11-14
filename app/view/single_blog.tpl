@@ -59,7 +59,7 @@
 if(isset($_SESSION['user']))
 { 
 $user = $_SESSION['user'];
-echo $user;
+
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
              
@@ -70,12 +70,16 @@ echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-s
                
 
                <p style = "    width: 60%; margin-left: 20%; display: inline; margin-bottom: 20px;" >Enter your username :</p> 
-                <input type="text" name="name" id="name" style="margin-left: 5px;
+              <input type="text" name="name" id="name" style="margin-left: 5px;
                       display: inline-block;
                       margin-bottom: 20px;
-                      font-size: 15px;"   />
+                      font-size: 15px;" />
 
-               <p name="ho"> yo homie: <?= $user ?> </p>
+             <!-- <p name="name" id= "name" style="margin-left: 5px;
+                      display: inline-block;
+                      margin-bottom: 20px;
+                      font-size: 15px;">',$user,'</p>-->
+
               <input  type="button" class="edit-button" value="POST" id="button" style="margin-left: 20%;
                       margin-top: 2px;
                       display: block;
