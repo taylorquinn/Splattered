@@ -1,102 +1,110 @@
 
 
-      <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
+      <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
 
+              <div id="activity_feed">
+                <h2>Activity Feed</h2>
+                <?php if(isset($_SESSION['user'])): ?>
+                  <h3>Your posts</h3>
+                  <?php while($row = mysql_fetch_assoc($result)): ?>
+                    <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+                  <?php endwhile; ?>
+                  <?php
+                  $username = $_SESSION['user'];
+                  $uid = -1; // if the uid stays negative -1, there is no one logged in
 
-      ?>
+                  $q = "SELECT * FROM user WHERE username='$username' ";
+                  $result = mysql_query($q);
 
-<div id="activity_feed">
-  <h2>Activity Feed</h2>
-  <?php if(isset($_SESSION['user'])): ?>
-    <h3>Your posts</h3>
-    <?php while($row = mysql_fetch_assoc($result)): ?>
-      <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
-    <?php endwhile; ?>
-    <?php
-    $username = $_SESSION['user'];
-    $uid = -1; // if the uid stays negative -1, there is no one logged in
+                  $numberOfRows = mysql_num_rows($result);
 
-    $q = "SELECT * FROM user WHERE username='$username' ";
-    $result = mysql_query($q);
+                  if($numberOfRows == 1) {
+                    $p = Profile::loadByUsername($username);
+                    $uid = $p->get('id');
 
-    $numberOfRows = mysql_num_rows($result);
+                    $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+                    $result = mysql_query($q);
+                  } else {
+                    echo "NO USER IS LOGGED IN";
+                  }
+                  ?>
+                  <h3>People you follow</h3>
+                  <?php while($row = mysql_fetch_assoc($result)): ?>
+                    <?php
+                    $puser = Profile::loadById($row['followed_id']);
+                    ?>
+                    <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
+                  <?php endwhile; ?>
+                  <h3>Followers</h3>
+                  <?php
+                    $q = "SELECT * FROM follow WHERE followed_id=$uid ";
+                    $result = mysql_query($q);
+                  ?>
+                  <?php while($row = mysql_fetch_assoc($result)): ?>
+                    <?php
+                    $puser = Profile::loadById($row['follower_id']);
+                    ?>
+                    <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
+                  <?php endwhile; ?>
+                  <h3>Your comments</h3>
+                  <h3>Products you added</h3>
+                  <h3>Posts from people you follow</h3>
+                  <?php
+                  // $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+                  //   or die ('Error: Could not connect to MySql database');
+                  // mysql_select_db(DB_DATABASE);
+                  $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+                  $result = mysql_query($q);
+                  ?>
+                  <?php while($row = mysql_fetch_assoc($result)): ?>
+                    <?php
+                    // $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+                    //   or die ('Error: Could not connect to MySql database');
+                    // mysql_select_db(DB_DATABASE);
 
-    if($numberOfRows == 1) {
-      $p = Profile::loadByUsername($username);
-      $uid = $p->get('id');
+                    $prof = Profile::loadById($row['followed_id']);
+                    $followedUser = $prof->get('username');
 
-      $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-      $result = mysql_query($q);
-    } else {
-      echo "NO USER IS LOGGED IN";
-    }
-    ?>
-    <h3>People you follow</h3>
-    <?php while($row = mysql_fetch_assoc($result)): ?>
-      <?php
-      $puser = Profile::loadById($row['followed_id']);
-      ?>
-      <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
-    <?php endwhile; ?>
-    <h3>Followers</h3>
-    <?php
-      $q = "SELECT * FROM follow WHERE followed_id=$uid ";
-      $result = mysql_query($q);
-    ?>
-    <?php while($row = mysql_fetch_assoc($result)): ?>
-      <?php
-      $puser = Profile::loadById($row['follower_id']);
-      ?>
-      <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
-    <?php endwhile; ?>
-    <h3>Your comments</h3>
-    <h3>Products you added</h3>
-    <h3>Posts from people you follow</h3>
-    <?php
-    // $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-    //   or die ('Error: Could not connect to MySql database');
-    // mysql_select_db(DB_DATABASE);
-    $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-    $result = mysql_query($q);
-    ?>
-    <?php while($row = mysql_fetch_assoc($result)): ?>
-      <?php
-      // $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-      //   or die ('Error: Could not connect to MySql database');
-      // mysql_select_db(DB_DATABASE);
+                    $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
+                    $resulttwo = mysql_query($qtwo);
+                    ?>
+                    <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                      <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
+                    <?php endwhile; ?>
+                  <?php endwhile; ?>
+                  <h3>Comments on your posts</h3>
+                  <h3>People who follow your followers</h3>
+                  <h3>Comments made by people you follow</h3>
+                  <h3>Products added by people you follow</h3>
+                <?php endif; ?>
+              </div>
 
-      $prof = Profile::loadById($row['followed_id']);
-      $followedUser = $prof->get('username');
-
-      $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
-      $resulttwo = mysql_query($qtwo);
-      ?>
-      <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-        <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
-      <?php endwhile; ?>
-    <?php endwhile; ?>
-    <h3>Comments on your posts</h3>
-    <h3>People who follow your followers</h3>
-    <h3>Comments made by people you follow</h3>
-    <h3>Products added by people you follow</h3>
-  <?php endif; ?>
-</div>
-
-<?php } ?>
+    <?php } ?>
 
    
 
-
-<div id="header_image">
+  <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
+    <div id="header_image" style="width: 69%"> 
 
  
-       <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image" /> 
-
-    
-
-         <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
-      </div>
+       <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image"/> 
+        <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
     </div>
+
+    <?php }
+
+    else {?>
+
+      <div id="header_image" style="width: 100%"> 
+
+ 
+       <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image"/> 
+        <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
+     </div>
+
+
+  <?php } ?>
+   
 
   <div id= "tileImages">
     <ul id="tiles">
