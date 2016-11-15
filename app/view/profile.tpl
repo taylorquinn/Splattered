@@ -95,13 +95,17 @@
 			       <li style= ""><a style="float: left; display: inline; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser?></a>
 			       <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"></li>
 
+               <li style="    display: inline;
+     						 float: right;">
                <?php if($_SESSION['user'] == $p->get('username')): ?>
 
-			       <li style="    display: inline;
-   						 float: right;">
+
                      <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a>
-             </div></li>
+
+             </li>
              <?php endif; ?>
+           </div>
+
 
 		       </ul>
 	    <?php endwhile; ?>
