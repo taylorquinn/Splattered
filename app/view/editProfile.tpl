@@ -15,7 +15,7 @@
 <label>Bio: <input type="text" name="bio" value="<?= $u->get('bio') ?>"></label>
 
 <label>Age:
-  <select name="age" value = "<?= $u->get('age') ?>">
+  <select name="age">
     <option selected="selected">
       <?= $u->get('age') ?>
     </option>

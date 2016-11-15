@@ -89,6 +89,13 @@
   				  <br>
             Email Address:<br>
   				      <input type="text" name="email" placeholder="test@gmail.com">
+						<br>
+						Age:<br>
+						<select name="age">
+							<?php for ($i = 5; $i <= 99; $i++) : ?>
+									<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+							<?php endfor; ?>
+					</select>
   				  <br><br>
   				  <input type="submit" value="Submit" >
 				</form>
