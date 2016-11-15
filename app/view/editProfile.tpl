@@ -14,7 +14,16 @@
 
 <label>Bio: <input type="text" name="bio" value="<?= $u->get('bio') ?>"></label>
 
-<label>Age: <input type="text" name="age" value="<?= $u->get('age') ?>"></label>
+<label>Age:
+  <select name="age" value = "<?= $u->get('age') ?>">
+    <option selected="selected">
+      <?= $u->get('age') ?>
+    </option>
+    <?php for ($i = 5; $i <= 99; $i++) : ?>
+        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <?php endfor; ?>
+</select>
+</label>
 
 <label>Profile Picture: <input type="text" name="profpic" value="<?= $u->get('profpic') ?>"></label>
 
