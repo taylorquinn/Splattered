@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2016 at 07:18 PM
+-- Generation Time: Nov 15, 2016 at 10:47 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -146,7 +146,7 @@ CREATE TABLE `user` (
   `last_name` varchar(100) DEFAULT NULL,
   `email` varchar(200) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `pw` varchar(100) NOT NULL,
+  `pw` varchar(100) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `numComments` int(11) DEFAULT NULL COMMENT 'number of comments',
   `profpic` varchar(500) DEFAULT NULL,
@@ -161,7 +161,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `pw`, `status`, `numComments`, `profpic`, `bio`, `age`) VALUES
 (1, 'Taylor', 'Quinn', 'taylorq@vt.edu', 'taylorq', 'test', 2, 1, 'headshot.JPG', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0),
 (3, 'rishi', 'pulluri', 'riship@vt.edu', 'rishi', 'pw', 1, 0, 'rishi.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0),
-(4, 'donald', 'trump', 'hd', 'don', 'pw', 2, 0, 'Trump5.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0);
+(4, 'donald', 'trump', 'hd', 'don', 'pw', 2, 0, 'Trump5.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0),
+(6, 'Kara', 'Love', 'kmlove9@vt.edu', 'kmlove9', 'test', 1, NULL, 'kara_brother.jpg', 'more bios!', 22);
 
 --
 -- Indexes for dumped tables
@@ -207,7 +208,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `post`
 --
@@ -227,7 +228,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
