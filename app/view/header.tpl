@@ -29,7 +29,7 @@ function isSelected($pn, $link) {
 			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov2.png" alt="SPLATTERED"> </a></img></h1>
 
 				<div id="search">
-				<ul id="primary-nav">
+				<ul id="primary-nav" style= "font-size: 15px;">
 
 					<li><a id="selected-nav" href="<?= BASE_URL ?>/paintings">Paintings</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Photographs</a></li>

@@ -114,27 +114,16 @@ class ProductController {
 			$sql = "INSERT INTO `follow` (`follower_id`, `followed_id`)
 			VALUES ('$myUser', '$userVariable')";
 			$result = mysql_query($sql);
-			if(isset($_SESSION['user'])) {
-	      $username = $_SESSION['user'];
-	      $uid = -1; // if no user is logged in, set the id to -1
 
-	      $q = "SELECT * FROM user WHERE username='$username' ";
-	      $result = mysql_query($q);
+      if(isset($_SESSION['user'])) {
+        $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+    			or die ('Error: Could not connect to MySql database');
+    		mysql_select_db(DB_DATABASE);
 
-	      $numberOfRows = mysql_num_rows($result);
-
-	      if($numberOfRows == 1) {
-	        $p = Profile::loadByUsername($username);
-	        $uid = $p->get('id');
-
-	        $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-	        $result = mysql_query($q);
-
-	        // echo $q;
-	      } else {
-	        echo "NO USER IS LOGGED IN";
-	      }
-	    }
+        $username = $_SESSION['user'];
+        $q = "SELECT * FROM post WHERE username='$username' ";
+        $result = mysql_query($q);
+      }
 
 			include_once SYSTEM_PATH.'/view/header.tpl';
 			include_once SYSTEM_PATH.'/view/home.tpl';
@@ -158,27 +147,16 @@ class ProductController {
 			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
 			echo($q);
 	 mysql_query($q);
-	 if(isset($_SESSION['user'])) {
-		 $username = $_SESSION['user'];
-		 $uid = -1; // if no user is logged in, set the id to -1
 
-		 $q = "SELECT * FROM user WHERE username='$username' ";
-		 $result = mysql_query($q);
+   if(isset($_SESSION['user'])) {
+     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+       or die ('Error: Could not connect to MySql database');
+     mysql_select_db(DB_DATABASE);
 
-		 $numberOfRows = mysql_num_rows($result);
-
-		 if($numberOfRows == 1) {
-			 $p = Profile::loadByUsername($username);
-			 $uid = $p->get('id');
-
-			 $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-			 $result = mysql_query($q);
-
-			 // echo $q;
-		 } else {
-			 echo "NO USER IS LOGGED IN";
-		 }
-	 }
+     $username = $_SESSION['user'];
+     $q = "SELECT * FROM post WHERE username='$username' ";
+     $result = mysql_query($q);
+   }
 
 	 include_once SYSTEM_PATH.'/view/header.tpl';
 	 include_once SYSTEM_PATH.'/view/home.tpl';
