@@ -234,7 +234,7 @@ max-height:100%;
 #activity_feed{
   border: 3px solid #ccc;
     background: rgba(83, 121, 132, 0.2);
-    width: 50%;
+    width: 30%;
     display: inline-block;
     float: right;
     overflow-y: scroll;

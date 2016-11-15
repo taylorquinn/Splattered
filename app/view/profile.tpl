@@ -35,7 +35,7 @@
 </div>
 
 
-<div style="margin-bottom: 10px; height: 475px; overflow-x: hidden " id="activity_feed">
+<div style="margin-bottom: 10px; height: 475px; overflow-x: hidden; width:50%;" id="activity_feed" >
 	 <h2>Activity Feed</h2>
 	  <h3>Your articles posted</h3>
 	 <?php while($row = mysql_fetch_assoc($result)): ?>

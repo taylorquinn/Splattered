@@ -162,7 +162,7 @@
 
 
   <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
-  <div id="header_image" style="width: 69%">
+  <div id="header_image" style="width: 66%">
 
 
    <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image"/>
