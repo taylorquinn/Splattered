@@ -151,21 +151,21 @@ class SiteController {
 	public function editProfileProcess($username) {
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
-		$pw = ["pw"];
 		$email = $_POST['email'];
 		$bio = $_POST['bio'];
-		$birthday = $_POST['age'];
-		$profpic = ["profpic"];
+		$age = $_POST['age'];
+		$profpic = $_POST['profpic'];
+		$pw = $_POST['pw'];
 
 		//load the product, record updates, and save to the database
 		$u = User::loadByUsername($username);
 		$u->set('first_name', $first_name);
 		$u->set('last_name', $last_name);
-		$u->set('pw', $pw);
 		$u->set('email', $email);
 		$u->set('bio', $bio);
 		$u->set('age', $age);
 		$u->set('profpic', $profpic);
+		$u->set('pw', $pw);
 		$u->save();
 
 		session_start();

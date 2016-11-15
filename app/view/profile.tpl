@@ -10,6 +10,7 @@
 
           <li><p class="name"> <?= $p->get('first_name') ?> <?= $p->get('last_name') ?></p></li>
           <li><p class="name"> <?= $p->get('email') ?></p></li>
+          <li><p class="name"> <?= $p->get('age') ?></p></li>
           <li style="margin-left: 40%; display: inline-block;">
           	<div id= "follower_button">
 					 <!-- if the user is on their profile, display an edit button-->
