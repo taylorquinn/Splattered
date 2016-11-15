@@ -26,21 +26,26 @@
 </div>
 
 
- <?php if($_SESSION['user'] == $p->get('username')): ?>
    <h2>Activity Feed</h2>
    <?php while($row = mysql_fetch_assoc($result)): ?>
      <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> " class = "article"> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
    <?php endwhile; ?>
 
    <div class = "followed">
-     <h1>Followed</h1>
+     <h1>Following</h1>
 
      <?php while($row = mysql_fetch_assoc($followed)): ?>
        <?php
        $prof = Profile::loadById($row['followed_id']);
        $followedUser = $prof->get('username');       ?>
 
-       <div class = "followcard"><span class =  "userFollowing"><a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser ?></a></span><a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a></div>
+       <div class = "followcard"><span class =  "userFollowing"><a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser ?></a></span>
+         <?php if($_SESSION['user'] == $p->get('username')): ?>
+
+         <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a>
+       <?php endif; ?>
+
+       </div>
     <?php endwhile; ?>
    </div>
    <div class = "follower">
@@ -73,7 +78,6 @@
      <a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
    <?php endwhile; ?>
 
- <?php endif; ?>
 
 <?php while($row = mysql_fetch_assoc($result)): ?>
 

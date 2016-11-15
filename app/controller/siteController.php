@@ -170,9 +170,11 @@ class SiteController {
     //   }
     // }
 
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+
   }
 
 
@@ -183,6 +185,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/contact.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+
   }
 
 
@@ -191,6 +194,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/login.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+
   }
 
 	public function signup() {
@@ -198,6 +202,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/signup.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+
   }
 
 
@@ -272,6 +277,16 @@ class SiteController {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
+
+		if(!isset($email) || trim($email) == '' || !isset($firstName) || trim($firstName) == '' || !isset($lastName) || trim($lastName) == ''
+		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '') {
+			$this->home();
+			exit();
+
+
+		}
+
+
 
     $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw) VALUES ('$firstName','$lastName','$email', '$username', '$password')");
 		mysql_query($q);

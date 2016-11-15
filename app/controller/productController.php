@@ -90,6 +90,7 @@ class ProductController {
 			case 'unfollow':
 					$id = $_GET['pid'];
 					$this->unfollowUser($id);
+					break;
 
 
 

@@ -864,6 +864,12 @@ overflow: scroll;
   text-align: center;
 }
 
+#error {
+  background-color: red;
+  width: 200px;
+  height: 50px;
+}
+
 
 
 /*button css for the page*/
