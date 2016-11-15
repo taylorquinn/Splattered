@@ -103,7 +103,7 @@ class ProductController {
 
 	public function followUser($pid) {
 			$pageName = 'Home';
-			$myUsername =  Profile::loadByUsername($_SESSION['user']);
+			$myUsername =  User::loadByUsername($_SESSION['user']);
 			$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 				or die ('Error: Could not connect to MySql database');
 			mysql_select_db(DB_DATABASE);
@@ -133,7 +133,7 @@ class ProductController {
 
 	public function unfollowUser($pid) {
 		$pageName = 'Home';
-		$myUsername =  Profile::loadByUsername($_SESSION['user']);
+		$myUsername = User::loadByUsername($_SESSION['user']);
 		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);

@@ -18,7 +18,7 @@
           $numberOfRows = mysql_num_rows($result);
 
           if($numberOfRows == 1) {
-            $p = Profile::loadByUsername($username);
+            $p = User::loadByUsername($username);
             $uid = $p->get('id');
 
             $q = "SELECT * FROM follow WHERE follower_id=$uid ";
@@ -31,7 +31,7 @@
           <h3>People you follow</h3>
           <?php while($row = mysql_fetch_assoc($result)): ?>
             <?php
-            $puser = Profile::loadById($row['followed_id']);
+            $puser = User::loadById($row['followed_id']);
             ?>
             <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
           <?php endwhile; ?>
@@ -43,7 +43,7 @@
           ?>
           <?php while($row = mysql_fetch_assoc($result)): ?>
             <?php
-            $puser = Profile::loadById($row['follower_id']);
+            $puser = User::loadById($row['follower_id']);
             ?>
             <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
           <?php endwhile; ?>
@@ -73,7 +73,7 @@
           ?>
           <?php while($row = mysql_fetch_assoc($result)): ?>
             <?php
-            $prof = Profile::loadById($row['followed_id']);
+            $prof = User::loadById($row['followed_id']);
             $followedUser = $prof->get('username');
 
             $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
@@ -114,7 +114,7 @@
             ?>
             <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
               <?php
-                $prof = Profile::loadById($row2['followed_id']);
+                $prof = User::loadById($row2['followed_id']);
                 $followedUser = $prof->get('username');
               ?>
               <a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "> <p class = "blog-author"> <?= $followedUser ?></p> </a>
@@ -128,7 +128,7 @@
           ?>
           <?php while($row = mysql_fetch_assoc($result)): ?>
             <?php
-            $prof = Profile::loadById($row['followed_id']);
+            $prof = User::loadById($row['followed_id']);
             $followedUser = $prof->get('username');
 
             $qtwo = "SELECT * FROM postcomments WHERE user_name='$followedUser' ";

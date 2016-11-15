@@ -122,8 +122,6 @@ class SiteController {
 
     $p = User::loadByUsername($username);
 
-		//took out the connection to database becuase is not needed if you load by username
-
     $q = "SELECT * FROM post WHERE username='$username' ";
     $result = mysql_query($q);
 
@@ -137,7 +135,6 @@ class SiteController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
-
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
@@ -156,17 +153,17 @@ class SiteController {
 		$pw = ["pw"];
 		$email = $_POST['email'];
 		$bio = $_POST['bio'];
-		$birthday = $_POST['birthday'];
+		$birthday = $_POST['age'];
 		$profpic = ["profpic"];
 
-		//load the product, make updates, and save to the database
+		//load the product, record updates, and save to the database
 		$u = User::loadByUsername($username);
 		$u->set('first_name', $first_name);
 		$u->set('last_name', $last_name);
 		$u->set('pw', $pw);
 		$u->set('email', $email);
 		$u->set('bio', $bio);
-		$u->set('birthday', $birthday);
+		$u->set('age', $age);
 		$u->set('profpic', $profpic);
 		$u->save();
 

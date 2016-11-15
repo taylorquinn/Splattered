@@ -22,7 +22,7 @@
 			<?php }
 
 			else {
-        $p = Profile::loadByUsername($_SESSION['user']);
+        $p = User::loadByUsername($_SESSION['user']);
 
         if($p->get('status') == 2) {
 

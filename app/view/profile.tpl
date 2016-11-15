@@ -81,7 +81,7 @@
 		         or die ('Error: Could not connect to MySql database');
 		       mysql_select_db(DB_DATABASE);
 
-		       $prof = Profile::loadById($row['followed_id']);
+		       $prof = User::loadById($row['followed_id']);
 		       $followedUser = $prof->get('username');       ?>
 
 		       <div class = "followcard" style="width:100%; float:left">
@@ -111,7 +111,7 @@
 	         or die ('Error: Could not connect to MySql database');
 	       mysql_select_db(DB_DATABASE);
 
-	       $prof = Profile::loadById($row1['follower_id']);
+	       $prof = User::loadById($row1['follower_id']);
 	       $followedUser1 = $prof->get('username');       ?>
 
 	       <div class ="userFollowing">
