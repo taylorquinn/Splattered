@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 15, 2016 at 05:13 PM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 15, 2016 at 07:18 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -150,19 +150,18 @@ CREATE TABLE `user` (
   `status` int(11) NOT NULL,
   `numComments` int(11) DEFAULT NULL COMMENT 'number of comments',
   `profpic` varchar(500) DEFAULT NULL,
-  `bio` text NOT NULL
+  `bio` text NOT NULL,
+  `age` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `pw`, `status`, `numComments`, `profpic`, `bio`) VALUES
-(1, 'Taylor', 'Quinn', 'taylorq@vt.edu', 'taylorq', 'test', 2, 1, 'headshot.JPG', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.'),
-(2, 'Taylor', 'Quinn', 'ktquinn13@gmail.com', 'ktquinn', 'password', 0, NULL, 'headshot.JPG', ''),
-(3, 'rishi', 'pulluri', 'riship@vt.edu', 'rishi', 'pw', 1, 0, 'rishi.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.'),
-(4, 'donald', 'trump', 'hd', 'don', 'pw', 2, 0, 'Trump5.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.'),
-(5, 'kara', 'love', 'karallobe', 'kara', 'pw', 2, 0, 'hd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `pw`, `status`, `numComments`, `profpic`, `bio`, `age`) VALUES
+(1, 'Taylor', 'Quinn', 'taylorq@vt.edu', 'taylorq', 'test', 2, 1, 'headshot.JPG', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0),
+(3, 'rishi', 'pulluri', 'riship@vt.edu', 'rishi', 'pw', 1, 0, 'rishi.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0),
+(4, 'donald', 'trump', 'hd', 'don', 'pw', 2, 0, 'Trump5.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida aliquam lobortis. Etiam eleifend nisi suscipit, viverra ipsum non, luctus quam. Sed fermentum porta cursus. Morbi fermentum interdum lorem a lobortis. Proin ultrices orci nec odio porttitor, sed congue neque rutrum. Nullam eget rhoncus quam, ultricies rutrum est. Suspendisse at facilisis arcu. Pellentesque rutrum, elit ut sagittis molestie, lorem sem finibus orci, et tincidunt est orci ac erat. Vestibulum quis laoreet risus, id sollicitudin ipsum. Etiam ac sapien at mi cursus viverra. Suspendisse potenti. Aliquam in lorem scelerisque, lobortis risus vel, facilisis urna. Etiam ut nibh quis turpis ornare rhoncus id in lacus. Maecenas ligula enim, venenatis eget fringilla quis, pretium in tortor.', 0);
 
 --
 -- Indexes for dumped tables
