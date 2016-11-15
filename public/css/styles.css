@@ -216,14 +216,14 @@ max-height:100%;
 
 .followed {
  width: 45%;
- border: 1px solid black;
+ border: 3px solid #ccc;
  height:500px;
  float: left;
 }
 
 .follower {
  width: 45%;
- border: 1px solid black;
+ border: 3px solid #ccc;
  height:500px;
  float: right;
 }
@@ -234,7 +234,7 @@ max-height:100%;
 #activity_feed{
   border: 3px solid #ccc;
     background: rgba(83, 121, 132, 0.2);
-    width: 50%;
+    width: 30%;
     display: inline-block;
     float: right;
     overflow-y: scroll;
@@ -244,11 +244,22 @@ max-height:100%;
 
 #activity_feed h2{
   border-bottom: 1px dotted rgba(0, 140, 186, 0.57);
-      font-family: Trebuchet MS, Helvetica, sans-serif;
+    font-family: Trebuchet MS, Helvetica, sans-serif;
     font-size: 36px;
 }
 
 #activity_feed h3{
+  font-size: 14px;
+   font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+#follows h2{
+  border-bottom: 1px dotted rgba(0, 140, 186, 0.57);
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+    font-size: 36px;
+}
+
+#follows h3{
   font-size: 14px;
    font-family: Trebuchet MS, Helvetica, sans-serif;
 }
