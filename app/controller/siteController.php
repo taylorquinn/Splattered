@@ -50,11 +50,23 @@ class SiteController {
 
 
 			case 'viewProfile':
+				echo "profile";
 				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
 				//echo var_dump($urlparts);
 				//echo $urlparts[count($urlparts)-1];
 				$this->viewProfile($urlparts[count($urlparts)-1]);
 	 			break;
+
+			case 'editProfile':
+				echo "we hit this";
+				$username = $_SESSION['user'];
+				$this->editProfile($username);
+		 		break;
+
+			case 'editProfileProcess':
+				$username = $_SESSION['user'];
+				$this->editProfileProcess($username);
+				break;
 
 			case 'processLogin':
 				$username = $_POST['un'];
@@ -116,9 +128,7 @@ class SiteController {
 
     $p = Profile::loadByUsername($username);
 
-    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-			or die ('Error: Could not connect to MySql database');
-		mysql_select_db(DB_DATABASE);
+		//took out the connection to database becuase is not needed if you load by username
 
     $q = "SELECT * FROM post WHERE username='$username' ";
     $result = mysql_query($q);
@@ -135,6 +145,43 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function editProfile($username) {
+		$pagename = 'Edit Profile Page';
+		$u =  Profile::loadByUsername($username);
+
+		echo "We hit this method";
+
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/editProfile.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function editProfileProcess($username) {
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$pw = ["pw"];
+		$email = $_POST['email'];
+		$bio = $_POST['bio'];
+		$birthday = $_POST['birthday'];
+		$profpic = ["profpic"];
+
+		//load the product, make updates, and save to the database
+		$p = Profile::loadByUsername($username);
+		$p->set('first_name', $first_name);
+		$p->set('last_name', $last_name);
+		$p->set('pw', $pw);
+		$p->set('email', $email);
+		$p->set('bio', $bio);
+		$p->set('birthday', $birthday);
+		$p->set('profpic', $profpic);
+		$p->save();
+
+		session_start();
+		$_SESSION['msg'] = "You edited the product called ".$title;
+		header('Location: '.BASE_URL.'/YogaMats/');
+
 	}
 
   public function home() {
