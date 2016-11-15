@@ -123,6 +123,14 @@ class SiteController {
     $q = "SELECT * FROM post WHERE username='$username' ";
     $result = mysql_query($q);
 
+		$l = "SELECT * FROM follow WHERE follower_id = '$userVariable'";
+
+		$followed = mysql_query($l);
+
+		$b = "SELECT * FROM follow WHERE followed_id = '$userVariable'";
+
+		$follower = mysql_query($b);
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
 
