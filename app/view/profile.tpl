@@ -9,8 +9,7 @@
         <ul class="product-checkout">
 
           <li><p class="name"> <?= $p->get('first_name') ?> <?= $p->get('last_name') ?></p></li>
-          <li><p class="name"> <?= $p->get('email') ?></p></li>
-          <li><p class="name"> <?= $p->get('age') ?></p></li>
+         
           <li style="margin-left: 40%; display: inline-block;">
           	<div id= "follower_button">
 					 <!-- if the user is on their profile, display an edit button-->
@@ -29,6 +28,8 @@
 			          <?php endif; ?>
 			       <?php endif; ?>
           </div></li>
+           <li><p class="checkout-price" style="font-weight:bold; font-style:oblique"> <?= $p->get('email') ?></p></li>
+          <li><p class="checkout-price" style="font-weight:bold"> <?= $p->get('age') ?></p></li>
           <li><p class="checkout-price"></p><?= $p->get('bio') ?></li>
         </ul>
 
@@ -98,7 +99,7 @@
                <?php if($_SESSION['user'] == $p->get('username')): ?>
 
 			       <li style="    display: inline;
-   						 float: right;">
+   						 float: left;">
                      <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a>
              </div></li>
              <?php endif; ?>
