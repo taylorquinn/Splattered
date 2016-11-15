@@ -75,7 +75,7 @@
     		width: 40%;
   	  		margin-bottom: 10px;"
     		class = "followed">
-	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Followed by:</h2>
+	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Following:</h2>
 
 		     <?php while($row = mysql_fetch_assoc($followed)): ?>
 		       <?php
