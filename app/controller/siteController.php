@@ -83,7 +83,7 @@ class SiteController {
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
 				$age = $_POST['age'];
-				$this->processSignup($firstName, $lastName, $email, $username, $password, $age;
+				$this->processSignup($firstName, $lastName, $email, $username, $password, $age);
 				break;
 
 			// redirect to home page if all else fails
