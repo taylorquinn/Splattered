@@ -73,27 +73,29 @@ function isSelected($pn, $link) {
 </div>
 
 
-
-<!--IMAGE CITATIONS!!!-->
-<!--CHECKOUT HEADER: edited from the image found here: http://65.media.tumblr.com/61e836107d470bccfdd94b649af51e1c/tumblr_n2ppvtiBIL1r46cs4o1_1280.jpg-->
-
-
-<!--HOME PAGE IMAGES-->
-<!--Accessories tile: edited from the image found here: https://www.google.com/search?sa=G&hl=en&q=side+braid&tbm=isch&tbs=simg:CAQSlQEJoIMPJccrmF0aiQELEKjU2AQaAggDDAsQsIynCBpiCmAIAxIo6RmGD7cPyhnJELQPoQ_1UEIoP1w_1eMNkw3zDgMOEwyCXiMPM71S7bMBowfjlhgnYthk6MjBxNqmzMtdnOX039F_18vRhoU7RcO-UtPcjMMStEtTzbhNEEa_1j24IAQMCxCOrv4IGgoKCAgBEgQ_1pMqMDA&ved=0ahUKEwjt1MnGia7PAhXEez4KHQD9CHgQwg4IGygA-->
-<!--Paintings tile: edited from the image found here: https://lh3.googleusercontent.com/OCWLteVrjHjzDUVIRRIbIrbYZuYXXzTSz0a0akUn0V1u4WPICt3dmR8X28sen953deeSTFQ=s85-->
-<!--Home Decor tile: edited from the image found here: https://lh3.googleusercontent.com/7S9F_10_tSqAwFJNUV3a0KJ0e8c-XZxTp_hxWP-DBHmocVRL7yXbwzIrLPCJjm-zgLdRmA=s85-->
-
- <!--Shop Favorites banner- edited from the image found here:  https://www.google.com/imgres?imgurl=http%3A%2F%2F67.media.tumblr.com%2Fac1a5aee391576c9bb410bd93d57550e%2Ftumblr_ndx3yvFet41qc91i1o1_1280.jpg&imgrefurl=http%3A%2F%2Fartistandstudio.tumblr.com%2Fpage%2F3&docid=Eun42Gye6mFtzM&tbnid=CmwQOamtM-yBFM%3A&w=1000&h=667&hl=en&bih=475&biw=1262&ved=0ahUKEwj__fKDia7PAhXEFj4KHZODDX0QMwgfKAEwAQ&iact=mrc&uact=8 -->
+<div id="citations">
+	<!--IMAGE CITATIONS!!!-->
+	<!--CHECKOUT HEADER: edited from the image found here: http://65.media.tumblr.com/61e836107d470bccfdd94b649af51e1c/tumblr_n2ppvtiBIL1r46cs4o1_1280.jpg-->
 
 
+	<!--HOME PAGE IMAGES-->
+	<!--Accessories tile: edited from the image found here: https://www.google.com/search?sa=G&hl=en&q=side+braid&tbm=isch&tbs=simg:CAQSlQEJoIMPJccrmF0aiQELEKjU2AQaAggDDAsQsIynCBpiCmAIAxIo6RmGD7cPyhnJELQPoQ_1UEIoP1w_1eMNkw3zDgMOEwyCXiMPM71S7bMBowfjlhgnYthk6MjBxNqmzMtdnOX039F_18vRhoU7RcO-UtPcjMMStEtTzbhNEEa_1j24IAQMCxCOrv4IGgoKCAgBEgQ_1pMqMDA&ved=0ahUKEwjt1MnGia7PAhXEez4KHQD9CHgQwg4IGygA-->
+	<!--Paintings tile: edited from the image found here: https://lh3.googleusercontent.com/OCWLteVrjHjzDUVIRRIbIrbYZuYXXzTSz0a0akUn0V1u4WPICt3dmR8X28sen953deeSTFQ=s85-->
+	<!--Home Decor tile: edited from the image found here: https://lh3.googleusercontent.com/7S9F_10_tSqAwFJNUV3a0KJ0e8c-XZxTp_hxWP-DBHmocVRL7yXbwzIrLPCJjm-zgLdRmA=s85-->
 
-<!--FOOTER IMAGES-->
-<!--Facebook logo: https://lh3.googleusercontent.com/jDhF56HdcROR2DOBcxL_yTwWU1SUz-Xlb7BLZ6cjzYftSxN-uzIdHosDdPeVL1grUy9piA=s85-->
-<!--Twitter logo: https://lh3.googleusercontent.com/-EtGHtc8v9V5jC5Gf4N3XPA4PEf6WmjW11XzBaOHNTwRQc9Cbb09oXmfJj-c9_VN02LoCRY=s105-->
-<!--Instagram logo: https://lh3.googleusercontent.com/-q1QAZFDTm6cTLfoI8prYuSryvmZZ-RK32gMFvMu4q3rhaAw-i44yYD2oL8HX0jUslww=s85-->
-<!--Pinterest logo: https://lh3.googleusercontent.com/TtM5NxnMFGPYvJq5z-Zjy4T6bbck9TuPDbGPWbokYR9q7ypADiFk_LufgEtgR8WSMrMa=s85-->
+	 <!--Shop Favorites banner- edited from the image found here:  https://www.google.com/imgres?imgurl=http%3A%2F%2F67.media.tumblr.com%2Fac1a5aee391576c9bb410bd93d57550e%2Ftumblr_ndx3yvFet41qc91i1o1_1280.jpg&imgrefurl=http%3A%2F%2Fartistandstudio.tumblr.com%2Fpage%2F3&docid=Eun42Gye6mFtzM&tbnid=CmwQOamtM-yBFM%3A&w=1000&h=667&hl=en&bih=475&biw=1262&ved=0ahUKEwj__fKDia7PAhXEFj4KHZODDX0QMwgfKAEwAQ&iact=mrc&uact=8 -->
 
 
-<!--PAINTINGS IMAGES-->
-<!--HEADER: edited from the image found here : https://www.google.com/search?sa=G&hl=en&q=artist&tbm=isch&tbs=simg:CAQSlQEJSsxSEGfzGFkaiQELEKjU2AQaAggJDAsQsIynCBpiCmAIAxIo2R7PHqgenRGxHtoemxirGOIX5he6MKg5rTqzOa464i64K8Ustyv2IxowRaiO3cGgZwBmpQTEHTrNUqIFrkX1EZn8o34eFEPhc9X9Kji-uZOU47uqfZdoB_1DDIAQMCxCOrv4IGgoKCAgBEgQToChmDA&ved=0ahUKEwiohYfXia7PAhXDPz4KHUQ0DH8Qwg4IGygA -->
-<!--ALL FOR SALE IMAGES ARE MY OWN PICTURES/ ARTWORK-->
+
+	<!--FOOTER IMAGES-->
+	<!--Facebook logo: https://lh3.googleusercontent.com/jDhF56HdcROR2DOBcxL_yTwWU1SUz-Xlb7BLZ6cjzYftSxN-uzIdHosDdPeVL1grUy9piA=s85-->
+	<!--Twitter logo: https://lh3.googleusercontent.com/-EtGHtc8v9V5jC5Gf4N3XPA4PEf6WmjW11XzBaOHNTwRQc9Cbb09oXmfJj-c9_VN02LoCRY=s105-->
+	<!--Instagram logo: https://lh3.googleusercontent.com/-q1QAZFDTm6cTLfoI8prYuSryvmZZ-RK32gMFvMu4q3rhaAw-i44yYD2oL8HX0jUslww=s85-->
+	<!--Pinterest logo: https://lh3.googleusercontent.com/TtM5NxnMFGPYvJq5z-Zjy4T6bbck9TuPDbGPWbokYR9q7ypADiFk_LufgEtgR8WSMrMa=s85-->
+
+
+	<!--PAINTINGS IMAGES-->
+	<!--HEADER: edited from the image found here : https://www.google.com/search?sa=G&hl=en&q=artist&tbm=isch&tbs=simg:CAQSlQEJSsxSEGfzGFkaiQELEKjU2AQaAggJDAsQsIynCBpiCmAIAxIo2R7PHqgenRGxHtoemxirGOIX5he6MKg5rTqzOa464i64K8Ustyv2IxowRaiO3cGgZwBmpQTEHTrNUqIFrkX1EZn8o34eFEPhc9X9Kji-uZOU47uqfZdoB_1DDIAQMCxCOrv4IGgoKCAgBEgQToChmDA&ved=0ahUKEwiohYfXia7PAhXDPz4KHUQ0DH8Qwg4IGygA -->
+	<!--ALL FOR SALE IMAGES ARE MY OWN PICTURES/ ARTWORK-->
+
+</div>

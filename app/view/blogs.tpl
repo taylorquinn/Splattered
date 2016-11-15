@@ -1,4 +1,4 @@
-<div id="content2">
+<div id="content3">
 
 <!-- the header image -->
   <div id="header_image2">

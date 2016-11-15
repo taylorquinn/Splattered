@@ -56,6 +56,16 @@ class SiteController {
 				$this->viewProfile($urlparts[count($urlparts)-1]);
 	 			break;
 
+			case 'editProfile':
+				$username = $_SESSION['user'];
+				$this->editProfile($username);
+		 		break;
+
+			case 'editProfileProcess':
+				$username = $_SESSION['user'];
+				$this->editProfileProcess($username);
+				break;
+
 			case 'processLogin':
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
@@ -72,7 +82,8 @@ class SiteController {
         $email = $_POST['email'];
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
-				$this->processSignup($firstName, $lastName, $email, $username, $password);
+				$age = $_POST['age'];
+				$this->processSignup($firstName, $lastName, $email, $username, $password, $age;
 				break;
 
 			// redirect to home page if all else fails
@@ -88,8 +99,8 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
-		$myUsername =  Profile::loadByUsername($_SESSION['user']);
-		$p = Profile::loadByUsername($username);
+		$myUsername =  User::loadByUsername($_SESSION['user']);
+		$p = User::loadByUsername($username);
 
 
 		$userVariable = $p->get('id');
@@ -103,10 +114,6 @@ class SiteController {
 			 $following = true;
 		 }
 
-		 $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-			 or die ('Error: Could not connect to MySql database');
-		 mysql_select_db(DB_DATABASE);
-
 		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
 		 $result = mysql_query($q);
 		 $follow = array();
@@ -114,11 +121,7 @@ class SiteController {
  			$follow['followed_id'] = $row['followed_id'];
  		}
 
-    $p = Profile::loadByUsername($username);
-
-    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-			or die ('Error: Could not connect to MySql database');
-		mysql_select_db(DB_DATABASE);
+    $p = User::loadByUsername($username);
 
     $q = "SELECT * FROM post WHERE username='$username' ";
     $result = mysql_query($q);
@@ -133,8 +136,42 @@ class SiteController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/profile.tpl';
-
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function editProfile($username) {
+		$pagename = 'Edit Profile Page';
+		$u =  User::loadByUsername($username);
+
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/editProfile.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function editProfileProcess($username) {
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$pw = ["pw"];
+		$email = $_POST['email'];
+		$bio = $_POST['bio'];
+		$birthday = $_POST['age'];
+		$profpic = ["profpic"];
+
+		//load the product, record updates, and save to the database
+		$u = User::loadByUsername($username);
+		$u->set('first_name', $first_name);
+		$u->set('last_name', $last_name);
+		$u->set('pw', $pw);
+		$u->set('email', $email);
+		$u->set('bio', $bio);
+		$u->set('age', $age);
+		$u->set('profpic', $profpic);
+		$u->save();
+
+		session_start();
+		$_SESSION['msg'] = "You edited the profile called ".$title;
+		header('Location: '.BASE_URL.'/profile/'.$_SESSION['user']);
+
 	}
 
   public function home() {
@@ -149,26 +186,6 @@ class SiteController {
       $q = "SELECT * FROM post WHERE username='$username' ";
       $result = mysql_query($q);
     }
-
-    // if(isset($_SESSION['user'])) {
-    //   $username = $_SESSION['user'];
-    //   $uid = -1; // if no user is logged in, set the id to -1
-    //
-    //   $q = "SELECT * FROM user WHERE username='$username' ";
-    //   $result = mysql_query($q);
-    //
-    //   $numberOfRows = mysql_num_rows($result);
-    //
-    //   if($numberOfRows == 1) {
-    //     $p = Profile::loadByUsername($username);
-    //     $uid = $p->get('id');
-    //
-    //     $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-    //     $result = mysql_query($q);
-    //   } else {
-    //     echo "NO USER IS LOGGED IN";
-    //   }
-    // }
 
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -273,7 +290,7 @@ class SiteController {
 
 	}
 
-  public function processSignup($firstName, $lastName, $email, $username, $password) {
+  public function processSignup($firstName, $lastName, $email, $username, $password, $age) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);

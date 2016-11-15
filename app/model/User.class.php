@@ -9,8 +9,12 @@ class User extends DbObject {
     protected $username;
     protected $pw;
     protected $email;
+    protected $bio;
+    protected $age;
+    protected $status;
     protected $first_name;
     protected $last_name;
+    protected $profpic;
 
     // constructor
     public function __construct($args = array()) {
@@ -19,8 +23,12 @@ class User extends DbObject {
             'username' => '',
             'pw' => '',
             'email' => null,
+            'bio' => '',
+            'age' => null,
+            'status' => 0,
             'first_name' => null,
-            'last_name' => null
+            'last_name' => null,
+            'profpic' => null
             );
 
         $args += $defaultArgs;
@@ -29,8 +37,12 @@ class User extends DbObject {
         $this->username = $args['username'];
         $this->pw = $args['pw'];
         $this->email = $args['email'];
+        $this->bio = $args['bio'];
+        $this->age = $args['age'];
+        $this->status = $args['status'];
         $this->first_name = $args['first_name'];
         $this->last_name = $args['last_name'];
+        $this->profpic = $args['profpic'];
     }
 
     // save changes to object
@@ -41,8 +53,12 @@ class User extends DbObject {
             'username' => $this->username,
             'pw' => $this->pw,
             'email' => $this->email,
+            'bio' => $this->bio,
+            'age' => $this->age,
+            'status' => $this->status,
             'first_name' => $this->first_name,
-            'last_name' => $this->last_name
+            'last_name' => $this->last_name,
+            'profpic' => $this->profpic
             );
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
@@ -60,6 +76,4 @@ class User extends DbObject {
       $obj = $db->fetchByUsername($username, __CLASS__, self::DB_TABLE);
       return $obj;
         }
-    }
-
 }

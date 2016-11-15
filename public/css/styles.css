@@ -216,14 +216,14 @@ max-height:100%;
 
 .followed {
  width: 45%;
- border: 1px solid black;
+ border: 3px solid #ccc;
  height:500px;
  float: left;
 }
 
 .follower {
  width: 45%;
- border: 1px solid black;
+ border: 3px solid #ccc;
  height:500px;
  float: right;
 }
@@ -239,15 +239,27 @@ max-height:100%;
     float: right;
     overflow-y: scroll;
     height: 600px;
+    margin-right: 3%
 }
 
 #activity_feed h2{
   border-bottom: 1px dotted rgba(0, 140, 186, 0.57);
-      font-family: Trebuchet MS, Helvetica, sans-serif;
+    font-family: Trebuchet MS, Helvetica, sans-serif;
     font-size: 36px;
 }
 
 #activity_feed h3{
+  font-size: 14px;
+   font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+#follows h2{
+  border-bottom: 1px dotted rgba(0, 140, 186, 0.57);
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+    font-size: 36px;
+}
+
+#follows h3{
   font-size: 14px;
    font-family: Trebuchet MS, Helvetica, sans-serif;
 }
@@ -356,7 +368,7 @@ div.product {
 
 #content2 {
   width: 100%;
-  height:800px;
+  height:100%;
 }
 
 #content3 {
@@ -621,6 +633,8 @@ float:right;
    margin-top: 0px;
    display: block;
    list-style-type: none;
+   width: 50%;
+    float: right;
 }
 
 .checkout-title
