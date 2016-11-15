@@ -1,5 +1,6 @@
 <div id="footer">
 
+
 		<ul id="footerelements">
 			<li><a href="https://www.instagram.com"><img class="icon" src="<?= BASE_URL ?>/public/img/instagram.png" alt="INSTA" /></a>  <a href="https://www.pinterest.com"><img class="icon" src="<?= BASE_URL ?>/public/img/pinterest.png" alt="PINTEREST" /></a> <a href="https://www.facebook.com"><img class="icon" src="<?= BASE_URL ?>/public/img/facebook.png" alt="FACEBOOK" /></a>  <a href="https://www.twitter.com"><img class="icon" src="<?= BASE_URL ?>/public/img/twitter.png" alt="TWITTER" /></a> </li>
 
@@ -66,8 +67,9 @@
 
 		</div>
 
-    <div id="mySignupPopup" class="popup">
 
+
+    <div id="mySignupPopup" class="popup">
  			<div class="popup-content">
   		    <span class="close" onclick="signupClose()">×</span>
   		    <form  action="<?= BASE_URL ?>/footer/signup" method="POST">
@@ -89,7 +91,18 @@
   				  <br>
             Email Address:<br>
   				      <input type="text" name="email" placeholder="test@gmail.com">
-  				  <br><br>
+  				  <br>
+						Age:<br>
+						<select name="cars">
+					    <option value="1">1</option>
+					    <option value="2">2</option>
+					    <option value="3">3</option>
+					    <option value="4">4</option>
+							<option value="5">5</option>
+					  </select>
+					  <input type="submit" value="Submit">
+
+						<br>
   				  <input type="submit" value="Submit" >
 				</form>
 
