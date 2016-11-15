@@ -47,7 +47,7 @@
        $prof = Profile::loadById($row['followed_id']);
        $followedUser = $prof->get('username');       ?>
 
-       <div class = "followcard"><span class =  "userFollowing"><?= $followedUser ?></span><a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a></div>
+       <div class = "followcard"><span class =  "userFollowing"><a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser ?></a></span><a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a></div>
     <?php endwhile; ?>
    </div>
    <div class = "follower">
@@ -61,7 +61,7 @@
        $prof = Profile::loadById($row1['follower_id']);
        $followedUser1 = $prof->get('username');       ?>
 
-       <div class ="userFollowing"><?= $followedUser1 ?></div>
+       <div class ="userFollowing"><a href="<?= BASE_URL ?>/profile/<?= $followedUser1 ?> "><?= $followedUser1 ?></a></div>
    <?php endwhile; ?>
 
 
