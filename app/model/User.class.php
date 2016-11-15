@@ -23,7 +23,7 @@ class User extends DbObject {
             'username' => '',
             'pw' => '',
             'email' => null,
-            'bio' => '';
+            'bio' => '',
             'age' => null,
             'status' => 0,
             'first_name' => null,
@@ -76,6 +76,4 @@ class User extends DbObject {
       $obj = $db->fetchByUsername($username, __CLASS__, self::DB_TABLE);
       return $obj;
         }
-    }
-
 }

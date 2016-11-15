@@ -50,7 +50,6 @@ class SiteController {
 
 
 			case 'viewProfile':
-				echo "profile";
 				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
 				//echo var_dump($urlparts);
 				//echo $urlparts[count($urlparts)-1];
@@ -58,7 +57,6 @@ class SiteController {
 	 			break;
 
 			case 'editProfile':
-				echo "we hit this";
 				$username = $_SESSION['user'];
 				$this->editProfile($username);
 		 		break;
@@ -100,8 +98,8 @@ class SiteController {
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
-		$myUsername =  Profile::loadByUsername($_SESSION['user']);
-		$p = Profile::loadByUsername($username);
+		$myUsername =  User::loadByUsername($_SESSION['user']);
+		$p = User::loadByUsername($username);
 
 
 		$userVariable = $p->get('id');
@@ -115,10 +113,6 @@ class SiteController {
 			 $following = true;
 		 }
 
-		 $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-			 or die ('Error: Could not connect to MySql database');
-		 mysql_select_db(DB_DATABASE);
-
 		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
 		 $result = mysql_query($q);
 		 $follow = array();
@@ -126,7 +120,7 @@ class SiteController {
  			$follow['followed_id'] = $row['followed_id'];
  		}
 
-    $p = Profile::loadByUsername($username);
+    $p = User::loadByUsername($username);
 
 		//took out the connection to database becuase is not needed if you load by username
 
@@ -149,9 +143,7 @@ class SiteController {
 
 	public function editProfile($username) {
 		$pagename = 'Edit Profile Page';
-		$u =  Profile::loadByUsername($username);
-
-		echo "We hit this method";
+		$u =  User::loadByUsername($username);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/editProfile.tpl';
@@ -168,19 +160,19 @@ class SiteController {
 		$profpic = ["profpic"];
 
 		//load the product, make updates, and save to the database
-		$p = Profile::loadByUsername($username);
-		$p->set('first_name', $first_name);
-		$p->set('last_name', $last_name);
-		$p->set('pw', $pw);
-		$p->set('email', $email);
-		$p->set('bio', $bio);
-		$p->set('birthday', $birthday);
-		$p->set('profpic', $profpic);
-		$p->save();
+		$u = User::loadByUsername($username);
+		$u->set('first_name', $first_name);
+		$u->set('last_name', $last_name);
+		$u->set('pw', $pw);
+		$u->set('email', $email);
+		$u->set('bio', $bio);
+		$u->set('birthday', $birthday);
+		$u->set('profpic', $profpic);
+		$u->save();
 
 		session_start();
-		$_SESSION['msg'] = "You edited the product called ".$title;
-		header('Location: '.BASE_URL.'/YogaMats/');
+		$_SESSION['msg'] = "You edited the profile called ".$title;
+		header('Location: '.BASE_URL.'/profile/'.$_SESSION['user']);
 
 	}
 
@@ -196,26 +188,6 @@ class SiteController {
       $q = "SELECT * FROM post WHERE username='$username' ";
       $result = mysql_query($q);
     }
-
-    // if(isset($_SESSION['user'])) {
-    //   $username = $_SESSION['user'];
-    //   $uid = -1; // if no user is logged in, set the id to -1
-    //
-    //   $q = "SELECT * FROM user WHERE username='$username' ";
-    //   $result = mysql_query($q);
-    //
-    //   $numberOfRows = mysql_num_rows($result);
-    //
-    //   if($numberOfRows == 1) {
-    //     $p = Profile::loadByUsername($username);
-    //     $uid = $p->get('id');
-    //
-    //     $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-    //     $result = mysql_query($q);
-    //   } else {
-    //     echo "NO USER IS LOGGED IN";
-    //   }
-    // }
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';

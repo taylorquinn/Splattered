@@ -9,7 +9,8 @@
         <ul class="product-checkout">
 
           <li><p class="name"> <?= $p->get('first_name') ?> <?= $p->get('last_name') ?></p></li>
-          <li style="margin-left: 40%; display: inline-block;">    
+          <li><p class="name"> <?= $p->get('email') ?></p></li>
+          <li style="margin-left: 40%; display: inline-block;">
           	<div id= "follower_button">
 					 <!-- if the user is on their profile, display an edit button-->
 						<?php if($_SESSION['user'] == $p->get('username')): ?>
@@ -51,7 +52,7 @@
 	     <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <p class = "blog-author"> <?= $row['comment'] ?></p> </a>
 	   <?php endwhile; ?>
 
-		
+
 	   <h3>Products you added</h3>
 	   <?php
 	     $uid = $p->get('id');
@@ -70,7 +71,7 @@
    	 		margin-left: 40px;
     		float: left;
     		width: 40%;
-  	  		margin-bottom: 10px;" 
+  	  		margin-bottom: 10px;"
     		class = "followed">
 	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Followed by:</h2>
 
@@ -86,7 +87,7 @@
 		       <div class = "followcard" style="width:100%; float:left">
 
 		     <!--  <span class =  "userFollowing">-->
-		       <ul style="    
+		       <ul style="
 		       		list-style: none;
 					    margin-left: 0px;
 					    display: inline;">
