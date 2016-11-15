@@ -12,6 +12,8 @@
 <?php
 if(isset($_SESSION['user']))
 {
+ $p = User::loadByUsername($_SESSION['user']);
+  if($p->get('status') != 0) {
   echo '<div id="add_blog">
 
   <h2>Add a Blog Post</h2>
@@ -39,6 +41,7 @@ if(isset($_SESSION['user']))
   </form>
 
 </div>';
+}
 }
 ?>
 
