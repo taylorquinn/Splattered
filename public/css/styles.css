@@ -87,7 +87,7 @@ img.head-image{
 
 img.head-image2{
   /*float: center;*/
- 
+
   display: inline-block;
   position: relative;
   margin-bottom: 10px;
@@ -212,6 +212,20 @@ max-height:100%;
 
 .blog_description{
   padding: 2% 4%;
+}
+
+.followed {
+ width: 45%;
+ border: 1px solid black;
+ height:500px;
+ float: left;
+}
+
+.follower {
+ width: 45%;
+ border: 1px solid black;
+ height:500px;
+ float: right;
 }
 
 
@@ -342,6 +356,21 @@ div.product {
 
 #content2 {
   width: 100%;
+  height:800px;
+}
+
+#content3 {
+  width: 100%;
+  height:1500px;
+}
+
+.article {
+  font-size: 30px;
+  color: red;
+  position: relative;
+  left: 45%;
+  padding: 0 auto;
+  margin: 0 auto;
 }
 
 .name{
@@ -580,7 +609,6 @@ float:right;
 
 .large-img{
    width: 40%;
-
   padding: 20px 40px;
   display:block;
   float:left;
@@ -623,6 +651,7 @@ float:right;
 }
 
 
+
 .edit-button{
   background-color: black;
     border: none;
@@ -658,8 +687,8 @@ float:right;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    float: left;
     position: relative;
+    float: left;
 }
 
 
@@ -673,6 +702,24 @@ float:right;
 .buttonFollow:hover {
     background-color: #008CBA;
     color: white;
+}
+
+.bt {
+  display: inline;
+  left:45%;
+}
+
+.userFollowing {
+  position: relative;
+  margin-top: 10px;
+  left: 35px;
+  top:20px;
+  font-size: 25px;
+}
+
+.followcard {
+  height: 100px;
+  width: 100%;
 }
 
 #random {
@@ -816,6 +863,7 @@ overflow: scroll;
 .whoops{
   text-align: center;
 }
+
 
 
 /*button css for the page*/
