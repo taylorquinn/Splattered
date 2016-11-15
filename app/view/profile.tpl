@@ -9,7 +9,7 @@
         <ul class="product-checkout">
 
           <li><p class="name"> <?= $p->get('first_name') ?> <?= $p->get('last_name') ?></p></li>
-         
+
           <li style="margin-left: 40%; display: inline-block;">
           	<div id= "follower_button">
 					 <!-- if the user is on their profile, display an edit button-->
@@ -96,13 +96,19 @@
 			       <li style= ""><a style="float: left; display: inline; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser?></a>
 			       <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"></li>
 
+               <li style="    display: inline;
+     						 float: right;">
                <?php if($_SESSION['user'] == $p->get('username')): ?>
+
 
 			       <li style="    display: inline;
    						 float: left;">
                      <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a>
-             </div></li>
+
+             </li>
              <?php endif; ?>
+           </div>
+
 
 		       </ul>
 	    <?php endwhile; ?>
