@@ -204,6 +204,20 @@ max-height:100%;
   padding: 2% 4%;
 }
 
+.followed {
+ width: 45%;
+ border: 1px solid black;
+ height:500px;
+ float: left;
+}
+
+.follower {
+ width: 45%;
+ border: 1px solid black;
+ height:500px;
+ float: right;
+}
+
 
 /*INDEX************************************************************************************/
 
@@ -583,6 +597,7 @@ float:right;
 }
 
 
+
 .edit-button{
   background-color: black;
     border: none;
@@ -633,6 +648,24 @@ float:right;
 .buttonFollow:hover {
     background-color: #008CBA;
     color: white;
+}
+
+.bt {
+  display: inline;
+  left:45%;
+}
+
+.userFollowing {
+  position: relative;
+  margin-top: 10px;
+  left: 35px;
+  top:20px;
+  font-size: 25px;
+}
+
+.followcard {
+  height: 100px;
+  width: 100%;
 }
 
 #random {
@@ -776,6 +809,7 @@ overflow: scroll;
 .whoops{
   text-align: center;
 }
+
 
 
 /*button css for the page*/
