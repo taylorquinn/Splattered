@@ -6,9 +6,9 @@
 
 <label>First Name: <input type="text" name="first_name" value="<?= $u->get('first_name') ?>"></label>
 
-<label>Last Name: <input type="text" name="lsat_name" value = "<?= $u->get('last_name') ?>"></label>
+<label>Last Name: <input type="text" name="last_name" value = "<?= $u->get('last_name') ?>"></label>
 
-<label>Password: <input type="text" name="password" value="<?= $u->get('pw') ?>"></label>
+<label>Password: <input type="text" name="pw" value="<?= $u->get('pw') ?>"></label>
 
 <label>Email: <input type="text" name="email" value="<?= $u->get('email') ?>"></label>
 
