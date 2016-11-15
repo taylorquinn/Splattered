@@ -8,11 +8,13 @@
 
 <label>Last Name: <input type="text" name="lsat_name" value = "<?= $product['description'] ?"></label>
 
+<label>Password: <input type="text" name="password" value="<?= $product['img_url'] ?>"></label>
+
 <label>Email: <input type="text" name="email" value="<?= $product['sizes'] ?>"></label>
 
 <label>Bio: <input type="text" name="bio" value="<?= $product['price'] ?>"></label>
 
-<label>Password: <input type="text" name="password" value="<?= $product['img_url'] ?>"></label>
+<label>Age: <input type="text" name="bio" value="<?= $product['price'] ?>"></label>
 
 <input type="submit" name="submit" class="edit-button2" value="Save Changes">
 

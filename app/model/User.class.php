@@ -10,7 +10,7 @@ class User extends DbObject {
     protected $pw;
     protected $email;
     protected $bio;
-    protected $birthday;
+    protected $age;
     protected $status;
     protected $first_name;
     protected $last_name;
@@ -24,7 +24,7 @@ class User extends DbObject {
             'pw' => '',
             'email' => null,
             'bio' => '';
-            'birthday' => null,
+            'age' => null,
             'status' => 0,
             'first_name' => null,
             'last_name' => null,
@@ -38,7 +38,7 @@ class User extends DbObject {
         $this->pw = $args['pw'];
         $this->email = $args['email'];
         $this->bio = $args['bio'];
-        $this->birthday = $args['birthday'];
+        $this->age = $args['age'];
         $this->status = $args['status'];
         $this->first_name = $args['first_name'];
         $this->last_name = $args['last_name'];
@@ -54,7 +54,7 @@ class User extends DbObject {
             'pw' => $this->pw,
             'email' => $this->email,
             'bio' => $this->bio,
-            'birthday' => $this->birthday,
+            'age' => $this->age,
             'status' => $this->status,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
