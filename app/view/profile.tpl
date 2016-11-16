@@ -4,7 +4,7 @@
 
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
 
-      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" >
+      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%">
 
         <ul class="product-checkout">
 
@@ -38,7 +38,7 @@
 			 if($b->get('status') == 2) { 
 
             echo'
-            <form id="change_status">
+            <form id="change_status" >
             <input type="text" name="name" id="name" value=',$userstatus,' style="display: inline-block;"/>
             <input type="button" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
                       margin-top: 2px;
