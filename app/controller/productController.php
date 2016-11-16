@@ -129,6 +129,10 @@ class ProductController {
 			header('Location: '.BASE_URL.'/profile/'.$followUser->get('username'));
 	}
 
+
+	// this method essentially gives the $pid for the user to  follow and then we
+	//carry this and essentially uses the users pid and person we are following
+	//and use the pid and then query the follow table.
 	public function unfollowUser($pid) {
 		$myUsername = User::loadByUsername($_SESSION['user']);
 		$unfollowUser = User::loadById($pid);
