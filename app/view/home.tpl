@@ -183,7 +183,6 @@
   <?php }
 
 
-<!--if user is not set, make the width of the header image 100% to account for no activity feed-->
 
   else {?>
 
