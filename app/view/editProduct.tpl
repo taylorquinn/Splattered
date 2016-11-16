@@ -1,3 +1,5 @@
+
+<!--form with the original content automatically filled in, allowing updates-->
 <div id="content">
 
 <h2>Edit Product</h2>
@@ -29,6 +31,7 @@
 </div>
 
 
+<!--Popup to ensure that you actually want to delete -->
 <div id="myDeletePopup" class="popup">
 
  		<div class="popup-content">
