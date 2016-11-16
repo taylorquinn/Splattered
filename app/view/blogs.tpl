@@ -45,6 +45,8 @@ if(isset($_SESSION['user']))
 }
 ?>
 
+<!-- loop through all of the blogs and display them
+     uses the blog model class-->
 <?php
 foreach ($blogs as $b)
 {

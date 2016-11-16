@@ -14,7 +14,7 @@
 			</div>
 </div>
 
-
+<!-- begin the add content that allows the user to inpout information about a new product to add -->
 		<div id="add-information">
 			<h2 class="add-title">Add Item To Sell:</h2>
 
