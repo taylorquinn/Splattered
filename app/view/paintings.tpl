@@ -1,11 +1,14 @@
 
+<!--header image-->
 <img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />
 <div id="content">
 
 
 
+<!--get all paintings in database-->
+
 <?php while($row = mysql_fetch_assoc($result)): ?>
-<!--<form action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">-->
+
 
 
 <?php
@@ -26,7 +29,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 ?>
 
 
-
+<!--formatting of a specific item cell-->
 
 <div class="product-cell product <?= $newStr?>"><!--.<?= $row['sizes'] ?>">-->
 
@@ -36,7 +39,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 		<?= $row['description'] ?>
 	</p>-->
 	<div class="product2">
-		<!--<p>Available size(s): <?= $row['sizes'] ?></p>-->
+		
 		<p class="product-p">$<?= $row['price'] ?></p>
 		 <a><input type="image" src="<?= BASE_URL ?>/public/img/zoomIn.jpg" name="saveForm" class="product-icon" id="popupButt" action="" onclick="location.href='<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?>'"></a>
 		 <!--onclick = popup.Appear()-->
@@ -63,6 +66,8 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
 
+		
+<!--if the user is logged in and is an admin, display buttons to edit and delete -->
 		<?php if(isset($_SESSION['user']) && ($_SESSION['user'] != '') ) {
       $p = User::loadByUsername($_SESSION['user']);
 
@@ -105,6 +110,8 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 <div>
 
+<!--if they try to delete, popup to ensure that they really want to delete-->
+
 <div id="myDeletePopup" class="popup">
 
  		<div class="popup-content">
@@ -136,6 +143,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 </div>
 
 
+<!--popup not currently being used-->
 <div id="myItemPopup" class="popup">
 
  			<div class="popup-content">
@@ -157,8 +165,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 		</div>
 
-
-
+<!--sidebar-->
 <div id="sidebar" >
 
 			<h3>Filter:</h3>
