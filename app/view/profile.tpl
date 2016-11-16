@@ -29,6 +29,7 @@
 			       <?php endif; ?>
           </div></li>
 
+		<!-- if the user is an admin, allow them to change the privlege status of the user-->
           <li> <div id="user_status">
           	<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
            	 $b = User::loadByUsername($_SESSION['user']);
@@ -60,7 +61,7 @@
 
 
 		</div></li>
-
+<!--info about person-->
            <li><p class="checkout-price" style="font-weight:bold; font-style:oblique"> <?= $p->get('email') ?></p></li>
           <li><p class="checkout-price" style="font-weight:bold"> <?= $p->get('age') ?></p></li>
           <li><p class="checkout-price"></p><?= $p->get('bio') ?></li>
@@ -71,7 +72,7 @@
 </div>
 
 
-
+<!--Activity feed-->
 <div style="margin-bottom: 10px; height: 475px; overflow-x: hidden; width:50%;" id="activity_feed" >
 	 <h2>Activity Feed</h2>
 	  <h3><?= $p->get('first_name') ?>'s articles posted</h3>
@@ -100,6 +101,7 @@
 	   <?php endwhile; ?>
 </div>
 
+<!--people they follow and who follow them-->
 <div id="follows">
 	   <div style= "height: 200px;
     		overflow-y: scroll;
