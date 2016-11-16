@@ -4,7 +4,7 @@
 
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
 
-      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" >
+      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%">
 
         <ul class="product-checkout">
 
@@ -39,6 +39,7 @@
 			 if(($b->get('status') == 2) && ($curr_username != ($_SESSION['user']))) {
 
             echo'
+
             <form id="change-status" action="',BASE_URL,'/profile/changeStatus/',$curr_username,'/process" method="POST">
               <select name="status">
                 <option selected="selected">
@@ -74,12 +75,12 @@ profile/changeStatus/(.*)/process?$
 
 <div style="margin-bottom: 10px; height: 475px; overflow-x: hidden; width:50%;" id="activity_feed" >
 	 <h2>Activity Feed</h2>
-	  <h3>Your articles posted</h3>
+	  <h3><?= $p->get('first_name') ?>'s articles posted</h3>
 	 <?php while($row = mysql_fetch_assoc($result)): ?>
 	   <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> " > <p class = "blog-author"> <?= $row['title'] ?></p> </a>
 	 <?php endwhile; ?>
 
-	  <h3>Your comments</h3>
+	  <h3><?= $p->get('first_name') ?>'s comments</h3>
 	   <?php
 	     $q = "SELECT * FROM postcomments WHERE user_name='$username' ";
 	     $result = mysql_query($q);
@@ -89,7 +90,7 @@ profile/changeStatus/(.*)/process?$
 	   <?php endwhile; ?>
 
 
-	   <h3>Products you added</h3>
+	   <h3>Products <?= $p->get('first_name') ?> added</h3>
 	   <?php
 	     $uid = $p->get('id');
 	     $q = "SELECT * FROM product WHERE creator_id=$uid ";
