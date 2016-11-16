@@ -34,7 +34,7 @@ function isSelected($pn, $link) {
 					<li><a id="selected-nav" href="<?= BASE_URL ?>/paintings">Paintings</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Photographs</a></li>
 					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
-					<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>
+					<!--<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>-->
 					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
 
 					<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { ?>

@@ -4,7 +4,7 @@
 
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
 
-      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" >
+      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%; padding: 20px 40px;" >
 
         <ul class="product-checkout">
 
@@ -30,6 +30,40 @@
              <!-- display email, age and bio of the person-->
 
           </div></li>
+
+          <li> <div id="user_status">
+          	<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
+           	 $b = User::loadByUsername($_SESSION['user']);
+
+           	 $userstatus = $p->get('status');
+             $curr_username = $p->get('username');
+
+			 if(($b->get('status') == 2) && ($curr_username != ($_SESSION['user']))) {
+
+            echo'
+
+            <form id="change-status" action="',BASE_URL,'/profile/changeStatus/',$curr_username,'/process" method="POST">
+              <select name="status">
+                <option selected="selected">
+                  ',$userstatus,'
+                </option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            <input type="submit" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
+                      margin-top: 2px;
+                      display: block;
+                      margin-bottom: 20px;
+                      margin-left:0px;"/>
+profile/changeStatus/(.*)/process?$
+			</form>';
+
+		 }} ?>
+
+
+		</div></li>
+
            <li><p class="checkout-price" style="font-weight:bold; font-style:oblique"> <?= $p->get('email') ?></p></li>
           <li><p class="checkout-price" style="font-weight:bold"> <?= $p->get('age') ?></p></li>
           <li><p class="checkout-price"></p><?= $p->get('bio') ?></li>
@@ -43,16 +77,14 @@
 
 <div style="margin-bottom: 10px; height: 475px; overflow-x: hidden; width:50%;" id="activity_feed" >
 	 <h2>Activity Feed</h2>
-	  <h3>Your articles posted</h3>
-    <!-- This displays  the user's articles and the profile feed for the user-->
 
+	  <h3><?= $p->get('first_name') ?>'s articles posted</h3>
 	 <?php while($row = mysql_fetch_assoc($result)): ?>
 	   <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> " > <p class = "blog-author"> <?= $row['title'] ?></p> </a>
 	 <?php endwhile; ?>
 
-   <!-- This displays  the user's comments and the profile feed for the user-->
 
-	  <h3>Your comments</h3>
+	  <h3><?= $p->get('first_name') ?>'s comments</h3>
 	   <?php
 	     $q = "SELECT * FROM postcomments WHERE user_name='$username' ";
 	     $result = mysql_query($q);
@@ -63,7 +95,7 @@
 
      <!-- This displays  the user's products and the profile feed for the user-->
 
-	   <h3>Products you added</h3>
+	   <h3>Products <?= $p->get('first_name') ?> added</h3>
 	   <?php
 	     $uid = $p->get('id');
 	     $q = "SELECT * FROM product WHERE creator_id=$uid ";

@@ -22,7 +22,7 @@
     <?php for ($i = 5; $i <= 99; $i++) : ?>
         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
     <?php endfor; ?>
-</select>
+  </select>
 </label>
 
 <label>Profile Picture: <input type="text" name="profpic" value="<?= $u->get('profpic') ?>"></label>
