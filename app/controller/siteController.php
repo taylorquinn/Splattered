@@ -66,6 +66,11 @@ class SiteController {
 				$this->editProfileProcess($username);
 				break;
 
+			case 'changeStatusProcess':
+				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
+				$this->changeStatusProcess($urlparts[count($urlparts)-2]);
+				break;
+
 			case 'processLogin':
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
@@ -171,6 +176,20 @@ class SiteController {
 		session_start();
 		$_SESSION['msg'] = "You edited the profile called ".$title;
 		header('Location: '.BASE_URL.'/profile/'.$_SESSION['user']);
+
+	}
+
+	public function changeStatusProcess($username) {
+		$status = $_POST['status'];
+
+		//load the product, record updates, and save to the database
+		$u = User::loadByUsername($username);
+		$u->set('status', $status);
+		$u->save();
+
+		session_start();
+		$_SESSION['msg'] = "You edited the profile called ".$title;
+		header('Location: '.BASE_URL.'/profile/'.$username);
 
 	}
 

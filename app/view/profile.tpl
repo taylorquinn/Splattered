@@ -34,20 +34,29 @@
            	 $b = User::loadByUsername($_SESSION['user']);
 
            	 $userstatus = $p->get('status');
-           	
-			 if($b->get('status') == 2) { 
+             $curr_username = $p->get('username');
+
+			 if(($b->get('status') == 2) && ($curr_username != ($_SESSION['user']))) {
 
             echo'
-            <form id="change_status">
-            <input type="text" name="name" id="name" value=',$userstatus,' style="display: inline-block;"/>
-            <input type="button" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
+            <form id="change-status" action="',BASE_URL,'/profile/changeStatus/',$curr_username,'/process" method="POST">
+              <select name="status">
+                <option selected="selected">
+                  ',$userstatus,'
+                </option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            <input type="submit" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
                       margin-top: 2px;
                       display: block;
                       margin-bottom: 20px;
                       margin-left:0px;"/>
+profile/changeStatus/(.*)/process?$
 			</form>';
 
-		 }} ?> 
+		 }} ?>
 
 
 		</div></li>
