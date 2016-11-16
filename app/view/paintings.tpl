@@ -63,7 +63,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
 
-		<?php
+		<?php if(isset($_SESSION['user']) && ($_SESSION['user'] != '') ) {
       $p = User::loadByUsername($_SESSION['user']);
 
       if($p->get('status') == 2) {
@@ -89,7 +89,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 
 
-		<?php } ?>
+		<?php }} ?>
 
 	</div>
 

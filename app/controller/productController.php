@@ -62,6 +62,7 @@ class ProductController {
 
 
 			case 'addProductProcess':
+			 	echo "CONNECTED";
 				$this->addProductProcess();
 				break;
 
@@ -394,7 +395,7 @@ class ProductController {
 	}
 
 	public function addProductProcess() {
-		//echo "CONNECTED";
+		echo "CONNECTED";
 		$id = 1;
 		$title = $_POST['title'];
 		$description = $_POST['description'];
