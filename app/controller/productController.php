@@ -102,6 +102,10 @@ class ProductController {
 
 	}
 
+
+	// this method essentially gives the $pid for the user to  follow and then we
+	//carry this and essentially uses the users pid and person we are following
+	//and use the pid and then query the follow table.
 	public function followUser($pid) {
 			$pageName = 'Home';
 			$myUsername =  User::loadByUsername($_SESSION['user']);
@@ -109,7 +113,7 @@ class ProductController {
 				or die ('Error: Could not connect to MySql database');
 			mysql_select_db(DB_DATABASE);
 
-
+			//
 			$userVariable = $pid;
 			$myUser = $myUsername->get('id');
 			$sql = "INSERT INTO `follow` (`follower_id`, `followed_id`)
@@ -165,6 +169,7 @@ class ProductController {
 
 	}
 
+	//returns the page for the paintings.
   public function paintings() {
 		$pageName = 'Paintings';
 
@@ -197,6 +202,9 @@ class ProductController {
   }
 
 
+
+	//when we add the product we add the fields, check them for validation and the products to
+	//the database
   public function addProduct() {
   		$id = 1;
 		$pageName = 'Add Product';
@@ -215,7 +223,7 @@ class ProductController {
 			mysql_real_escape_string($id)
 		);
 
-
+		//The result query essentially helps us to 
 
 		$result = mysql_query($q);
 
