@@ -30,7 +30,7 @@
 
 				 	 <input type="text" name="sizes" class="add-text" placeholder="INSERT SIZES">
 				 	 <br>
-				 	 <input type="file" name="img_url" class="add-text" accept="image">
+				 	 <input type="text" name="img_url" class="add-text" placeholder="INSERT IMAGE URL">
 						<br>
 				 		<textarea  class="add-textbox"  placeholder = "Enter Description" name="description"></textarea>
 				 	<br>
