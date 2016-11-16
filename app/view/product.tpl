@@ -77,7 +77,7 @@
 						</form> </li>
 
 
-					 <?php
+					 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { ?>
              $p = User::loadByUsername($_SESSION['user']);
 
              if($p->get('status') == 2) {
