@@ -3,26 +3,26 @@
 			<img class="add-img" src="<?= BASE_URL ?>/public/img/imagePlaceholder.png"> </a>
 			<div id="tinyImages">
 				<ul id="tinyImages">
-					
+
 					<li><img class="tile" src="<?= BASE_URL ?>/public/img/imagePlaceholder.png" alt="Upload image" /></li>
 					<li><img class="tile" src="<?= BASE_URL ?>/public/img/imagePlaceholder.png" alt="Upload image" /></li>
-					
-					
+
+
 				</ul>
 
-			
+
 			</div>
 </div>
 
-			
+
 		<div id="add-information">
 			<h2 class="add-title">Add Item To Sell:</h2>
-			
+
 			    <ul class="product-checkout">
-		    		
-	  		    	<form id="add-product" action="<?= BASE_URL ?>/addProductProcess" method="POST">
-	  		   
-				
+
+	  		    	<form id="add-product" action="<?= BASE_URL ?>/add/process" method="POST">
+
+
 				  <input type="text" name="title" class="add-text" placeholder="INSERT TITLE OF ITEM">
 				 	 <br>
 				  <input type="text" name="price" class="add-text" placeholder="INSERT PRICE $$$">
@@ -50,19 +50,19 @@
  			<div class="popup-content">
 	  		    <span class="close" onclick="errorClose()">×</span>
 	  		    <h2>Uh-oh! You missed a couple key details! Go back and fill those out and try again.</h2>
-	  		    
-	  		   	
+
+
 			</div>
 
 		</div>
-	
+
 		<div id="successPopup" class="popup">
 
  			<div class="popup-content">
 	  		    <span class="close" onclick="location.href='addItem.html'"">×</span>
 	  		    <h2>Success!!</h2>
-	  		    
-	  		   	
+
+
 			</div>
 
 		</div>
