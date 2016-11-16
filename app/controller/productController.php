@@ -62,6 +62,7 @@ class ProductController {
 
 
 			case 'addProductProcess':
+			 	echo "CONNECTED";
 				$this->addProductProcess();
 				break;
 
@@ -107,13 +108,10 @@ class ProductController {
 	//carry this and essentially uses the users pid and person we are following
 	//and use the pid and then query the follow table.
 	public function followUser($pid) {
-			$pageName = 'Home';
 			$myUsername =  User::loadByUsername($_SESSION['user']);
-			$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-				or die ('Error: Could not connect to MySql database');
-			mysql_select_db(DB_DATABASE);
 
-			//
+			$followUser = User::loadById($pid);
+
 			$userVariable = $pid;
 			$myUser = $myUsername->get('id');
 			$sql = "INSERT INTO `follow` (`follower_id`, `followed_id`)
@@ -121,51 +119,35 @@ class ProductController {
 			$result = mysql_query($sql);
 
       if(isset($_SESSION['user'])) {
-        $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-    			or die ('Error: Could not connect to MySql database');
-    		mysql_select_db(DB_DATABASE);
 
         $username = $_SESSION['user'];
         $q = "SELECT * FROM post WHERE username='$username' ";
         $result = mysql_query($q);
       }
 
-			include_once SYSTEM_PATH.'/view/header.tpl';
-			include_once SYSTEM_PATH.'/view/home.tpl';
-			include_once SYSTEM_PATH.'/view/footer.tpl';
-
+			$_SESSION['msg'] = "You followed the user ".$followUser->get('username');
+			header('Location: '.BASE_URL.'/profile/'.$followUser->get('username'));
 	}
 
 	public function unfollowUser($pid) {
-		$pageName = 'Home';
 		$myUsername = User::loadByUsername($_SESSION['user']);
-		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-			or die ('Error: Could not connect to MySql database');
-		mysql_select_db(DB_DATABASE);
-
+		$unfollowUser = User::loadById($pid);
 
 		$userVariable = $pid;
-		echo($pid);
 		$myUser = $myUsername->get('id');
-		echo($myUser);
 		$q = sprintf("DELETE FROM follow WHERE follower_id = %d AND followed_id = %d  ",
 			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
-			echo($q);
 	 mysql_query($q);
 
    if(isset($_SESSION['user'])) {
-     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-       or die ('Error: Could not connect to MySql database');
-     mysql_select_db(DB_DATABASE);
 
      $username = $_SESSION['user'];
      $q = "SELECT * FROM post WHERE username='$username' ";
      $result = mysql_query($q);
    }
 
-	 include_once SYSTEM_PATH.'/view/header.tpl';
-	 include_once SYSTEM_PATH.'/view/home.tpl';
-	 include_once SYSTEM_PATH.'/view/footer.tpl';
+	 $_SESSION['msg'] = "You unfollowed the user ".$unfollowUser->get('username');
+	 header('Location: '.BASE_URL.'/profile/'.$unfollowUser->get('username'));
 
 	}
 
@@ -182,7 +164,6 @@ class ProductController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/paintings.tpl';
-
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
@@ -223,7 +204,7 @@ class ProductController {
 			mysql_real_escape_string($id)
 		);
 
-		//The result query essentially helps us to 
+		//The result query essentially helps us to
 
 		$result = mysql_query($q);
 
@@ -423,7 +404,7 @@ class ProductController {
 	}
 
 	public function addProductProcess() {
-		//echo "CONNECTED";
+		echo "CONNECTED";
 		$id = 1;
 		$title = $_POST['title'];
 		$description = $_POST['description'];
