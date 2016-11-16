@@ -4,13 +4,12 @@
 
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
 
-      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" >
+      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%">
 
         <ul class="product-checkout">
 
           <li><p class="name"> <?= $p->get('first_name') ?> <?= $p->get('last_name') ?></p></li>
-          <li><p class="name"> <?= $p->get('email') ?></p></li>
-          <li><p class="name"> <?= $p->get('age') ?></p></li>
+
           <li style="margin-left: 40%; display: inline-block;">
           	<div id= "follower_button">
 					 <!-- if the user is on their profile, display an edit button-->
@@ -29,6 +28,32 @@
 			          <?php endif; ?>
 			       <?php endif; ?>
           </div></li>
+
+          <li> <div id="user_status">
+          	<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
+           	 $b = User::loadByUsername($_SESSION['user']);
+
+           	 $userstatus = $p->get('status');
+           	
+			 if($b->get('status') == 2) { 
+
+            echo'
+            <form id="change_status" >
+            <input type="text" name="name" id="name" value=',$userstatus,' style="display: inline-block;"/>
+            <input type="button" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
+                      margin-top: 2px;
+                      display: block;
+                      margin-bottom: 20px;
+                      margin-left:0px;"/>
+			</form>';
+
+		 }} ?> 
+
+
+		</div></li>
+
+           <li><p class="checkout-price" style="font-weight:bold; font-style:oblique"> <?= $p->get('email') ?></p></li>
+          <li><p class="checkout-price" style="font-weight:bold"> <?= $p->get('age') ?></p></li>
           <li><p class="checkout-price"></p><?= $p->get('bio') ?></li>
         </ul>
 
@@ -74,7 +99,7 @@
     		width: 40%;
   	  		margin-bottom: 10px;"
     		class = "followed">
-	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Followed by:</h2>
+	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Following:</h2>
 
 		     <?php while($row = mysql_fetch_assoc($followed)): ?>
 		       <?php
@@ -95,13 +120,19 @@
 			       <li style= ""><a style="float: left; display: inline; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser?></a>
 			       <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"></li>
 
+               <li style="    display: inline;
+     						 float: right;">
                <?php if($_SESSION['user'] == $p->get('username')): ?>
 
+
 			       <li style="    display: inline;
-   						 float: right;">
+   						 float: left;">
                      <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"><button class = "buttonFollow buttonFollow2 bt">Unfollow</button></a>
-             </div></li>
+
+             </li>
              <?php endif; ?>
+           </div>
+
 
 		       </ul>
 	    <?php endwhile; ?>
