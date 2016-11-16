@@ -54,7 +54,6 @@
                       display: block;
                       margin-bottom: 20px;
                       margin-left:0px;"/>
-profile/changeStatus/(.*)/process?$
 			</form>';
 
 		 }} ?>
