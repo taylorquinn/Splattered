@@ -11,7 +11,7 @@
 			<!-- <li><input type="text2" placeholder="Enter your email address" /> <button>Sign Up!</button></li> -->
 
 
-
+      <!-- If the user is logged in -->
 			<?php if( !isset($_SESSION['user']) || $_SESSION['user'] == '') {
 
 
@@ -20,6 +20,7 @@
 
 			<li><a href='<?= BASE_URL ?>/'>Home</a> | <a href='<?= BASE_URL ?>/working'>About Us</a> | <a href='<?= BASE_URL ?>/working'>Shipping & Returns</a> | <a href='<?= BASE_URL ?>/working'>Terms & Conditions</a> | <a onclick="signupAppear()"><u name = "sign_up">Sign up</u></a> | <a onclick="loginAppear()"><u name = "log_in">Log in </u></a> </li>
 
+      <!-- If the user is an admin -->
 			<?php }
 
 			else {
@@ -33,6 +34,7 @@
 
 			<li><a href='<?= BASE_URL ?>/'>Home</a> | <a href='<?= BASE_URL ?>/working'>About Us</a> | <a href='<?= BASE_URL ?>/working'>Shipping & Returns</a> | <a href='<?= BASE_URL ?>/working'>Terms & Conditions</a> | <a onclick="location.href='<?= BASE_URL ?>/add'"><u name = "add_item">Add Item</u></a> | <a onclick="logoutAppear()"><u name = "log_in">Log out</u></a> </li>
 
+      <!-- Default footer -->
 			<?php }
 
 			else {?>
@@ -45,7 +47,7 @@
 		</ul>
 		</div>
 
-
+    <!-- Popup for user to login -->
 		<div id="myLoginPopup" class="popup">
 
  			<div class="popup-content">
@@ -68,7 +70,7 @@
 		</div>
 
 
-
+    <!-- Popup for user to sign up -->
     <div id="mySignupPopup" class="popup">
  			<div class="popup-content">
   		    <span class="close" onclick="signupClose()">×</span>
@@ -108,6 +110,7 @@
 
 		</div>
 
+    <!-- Popup to logout -->
 		<div id="myLogoutPopup" class="popup">
 
  			<div class="popup-content">
