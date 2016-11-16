@@ -28,6 +28,30 @@
 			          <?php endif; ?>
 			       <?php endif; ?>
           </div></li>
+
+          <li> <div id="user_status">
+          	<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {
+           	 $b = User::loadByUsername($_SESSION['user']);
+
+           	 $userstatus = $p->get('status');
+           	
+			 if($b->get('status') == 2) { 
+
+            echo'
+            <form id="change_status">
+            <input type="text" name="name" id="name" value=',$userstatus,' style="display: inline-block;"/>
+            <input type="button" class="edit-button" value="Change status" id="button" style="margin-left: 20%;
+                      margin-top: 2px;
+                      display: block;
+                      margin-bottom: 20px;
+                      margin-left:0px;"/>
+			</form>';
+
+		 }} ?> 
+
+
+		</div></li>
+
            <li><p class="checkout-price" style="font-weight:bold; font-style:oblique"> <?= $p->get('email') ?></p></li>
           <li><p class="checkout-price" style="font-weight:bold"> <?= $p->get('age') ?></p></li>
           <li><p class="checkout-price"></p><?= $p->get('bio') ?></li>
