@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2016 at 02:13 AM
+-- Generation Time: Nov 16, 2016 at 02:49 AM
 -- Server version: 5.5.52
 -- PHP Version: 5.6.26
 
@@ -33,14 +33,15 @@ CREATE TABLE IF NOT EXISTS `follow` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `id_2` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `follow`
 --
 
 INSERT INTO `follow` (`id`, `followed_id`, `follower_id`) VALUES
-(9, 2, 1);
+(9, 2, 1),
+(13, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `full_post` text NOT NULL,
   `username` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `post`
@@ -80,14 +81,17 @@ CREATE TABLE IF NOT EXISTS `postcomments` (
   `user_name` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `postcomments`
 --
 
 INSERT INTO `postcomments` (`post_id`, `comment`, `user_name`, `id`) VALUES
-(3, 'Hi this is so cool! Love this article! Keep up the amazing writing :)', 'annet', 17);
+(3, 'Hi this is so cool! Love this article! Keep up the amazing writing :)', 'annet', 17),
+(1, 'Not only are you such a great writer, but your adventures sound amazing! Keep doing you!', 'ctatum', 18),
+(1, 'This is absolutely incredible. What a great experience and you look so beautiful!', 'charlotter', 19),
+(2, 'Wow!! What a beautiful mountain.', 'charlotter', 20);
 
 -- --------------------------------------------------------
 
@@ -106,18 +110,18 @@ CREATE TABLE IF NOT EXISTS `product` (
   `creator_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `added_by` (`creator_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `title`, `description`, `sizes`, `price`, `img_url`, `date_created`, `creator_id`) VALUES
-(16, 'Mountains', 'This is a painting of a view from Hurricane Ridge, in Olympic National Park.', 'Small', '20.00', 'mountains.JPG', '2016-11-01 13:51:00', 1),
+(16, 'Mountains', 'This is a painting of a view from Hurricane Ridge, in Olympic National Park.', 'Small', '15.00', 'mountains.JPG', '2016-11-16 02:29:28', 1),
 (22, 'Ballerina', 'Classic ballerina dancing picture', 'Medium, Small', '20.00', 'dancer.jpg', '2016-11-16 02:07:04', 1),
 (29, 'Girl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '13.00', 'girl.jpg', '2016-11-16 02:01:11', 1),
-(30, 'Globe', 'And thus, the adventure begins', 'Medium', '23.00', 'globe.jpg', '2016-10-17 18:39:26', 1),
-(32, 'Mountains', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '12.00', 'triangles.jpg', '2016-11-16 02:01:04', 1),
+(30, 'Globe', 'And thus, the adventure begins', 'Medium', '22.00', 'globe.jpg', '2016-11-16 02:28:11', 1),
+(32, 'Mountains', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '15.00', 'triangles.jpg', '2016-11-16 02:29:38', 1),
 (33, 'Adventure', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', '', '30.00', 'adventure.jpg', '2016-10-17 18:44:40', 1);
 
 -- --------------------------------------------------------
@@ -151,8 +155,7 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `username`, `pw`, 
 (2, 'Emma', 'Watson', 'emmaw@me.com', 'emmaw', 'second_writer', 1, 0, 'emmaw.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mattis orci sed augue varius, ac feugiat risus elementum. Curabitur blandit odio eu urna placerat, ac dictum mauris pharetra. Donec dignissim augue id libero sodales, et congue nisi dictum. Phasellus non elit nibh. Vestibulum eget lacus condimentum, bibendum turpis at, aliquam turpis. Ut sagittis tempus lorem, nec volutpat tellus rhoncus porttitor. Suspendisse et erat convallis, sodales lacus viverra, imperdiet dui. Proin ultrices ullamcorper sapien, sed vestibulum sapien sollicitudin at. Aenean eget lobortis tellus, non interdum eros. Donec at nunc nunc. Quisque sapien lectus, varius sed mi sed, consectetur feugiat ante. Donec in iaculis felis. Integer et orci et nisi consectetur lobortis. Sed nec pretium neque, vel consectetur neque.Nulla tristique finibus sagittis. Quisque ornare, odio vel consequat tincidunt, erat nisl convallis nisi, eget consectetur massa ante vel lectus. Donec accumsan mi eu enim fringilla, quis scelerisque dolor luctus. Vestibulum laoreet semper rutrum. Nunc sodales nulla at laoreet condimentum. Mauris venenatis sed magna eget faucibus. Curabitur vestibulum magna eu eros hendrerit, id scelerisque tellus luctus. Aliquam euismod purus venenatis, ullamcorper justo ut, tempus velit.', 28),
 (3, 'Anne', 'Taylor', 'annetaylor@me.com', 'annet', 'first_community', 0, 0, 'headshot.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mattis orci sed augue varius, ac feugiat risus elementum. Curabitur blandit odio eu urna placerat, ac dictum mauris pharetra. Donec dignissim augue id libero sodales, et congue nisi dictum. Phasellus non elit nibh. Vestibulum eget lacus condimentum, bibendum turpis at, aliquam turpis. Ut sagittis tempus lorem, nec volutpat tellus rhoncus porttitor. Suspendisse et erat convallis, sodales lacus viverra, imperdiet dui. Proin ultrices ullamcorper sapien, sed vestibulum sapien sollicitudin at. Aenean eget lobortis tellus, non interdum eros. Donec at nunc nunc. Quisque sapien lectus, varius sed mi sed, consectetur feugiat ante. Donec in iaculis felis. Integer et orci et nisi consectetur lobortis. Sed nec pretium neque, vel consectetur neque.\n\nNulla tristique finibus sagittis. Quisque ornare, odio vel consequat tincidunt, erat nisl convallis nisi, eget consectetur massa ante vel lectus. Donec accumsan mi eu enim fringilla, quis scelerisque dolor luctus. Vestibulum laoreet semper rutrum. Nunc sodales nulla at laoreet condimentum. Mauris venenatis sed magna eget faucibus. Curabitur vestibulum magna eu eros hendrerit, id scelerisque tellus luctus. Aliquam euismod purus venenatis, ullamcorper justo ut, tempus velit.', 35),
 (4, 'Channing', 'Tatum', 'ctatum@me.com', 'ctatum', 'first_writer', 1, 0, 'tatum.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mattis orci sed augue varius, ac feugiat risus elementum. Curabitur blandit odio eu urna placerat, ac dictum mauris pharetra. Donec dignissim augue id libero sodales, et congue nisi dictum. Phasellus non elit nibh. Vestibulum eget lacus condimentum, bibendum turpis at, aliquam turpis. Ut sagittis tempus lorem, nec volutpat tellus rhoncus porttitor. Suspendisse et erat convallis, sodales lacus viverra, imperdiet dui. Proin ultrices ullamcorper sapien, sed vestibulum sapien sollicitudin at. Aenean eget lobortis tellus, non interdum eros. Donec at nunc nunc. Quisque sapien lectus, varius sed mi sed, consectetur feugiat ante. Donec in iaculis felis. Integer et orci et nisi consectetur lobortis. Sed nec pretium neque, vel consectetur neque.\n\nNulla tristique finibus sagittis. Quisque ornare, odio vel consequat tincidunt, erat nisl convallis nisi, eget consectetur massa ante vel lectus. Donec accumsan mi eu enim fringilla, quis scelerisque dolor luctus. Vestibulum laoreet semper rutrum. Nunc sodales nulla at laoreet condimentum. Mauris venenatis sed magna eget faucibus. Curabitur vestibulum magna eu eros hendrerit, id scelerisque tellus luctus. Aliquam euismod purus venenatis, ullamcorper justo ut, tempus velit.', 19),
-(5, 'Charlotte', 'Russe', 'crusse@me.com', 'charlotter', 'second_admin', 2, 0, 'char.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mattis orci sed augue varius, ac feugiat risus elementum. Curabitur blandit odio eu urna placerat, ac dictum mauris pharetra. Donec dignissim augue id libero sodales, et congue nisi dictum. Phasellus non elit nibh. Vestibulum eget lacus condimentum, bibendum turpis at, aliquam turpis. Ut sagittis tempus lorem, nec volutpat tellus rhoncus porttitor. Suspendisse et erat convallis, sodales lacus viverra, imperdiet dui. Proin ultrices ullamcorper sapien, sed vestibulum sapien sollicitudin at. Aenean eget lobortis tellus, non interdum eros. Donec at nunc nunc. Quisque sapien lectus, varius sed mi sed, consectetur feugiat ante. Donec in iaculis felis. Integer et orci et nisi consectetur lobortis. Sed nec pretium neque, vel consectetur neque.\r\n\r\nNulla tristique finibus sagittis. Quisque ornare, odio vel consequat tincidunt, erat nisl convallis nisi, eget consectetur massa ante vel lectus. Donec accumsan mi eu enim fringilla, quis scelerisque dolor luctus. Vestibulum laoreet semper rutrum. Nunc sodales nulla at laoreet condimentum. Mauris venenatis sed magna eget faucibus. Curabitur vestibulum magna eu eros hendrerit, id scelerisque tellus luctus. Aliquam euismod purus venenatis, ullamcorper justo ut, tempus velit.', 31),
-(6, 'FirstTest', 'test', 'test@gmail.com', 'test1', 'password', 0, NULL, 'default.jpg', 'HYPE', 14);
+(5, 'Charlotte', 'Russe', 'crusse@me.com', 'charlotter', 'second_admin', 2, 0, 'char.JPG', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mattis orci sed augue varius, ac feugiat risus elementum. Curabitur blandit odio eu urna placerat, ac dictum mauris pharetra. Donec dignissim augue id libero sodales, et congue nisi dictum. Phasellus non elit nibh. Vestibulum eget lacus condimentum, bibendum turpis at, aliquam turpis. Ut sagittis tempus lorem, nec volutpat tellus rhoncus porttitor. Suspendisse et erat convallis, sodales lacus viverra, imperdiet dui. Proin ultrices ullamcorper sapien, sed vestibulum sapien sollicitudin at. Aenean eget lobortis tellus, non interdum eros. Donec at nunc nunc. Quisque sapien lectus, varius sed mi sed, consectetur feugiat ante. Donec in iaculis felis. Integer et orci et nisi consectetur lobortis. Sed nec pretium neque, vel consectetur neque.\r\n\r\nNulla tristique finibus sagittis. Quisque ornare, odio vel consequat tincidunt, erat nisl convallis nisi, eget consectetur massa ante vel lectus. Donec accumsan mi eu enim fringilla, quis scelerisque dolor luctus. Vestibulum laoreet semper rutrum. Nunc sodales nulla at laoreet condimentum. Mauris venenatis sed magna eget faucibus. Curabitur vestibulum magna eu eros hendrerit, id scelerisque tellus luctus. Aliquam euismod purus venenatis, ullamcorper justo ut, tempus velit.', 31);
 
 --
 -- Constraints for dumped tables
