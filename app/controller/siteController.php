@@ -102,7 +102,9 @@ class SiteController {
 
 	}
 
-
+  //THis page we view the profile page, we query  the profile of the user
+	//following and we include a view where we can see the posts of everybody we follow and
+	//the posts of them
 	public function viewProfile($username) {
 		$pageName = 'Profile Page';
 
@@ -121,6 +123,7 @@ class SiteController {
 			 $following = true;
 		 }
 
+		 //query for the follower
 		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
 		 $result = mysql_query($q);
 		 $follow = array();
@@ -146,15 +149,18 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+	//edits the profile of the user by changing any of the fields
 	public function editProfile($username) {
 		$pagename = 'Edit Profile Page';
 		$u =  User::loadByUsername($username);
-
+		//redirects back to home
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/editProfile.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+	//edits the profile and changes the mentioned fields in the database and resets all of the
+	//changed fields themselves
 	public function editProfileProcess($username) {
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
@@ -163,7 +169,7 @@ class SiteController {
 		$age = $_POST['age'];
 		$profpic = $_POST['profpic'];
 		$pw = $_POST['pw'];
-
+		//checks for data validation
     if(!isset($first_name) || trim($first_name) == '' || !isset($last_name) || trim($last_name) == '' || !isset($email) || trim($email) == ''
 		|| !isset($bio) || trim($bio) == '' || !isset($age) || trim($age) == '' || !isset($profpic) || trim($profpic) == '' || !isset($pw) || trim($pw) == '') {
 
@@ -190,7 +196,8 @@ class SiteController {
 		header('Location: '.BASE_URL.'/profile/'.$_SESSION['user']);
 
 	}
-
+	//edits the profile and changes the mentioned fields in the database and resets all of the
+	//changed fields themselves
 	public function changeStatusProcess($username) {
 		$status = $_POST['status'];
 
@@ -205,6 +212,8 @@ class SiteController {
 
 	}
 
+
+	//redirects to home page, if logged in includes the side bar containing info.
   public function home() {
 		$pageName = 'Home';
 
@@ -227,7 +236,7 @@ class SiteController {
 
 
 
-
+	//this page provides the contact info for the user
 	public function contact() {
 		$pageName = 'Contact';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -236,7 +245,7 @@ class SiteController {
 
   }
 
-
+	//where the user logs in to the
 	public function login() {
 		$pageName = 'Log In';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -244,7 +253,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 
   }
-
+	//signup for the user. This is used to display a pop-up
 	public function signup() {
 		$pageName = 'Sign Up';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -253,6 +262,7 @@ class SiteController {
 
   }
 
+	//working page
 
 	public function working() {
 		$pageName = 'Working';
@@ -261,6 +271,7 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+	//logs the user out
 	public function logout() {
 		 session_start();
         unset($_SESSION['user']);
@@ -271,6 +282,8 @@ class SiteController {
 
   	}
 
+
+		// process's the login, then the path of the page
   public function processLogin($u, $p) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
       or die ('Error: Could not connect to MySql database');

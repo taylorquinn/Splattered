@@ -278,7 +278,7 @@ class ProductController {
 		}
 
 
-
+		//view product based on the product id
 	public function viewProduct($id) {
 		$pageName = 'Product';
 
@@ -308,6 +308,9 @@ class ProductController {
   }
 
 
+
+	//edit pproduct page that changes the fields of the products
+	//checks for data validation and also edits the product
 	public function editProduct($id) {
 		if(session_id() == '' || !isSet($_SESSION)){
 			session_start();
@@ -331,6 +334,7 @@ class ProductController {
 		);
 		$result = mysql_query($q);
 
+		//array for the product info
 		$product = array();
 		while($row = mysql_fetch_assoc($result)) {
 			$product['title'] = $row['title'];
@@ -345,6 +349,10 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+
+
+	//edit product - queries the data and uses the id to post the
+	//new product to the database
 	public function editProductProcess($id) {
 		$title = $_POST['title'];
 		$description = $_POST['description'];
@@ -370,7 +378,8 @@ class ProductController {
 		);
 		$newProduct2->save();*/
 
-
+		//edit product - queries the data and uses the id to post the
+		//new product to the database
 		if($title!=''&&$description!=''&&$sizes!=''&&$price!=''&&$img_url!=''){
 		$p = Product::loadById($id);
 		$p->set('title', $title);
@@ -407,6 +416,8 @@ class ProductController {
 		//$this->paintings();
 	}
 
+	//edit product - queries the data and uses the id to post the
+	//new product to the database
 	public function addProductProcess() {
 		echo "CONNECTED";
 		$id = 1;
@@ -421,7 +432,7 @@ class ProductController {
 	/*	$newProduct = new Product();
 		$newProduct->set('title','Sweatshirt');*/
 
-
+		//checks to see if the products are null
 		if($title!=''&&$description!=''&&$sizes!=''&&$price!=''&&$img_url!=''){
 		$newProduct2 = new Product(
 			array(
@@ -473,6 +484,7 @@ class ProductController {
 		$this->paintings();
 	}
 
+	//adds the blogs to the database
 	public function blogs() {
 		$pageName = 'Blogs';
 
@@ -483,6 +495,7 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
+	//views the blogs of the database
 	public function viewBlog($id) {
 		$pageName = 'Single Blog';
 
@@ -495,7 +508,8 @@ class ProductController {
 	}
 
 
-
+	//adds the blog to the database and then we will
+	// move the data and basically change the data
 	public function addBlogProcess()
 	{
 		$title = $_POST['title'];
