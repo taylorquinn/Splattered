@@ -4,7 +4,7 @@
 
       <!--<img class="blog_image" src="<?= BASE_URL ?>/public/img/ ?> " alt="image relating to the blog" />-->
 
-      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%">
+      <img class="large-img" alt = "the users profile picture" src="<?= BASE_URL ?>/public/img/<?= $p->get('profpic')?>" style="width:35%; padding: 20px 40px;" >
 
         <ul class="product-checkout">
 
@@ -27,6 +27,8 @@
 			                <?php endif; ?>
 			          <?php endif; ?>
 			       <?php endif; ?>
+             <!-- display email, age and bio of the person-->
+
           </div></li>
 
           <li> <div id="user_status">
@@ -74,10 +76,12 @@
 
 <div style="margin-bottom: 10px; height: 475px; overflow-x: hidden; width:50%;" id="activity_feed" >
 	 <h2>Activity Feed</h2>
+
 	  <h3><?= $p->get('first_name') ?>'s articles posted</h3>
 	 <?php while($row = mysql_fetch_assoc($result)): ?>
 	   <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> " > <p class = "blog-author"> <?= $row['title'] ?></p> </a>
 	 <?php endwhile; ?>
+
 
 	  <h3><?= $p->get('first_name') ?>'s comments</h3>
 	   <?php
@@ -88,6 +92,7 @@
 	     <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <p class = "blog-author"> <?= $row['comment'] ?></p> </a>
 	   <?php endwhile; ?>
 
+     <!-- This displays  the user's products and the profile feed for the user-->
 
 	   <h3>Products <?= $p->get('first_name') ?> added</h3>
 	   <?php
@@ -100,6 +105,8 @@
 	   <?php endwhile; ?>
 </div>
 
+<!-- The logic to display the people following the user and their followers-->
+
 <div id="follows">
 	   <div style= "height: 200px;
     		overflow-y: scroll;
@@ -109,6 +116,8 @@
   	  		margin-bottom: 10px;"
     		class = "followed">
 	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Following:</h2>
+
+       <!-- Display the info for each of the people that follow you -->
 
 		     <?php while($row = mysql_fetch_assoc($followed)): ?>
 		       <?php
@@ -131,6 +140,9 @@
 
                <li style="    display: inline;
      						 float: right;">
+
+                 <!-- Display the button to unfollow if you are the user and this is your profile-->
+
                <?php if($_SESSION['user'] == $p->get('username')): ?>
 
 
@@ -146,6 +158,9 @@
 		       </ul>
 	    <?php endwhile; ?>
 	   </div>
+
+     <!-- Display the logic for the people that follow you-->
+
 	   <div class = "follower" style= "height: 200px;
     		overflow-y: scroll;
    	 		margin-left: 40px;
@@ -153,6 +168,8 @@
     		width: 40%;
   	  		margin-bottom: 10px;">
 	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Followers</h2>
+       <!-- Display the logic for the people that follow you, go throught each of the peoples data-->
+
 	     <?php while($row1 = mysql_fetch_assoc($follower)): ?>
 	       <?php
 	       $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
@@ -167,6 +184,7 @@
 	       </div>
 	   <?php endwhile; ?>
 
+     <!-- Display the blogs hyperlinked to their pages-->
 
 	<?php while($row = mysql_fetch_assoc($result)): ?>
 

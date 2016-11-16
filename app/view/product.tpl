@@ -78,9 +78,10 @@
 
 
 					 <?php
-             $p = Profile::loadByUsername($_SESSION['user']);
+             $p = User::loadByUsername($_SESSION['user']);
 
              if($p->get('status') == 2) {
+             
            ?>
 	  		    		<li>
 						<form action="<?= BASE_URL ?>/paintings/edit<?= $p->get('id') ?>" method="POST">
@@ -94,6 +95,8 @@
 						<button class="edit-button2" onclick = "deleteAppear(<?= $p->get('id')?>)">Delete</button>
 						</li>
 					<?php } else {?>
+
+					
 
 
 					<?php } ?>
