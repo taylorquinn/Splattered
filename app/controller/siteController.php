@@ -157,6 +157,16 @@ class SiteController {
 		$profpic = $_POST['profpic'];
 		$pw = $_POST['pw'];
 
+    if(!isset($first_name) || trim($first_name) == '' || !isset($last_name) || trim($last_name) == '' || !isset($email) || trim($email) == ''
+		|| !isset($bio) || trim($bio) == '' || !isset($age) || trim($age) == '' || !isset($profpic) || trim($profpic) == '' || !isset($pw) || trim($pw) == '') {
+
+      include_once SYSTEM_PATH.'/view/header.tpl';
+  		include_once SYSTEM_PATH.'/view/error.tpl';
+  		include_once SYSTEM_PATH.'/view/footer.tpl';
+      exit();
+
+		}
+
 		//load the product, record updates, and save to the database
 		$u = User::loadByUsername($username);
 		$u->set('first_name', $first_name);
@@ -240,36 +250,19 @@ class SiteController {
 
   	}
 
-	// public function processLogin($u, $p) {
-	// 	$adminUsername = 'admin';
-	// 	$adminPassword = 'password';
-	// 	if(($u == $adminUsername) && ($p == $adminPassword)) {
-	// 		session_start();
-	// 		$_SESSION['user'] = $u;
-	// 		echo 'Hooray! Access is granted.';
-  //
-	// 		header('Location: '.BASE_URL);
-	// 			echo 'Hooray! Access is granted.';
-  //
-	// 		exit();
-	// 	// } else {
-	// 	//
-	// 	} else {
-  //
-	// 		echo 'Access denied.';
-	// 		// send them back
-	// 		header('Location: '.BASE_URL);
-	// 			echo 'Hooray! Access is granted.';
-  //
-	// 		exit();
-	// 	}
-  //
-	// }
-
   public function processLogin($u, $p) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
       or die ('Error: Could not connect to MySql database');
     mysql_select_db(DB_DATABASE);
+
+    if(!isset($u) || trim($u) == '' || !isset($p) || trim($p) == '') {
+
+      include_once SYSTEM_PATH.'/view/header.tpl';
+  		include_once SYSTEM_PATH.'/view/error.tpl';
+  		include_once SYSTEM_PATH.'/view/footer.tpl';
+      exit();
+
+		}
 
     $q = "SELECT * FROM user WHERE username='$u' && pw='$p' ";
     $result = mysql_query($q);
@@ -283,9 +276,13 @@ class SiteController {
 			exit();
     } else {
       // send them back
-			header('Location: '.BASE_URL);
-      $this->login();
-			exit();
+			// header('Location: '.BASE_URL);
+      // $this->login();
+			// exit();
+      include_once SYSTEM_PATH.'/view/header.tpl';
+  		include_once SYSTEM_PATH.'/view/error.tpl';
+  		include_once SYSTEM_PATH.'/view/footer.tpl';
+      exit();
     }
 
 	}
@@ -297,13 +294,13 @@ class SiteController {
 
 		if(!isset($email) || trim($email) == '' || !isset($firstName) || trim($firstName) == '' || !isset($lastName) || trim($lastName) == ''
 		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '') {
-			$this->home();
-			exit();
 
+      include_once SYSTEM_PATH.'/view/header.tpl';
+  		include_once SYSTEM_PATH.'/view/error.tpl';
+  		include_once SYSTEM_PATH.'/view/footer.tpl';
+      exit();
 
 		}
-
-
 
     $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw) VALUES ('$firstName','$lastName','$email', '$username', '$password')");
 		mysql_query($q);

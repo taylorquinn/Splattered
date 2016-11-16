@@ -100,6 +100,18 @@
 							<?php endfor; ?>
 					</select>
   				  <br><br>
+            <!-- <?php
+            if(!isset($email) || trim($email) == '' || !isset($firstName) || trim($firstName) == '' || !isset($lastName) || trim($lastName) == ''
+        		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '') {
+            ?>
+              <input type="submit" value="Submit" disabled="disabled" >
+            <?php
+            } else {
+            ?>
+              <input type="submit" value="Submit" >
+            <?php
+            }
+            ?> -->
   				  <input type="submit" value="Submit" >
 				</form>
 
