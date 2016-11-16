@@ -2,6 +2,8 @@
 
 <h2>Edit profile</h2>
 
+<!-- allow the user to edit their name, password, email, bio and age -->
+
 <form id="edit-product" action="<?= BASE_URL ?>/profile/edit/<?= $_SESSION['user'] ?>/process" method="POST">
 
 <label>First Name: <input type="text" name="first_name" value="<?= $u->get('first_name') ?>"></label>
@@ -13,6 +15,8 @@
 <label>Email: <input type="text" name="email" value="<?= $u->get('email') ?>"></label>
 
 <label>Bio: <input type="text" name="bio" value="<?= $u->get('bio') ?>"></label>
+
+<!-- create  drop down for the age -->
 
 <label>Age:
   <select name="age">
