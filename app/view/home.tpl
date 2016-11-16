@@ -1,166 +1,177 @@
-
+<!--If logged in, show an activity feed on the right, with all of the interactions-->
 
       <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
         <div id="activity_feed">
           <h2>Activity Feed</h2>
 
-          <h3>Your posts</h3>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
-          <?php endwhile; ?>
-          <?php
-          $username = $_SESSION['user'];
-          $uid = -1; // if the uid stays negative -1, there is no one logged in
-
-          $q = "SELECT * FROM user WHERE username='$username' ";
-          $result = mysql_query($q);
-
-          $numberOfRows = mysql_num_rows($result);
-
-          if($numberOfRows == 1) {
-            $p = User::loadByUsername($username);
-            $uid = $p->get('id');
-
-            $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-            $result = mysql_query($q);
-          } else {
-            echo "NO USER IS LOGGED IN";
-          }
-          ?>
-
-          <h3>People you follow</h3>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $puser = User::loadById($row['followed_id']);
-            ?>
-            <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
-          <?php endwhile; ?>
-
-          <h3>Followers</h3>
-          <?php
-            $q = "SELECT * FROM follow WHERE followed_id=$uid ";
-            $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $puser = User::loadById($row['follower_id']);
-            ?>
-            <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
-          <?php endwhile; ?>
-
-          <h3>Your comments</h3>
-          <?php
-            $q = "SELECT * FROM postcomments WHERE user_name='$username' ";
-            $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <p class = "blog-author"> <?= $row['comment'] ?></p> </a>
-          <?php endwhile; ?>
-
-          <h3>Products you added</h3>
-          <?php
-            $q = "SELECT * FROM product WHERE creator_id=$uid ";
-            $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
-          <?php endwhile; ?>
-
-          <h3>Posts from people you follow</h3>
-          <?php
-          $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-          $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $prof = User::loadById($row['followed_id']);
-            $followedUser = $prof->get('username');
-
-            $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
-            $resulttwo = mysql_query($qtwo);
-            ?>
-            <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-              <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
-            <?php endwhile; ?>
-          <?php endwhile; ?>
-
-          <h3>Comments on your posts</h3>
-          <?php
-          $q = "SELECT * FROM post WHERE username='$username' ";
-          $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $postid = $row['id'];
-
-            $qtwo = "SELECT * FROM postcomments WHERE post_id=$postid ";
-            $resulttwo = mysql_query($qtwo);
-            ?>
-            <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-              <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
-            <?php endwhile; ?>
-          <?php endwhile; ?>
-
-          <h3>People followed by people you follow</h3>
-          <?php
-          $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-          $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $followedId = $row['followed_id'];
-            $qtwo = "SELECT * FROM follow WHERE follower_id=$followedId ";
-            $resulttwo = mysql_query($qtwo);
-            ?>
-            <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+          <!--posts you've posted-->
+              <h3>Your posts</h3>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+              <?php endwhile; ?>
               <?php
-                $prof = User::loadById($row2['followed_id']);
-                $followedUser = $prof->get('username');
+              $username = $_SESSION['user'];
+              $uid = -1; // if the uid stays negative -1, there is no one logged in
+
+              $q = "SELECT * FROM user WHERE username='$username' ";
+              $result = mysql_query($q);
+
+              $numberOfRows = mysql_num_rows($result);
+
+              if($numberOfRows == 1) {
+                $p = User::loadByUsername($username);
+                $uid = $p->get('id');
+
+                $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+                $result = mysql_query($q);
+              } else {
+                echo "NO USER IS LOGGED IN";
+              }
               ?>
-              <a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "> <p class = "blog-author"> <?= $followedUser ?></p> </a>
-            <?php endwhile; ?>
-          <?php endwhile; ?>
 
-          <h3>Comments made by people you follow</h3>
-          <?php
-          $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-          $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
+          <!--people you follow-->
+              <h3>People you follow</h3>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $puser = User::loadById($row['followed_id']);
+                ?>
+                <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
+              <?php endwhile; ?>
+
+          <!-- people following you-->
+            <h3>Followers</h3>
             <?php
-            $prof = User::loadById($row['followed_id']);
-            $followedUser = $prof->get('username');
-
-            $qtwo = "SELECT * FROM postcomments WHERE user_name='$followedUser' ";
-            $resulttwo = mysql_query($qtwo);
+              $q = "SELECT * FROM follow WHERE followed_id=$uid ";
+              $result = mysql_query($q);
             ?>
-            <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-              <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
+            <?php while($row = mysql_fetch_assoc($result)): ?>
+              <?php
+              $puser = User::loadById($row['follower_id']);
+              ?>
+              <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
             <?php endwhile; ?>
-          <?php endwhile; ?>
 
-          <h3>Products added by people you follow</h3>
-          <?php
-          $q = "SELECT * FROM follow WHERE follower_id=$uid ";
-          $result = mysql_query($q);
-          ?>
-          <?php while($row = mysql_fetch_assoc($result)): ?>
-            <?php
-            $followedId = $row['followed_id'];
-            $qtwo = "SELECT * FROM product WHERE creator_id=$followedId ";
-            $resulttwo = mysql_query($qtwo);
-            ?>
-            <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-              <a href="<?= BASE_URL ?>/paintings/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
-            <?php endwhile; ?>
-          <?php endwhile; ?>
+          <!--your comments-->
+              <h3>Your comments</h3>
+              <?php
+                $q = "SELECT * FROM postcomments WHERE user_name='$username' ";
+                $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <p class = "blog-author"> <?= $row['comment'] ?></p> </a>
+              <?php endwhile; ?>
 
-        </div>
+          <!--products you've added-->
+              <h3>Products you added</h3>
+              <?php
+                $q = "SELECT * FROM product WHERE creator_id=$uid ";
+                $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+              <?php endwhile; ?>
 
-      <?php } ?>
+          <!--posts from people you follow-->
+              <h3>Posts from people you follow</h3>
+              <?php
+              $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+              $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $prof = User::loadById($row['followed_id']);
+                $followedUser = $prof->get('username');
+
+                $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
+                $resulttwo = mysql_query($qtwo);
+                ?>
+                <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
+                <?php endwhile; ?>
+              <?php endwhile; ?>
+
+          <!--comments on your posts-->
+              <h3>Comments on your posts</h3>
+              <?php
+              $q = "SELECT * FROM post WHERE username='$username' ";
+              $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $postid = $row['id'];
+
+                $qtwo = "SELECT * FROM postcomments WHERE post_id=$postid ";
+                $resulttwo = mysql_query($qtwo);
+                ?>
+                <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
+                <?php endwhile; ?>
+              <?php endwhile; ?>
+
+          <!--People followed by people you follow-->
+              <h3>People followed by people you follow</h3>
+              <?php
+              $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+              $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $followedId = $row['followed_id'];
+                $qtwo = "SELECT * FROM follow WHERE follower_id=$followedId ";
+                $resulttwo = mysql_query($qtwo);
+                ?>
+                <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                  <?php
+                    $prof = User::loadById($row2['followed_id']);
+                    $followedUser = $prof->get('username');
+                  ?>
+                  <a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "> <p class = "blog-author"> <?= $followedUser ?></p> </a>
+                <?php endwhile; ?>
+              <?php endwhile; ?>
 
 
+          <!--comments by people you follow-->
+              <h3>Comments made by people you follow</h3>
+              <?php
+              $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+              $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $prof = User::loadById($row['followed_id']);
+                $followedUser = $prof->get('username');
 
+                $qtwo = "SELECT * FROM postcomments WHERE user_name='$followedUser' ";
+                $resulttwo = mysql_query($qtwo);
+                ?>
+                <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
+                <?php endwhile; ?>
+              <?php endwhile; ?>
+
+          <!--products added by people you follow-->
+              <h3>Products added by people you follow</h3>
+              <?php
+              $q = "SELECT * FROM follow WHERE follower_id=$uid ";
+              $result = mysql_query($q);
+              ?>
+              <?php while($row = mysql_fetch_assoc($result)): ?>
+                <?php
+                $followedId = $row['followed_id'];
+                $qtwo = "SELECT * FROM product WHERE creator_id=$followedId ";
+                $resulttwo = mysql_query($qtwo);
+                ?>
+                <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
+                  <a href="<?= BASE_URL ?>/paintings/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
+                <?php endwhile; ?>
+              <?php endwhile; ?>
+
+            </div>
+
+          <?php } ?>
+
+
+<!--if user is set, make the width of the header image smaller to account for the activity feed-->
   <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
   <div id="header_image" style="width: 66%">
 
@@ -170,6 +181,9 @@
   </div>
 
   <?php }
+
+
+<!--if user is not set, make the width of the header image 100% to account for no activity feed-->
 
   else {?>
 
@@ -184,6 +198,7 @@
   <?php } ?>
 
 
+<!--tile images across the screen-->
   <div id= "tileImages">
     <ul id="tiles">
 
@@ -197,12 +212,16 @@
     </ul>
   </div>
 
+  <!--second header-->
+
       <div id="header_image2">
         <img class="head-image2" src="<?= BASE_URL ?>/public/img/cover_photo.jpg" alt="Header image" />
          <input type="button" class="shopfavorites" onclick="location.href='paintings'" value="Shop Our Favorites" />
          <!--edited from the image found here:  https://www.google.com/imgres?imgurl=http%3A%2F%2F67.media.tumblr.com%2Fac1a5aee391576c9bb410bd93d57550e%2Ftumblr_ndx3yvFet41qc91i1o1_1280.jpg&imgrefurl=http%3A%2F%2Fartistandstudio.tumblr.com%2Fpage%2F3&docid=Eun42Gye6mFtzM&tbnid=CmwQOamtM-yBFM%3A&w=1000&h=667&hl=en&bih=475&biw=1262&ved=0ahUKEwj__fKDia7PAhXEFj4KHZODDX0QMwgfKAEwAQ&iact=mrc&uact=8 -->
       </div>
 
+
+<!--popular item tiles-->
   <div id="Favorites">
 
   <h2>Most Popular Items</h2>
