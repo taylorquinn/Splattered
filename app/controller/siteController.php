@@ -84,7 +84,8 @@ class SiteController {
 				$password = $_POST['pw'];
         $confirm = $_POST['confirmpw'];
 				$age = $_POST['age'];
-				$this->processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age);
+				$profpic = "default.jpg";
+        $this->processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age, $profpic);
 				break;
 
 			// redirect to home page if all else fails
@@ -288,7 +289,7 @@ class SiteController {
 
 	}
 
-  public function processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age) {
+  public function processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age, $profpic) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
@@ -304,7 +305,7 @@ class SiteController {
 
 		}
 
-    $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw, age) VALUES ('$firstName','$lastName','$email', '$username', '$password', '$age')");
+    $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw, age, profpic) VALUES ('$firstName', '$lastName', '$email', '$username', '$password', '$age', '$profpic')");
 		mysql_query($q);
 
     session_start();
