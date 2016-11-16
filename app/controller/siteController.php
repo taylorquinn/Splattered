@@ -82,8 +82,9 @@ class SiteController {
         $email = $_POST['email'];
 				$username = $_POST['un'];
 				$password = $_POST['pw'];
+        $confirm = $_POST['confirmpw'];
 				$age = $_POST['age'];
-				$this->processSignup($firstName, $lastName, $email, $username, $password, $age);
+				$this->processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age);
 				break;
 
 			// redirect to home page if all else fails
@@ -287,13 +288,14 @@ class SiteController {
 
 	}
 
-  public function processSignup($firstName, $lastName, $email, $username, $password, $age) {
+  public function processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
 
 		if(!isset($email) || trim($email) == '' || !isset($firstName) || trim($firstName) == '' || !isset($lastName) || trim($lastName) == ''
-		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '') {
+		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '' || !isset($confirm) || trim($confirm) == ''
+    || $confirm!=$password) {
 
       include_once SYSTEM_PATH.'/view/header.tpl';
   		include_once SYSTEM_PATH.'/view/error.tpl';
@@ -302,7 +304,7 @@ class SiteController {
 
 		}
 
-    $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw) VALUES ('$firstName','$lastName','$email', '$username', '$password')");
+    $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw, age) VALUES ('$firstName','$lastName','$email', '$username', '$password', '$age')");
 		mysql_query($q);
 
     session_start();
