@@ -23,10 +23,6 @@ class SiteController {
 				$this->home();
 				break;
 
-			case 'add':
-				$this->add();
-				break;
-
 			case 'contact':
 				$this->contact();
 				break;
@@ -39,36 +35,8 @@ class SiteController {
 				$this->working();
 				break;
 
-			case 'delete':
-				$productID = $_GET['pid'];
-				$this->deleteProduct($productID);
-				break;
-
 			case 'processLogout':
 				$this->logout();
-				break;
-
-
-			case 'viewProfile':
-				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
-				//echo var_dump($urlparts);
-				//echo $urlparts[count($urlparts)-1];
-				$this->viewProfile($urlparts[count($urlparts)-1]);
-	 			break;
-
-			case 'editProfile':
-				$username = $_SESSION['user'];
-				$this->editProfile($username);
-		 		break;
-
-			case 'editProfileProcess':
-				$username = $_SESSION['user'];
-				$this->editProfileProcess($username);
-				break;
-
-			case 'changeStatusProcess':
-				$urlparts = explode("/",$_SERVER["REDIRECT_URL"]);
-				$this->changeStatusProcess($urlparts[count($urlparts)-2]);
 				break;
 
 			case 'processLogin':
@@ -99,116 +67,6 @@ class SiteController {
         exit();
 
 		}
-
-	}
-
-  //THis page we view the profile page, we query  the profile of the user
-	//following and we include a view where we can see the posts of everybody we follow and
-	//the posts of them
-	public function viewProfile($username) {
-		$pageName = 'Profile Page';
-
-		$myUsername =  User::loadByUsername($_SESSION['user']);
-		$p = User::loadByUsername($username);
-
-
-		$userVariable = $p->get('id');
-		$myUser = $myUsername->get('id');
-		$q = "SELECT * FROM follow where follower_id = '$myUser' AND followed_id = '$userVariable'; ";
-		$result = mysql_query($q);
-		if (mysql_num_rows($result) == 0) {
-				$following = false;
-		 }
-		 else {
-			 $following = true;
-		 }
-
-		 //query for the follower
-		 $q = "SELECT * FROM follow WHERE follower_id='$username'";
-		 $result = mysql_query($q);
-		 $follow = array();
- 		while($row = mysql_fetch_assoc($result)) {
- 			$follow['followed_id'] = $row['followed_id'];
- 		}
-
-    $p = User::loadByUsername($username);
-
-    $q = "SELECT * FROM post WHERE username='$username' ";
-    $result = mysql_query($q);
-
-		$l = "SELECT * FROM follow WHERE follower_id = '$userVariable'";
-
-		$followed = mysql_query($l);
-
-		$b = "SELECT * FROM follow WHERE followed_id = '$userVariable'";
-
-		$follower = mysql_query($b);
-
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/profile.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-	//edits the profile of the user by changing any of the fields
-	public function editProfile($username) {
-		$pagename = 'Edit Profile Page';
-		$u =  User::loadByUsername($username);
-		//redirects back to home
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/editProfile.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-	//edits the profile and changes the mentioned fields in the database and resets all of the
-	//changed fields themselves
-	public function editProfileProcess($username) {
-		$first_name = $_POST['first_name'];
-		$last_name = $_POST['last_name'];
-		$email = $_POST['email'];
-		$bio = $_POST['bio'];
-		$age = $_POST['age'];
-		$profpic = $_POST['profpic'];
-		$pw = $_POST['pw'];
-		//checks for data validation
-    if(!isset($first_name) || trim($first_name) == '' || !isset($last_name) || trim($last_name) == '' || !isset($email) || trim($email) == ''
-		|| !isset($bio) || trim($bio) == '' || !isset($age) || trim($age) == '' || !isset($profpic) || trim($profpic) == '' || !isset($pw) || trim($pw) == '') {
-
-      include_once SYSTEM_PATH.'/view/header.tpl';
-  		include_once SYSTEM_PATH.'/view/error.tpl';
-  		include_once SYSTEM_PATH.'/view/footer.tpl';
-      exit();
-
-		}
-
-		//load the product, record updates, and save to the database
-		$u = User::loadByUsername($username);
-		$u->set('first_name', $first_name);
-		$u->set('last_name', $last_name);
-		$u->set('email', $email);
-		$u->set('bio', $bio);
-		$u->set('age', $age);
-		$u->set('profpic', $profpic);
-		$u->set('pw', $pw);
-		$u->save();
-
-		session_start();
-		$_SESSION['msg'] = "You edited the profile called ".$title;
-		header('Location: '.BASE_URL.'/profile/'.$_SESSION['user']);
-
-	}
-	//edits the profile and changes the mentioned fields in the database and resets all of the
-	//changed fields themselves
-	public function changeStatusProcess($username) {
-		$status = $_POST['status'];
-
-		//load the product, record updates, and save to the database
-		$u = User::loadByUsername($username);
-		$u->set('status', $status);
-		$u->save();
-
-		session_start();
-		$_SESSION['msg'] = "You edited the profile called ".$title;
-		header('Location: '.BASE_URL.'/profile/'.$username);
 
 	}
 
@@ -323,8 +181,6 @@ class SiteController {
 
 	}
 
-
-
   public function processSignup($firstName, $lastName, $email, $username, $password, $confirm, $age, $profpic) {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
 			or die ('Error: Could not connect to MySql database');
@@ -342,8 +198,6 @@ class SiteController {
       exit();
 
 		}
-
-
 
 		//starts a session
     $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw, age, profpic) VALUES ('$firstName', '$lastName', '$email', '$username', '$password', '$age', '$profpic')");

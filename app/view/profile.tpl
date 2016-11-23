@@ -16,6 +16,7 @@
 						<?php if($_SESSION['user'] == $p->get('username')): ?>
 						<a class = "editButton" href ="<?= BASE_URL ?>/profile/edit/<?= $_SESSION['user'] ?>"><button class="buttonFollow buttonFollow2">Edit</button></a>
 						<?php endif; ?>
+
 			        <?php if(isset($_SESSION['user'])): ?>
 			          <?php if($_SESSION['user'] != $p->get('username')): ?>
 
@@ -58,6 +59,8 @@
 			</form>';
 
 		 }} ?>
+     this is a test
+
 
 
 		</div></li>
@@ -174,4 +177,9 @@
 
 	  <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
 	<?php endwhile; ?>
+
 </div>
+<!-- if the user is an admin, they may delete the user's profile page-->
+ <?php if($b->get('status') == 2 || $_SESSION['user'] == $p->get('username')): ?>
+ <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/delete/<?= $_SESSION['user'] ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
+ <?php endif; ?>
