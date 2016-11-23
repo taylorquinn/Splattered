@@ -164,4 +164,49 @@ public function changeStatusProcess($username) {
   header('Location: '.BASE_URL.'/profile/'.$username);
 
   }
+
+
+/* the admin will be able to delete any users profile
+   nothing will happen to their current session*/
+public function deleteProfileProcessAdmin($username){
+
+	// delete user from the database
+	$q = sprintf("DELETE FROM user WHERE username = $username ",
+		mysql_real_escape_string($username)
+	);
+	mysql_query($q);
+
+	session_start();
+	$_SESSION['msg'] = "You edited the profile called ".$title;
+	header('Location: '.BASE_URL.'');
+}
+
+/*the user may delete their own profile (including the admin).
+  their session will termiante and their username and other data
+	will be removed from the database */
+public function deleteProfileProcessUser($username){
+	$p = User::loadByUsername($username);
+
+	// If it's desired to kill the session, also delete the session cookie.
+	// Note: This will destroy the session, and not just the session data!
+	if (ini_get("session.use_cookies")) {
+	    $params = session_get_cookie_params();
+	    setcookie(session_name(), '', time() - 42000,
+	        $params["path"], $params["domain"],
+	        $params["secure"], $params["httponly"]
+	    );
+	}
+	// Finally, destroy the session.
+	session_destroy();
+
+	// delete user from the database
+	$q = sprintf("DELETE FROM user WHERE username = $username ",
+		mysql_real_escape_string($username)
+	);
+	mysql_query($q);
+
+	session_start();
+	$_SESSION['msg'] = "You edited the profile called ".$title;
+	header('Location: '.BASE_URL.'');
+	}
 }

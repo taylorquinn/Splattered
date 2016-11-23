@@ -14,8 +14,8 @@ RewriteRule ^footer/logout/?$ app/controller/siteController.php?action=processLo
 RewriteRule ^footer/signup/?$ app/controller/siteController.php?action=processSignup [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 
-RewriteRule ^profile/process/admin/delete/(.*)?$ app/controller/profileController.php?action=deleteProfileProcess [QSA,L]
-RewriteRule ^profile/process/user/delete/(.*)?$ app/controller/profileController.php?action=deleteProfileProcess [QSA,L]
+RewriteRule ^profile/process/admin/delete/(.*)?$ app/controller/profileController.php?action=deleteProfileProcessAdmin [QSA,L]
+RewriteRule ^profile/process/user/delete/(.*)?$ app/controller/profileController.php?action=deleteProfileProcessUser [QSA,L]
 RewriteRule ^profile/changeStatus/(.*)/process?$ app/controller/profileController.php?action=changeStatusProcess [QSA,L]
 RewriteRule ^profile/edit/(.*)/process/?$ app/controller/profileController.php?action=editProfileProcess [QSA,L]
 RewriteRule ^profile/edit/(.*)/?$ app/controller/profileController.php?action=editProfile [QSA,L]
