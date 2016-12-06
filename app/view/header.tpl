@@ -98,4 +98,8 @@ function isSelected($pn, $link) {
 	<!--HEADER: edited from the image found here : https://www.google.com/search?sa=G&hl=en&q=artist&tbm=isch&tbs=simg:CAQSlQEJSsxSEGfzGFkaiQELEKjU2AQaAggJDAsQsIynCBpiCmAIAxIo2R7PHqgenRGxHtoemxirGOIX5he6MKg5rTqzOa464i64K8Ustyv2IxowRaiO3cGgZwBmpQTEHTrNUqIFrkX1EZn8o34eFEPhc9X9Kji-uZOU47uqfZdoB_1DDIAQMCxCOrv4IGgoKCAgBEgQToChmDA&ved=0ahUKEwiohYfXia7PAhXDPz4KHUQ0DH8Qwg4IGygA -->
 	<!--ALL FOR SALE IMAGES ARE MY OWN PICTURES/ ARTWORK-->
 
+	<!--people profpics-->
+	<!--JohnnyDepp- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjp5LCH_6vQAhXCzFQKHfqnC7wQjRwIBw&url=%2Furl%3Fsa%3Di%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dimages%26cd%3D%26cad%3Drja%26uact%3D8%26ved%3D0ahUKEwjp5LCH_6vQAhXCzFQKHfqnC7wQjRwIBw%26url%3Dhttp%253A%252F%252Fwww.mirror.co.uk%252F3am%252Fcelebrity-news%252Fjohnny-depp-rolling-stone-interview-1969098%26bvm%3Dbv.138493631%2Cd.ZGg%26psig%3DAFQjCNGq0Ss7eChjKWGS3ibxCO-mRnR_vw%26ust%3D1479341586024173&bvm=bv.138493631,d.ZGg&psig=AFQjCNGq0Ss7eChjKWGS3ibxCO-mRnR_vw&ust=1479341586024173-->
+	
+
 </div>

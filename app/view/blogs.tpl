@@ -1,9 +1,36 @@
 <div id="content3">
 
 <!-- the header image -->
-  <div id="header_image2">
-  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />'; ?>
+
+<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
+    <div id="header_image2">
+  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />
+ <!-- <a class = "editButton" href ="',BASE_URL,'/paintings"><button class="button3" src="',BASE_URL,'/public/img/plus.jpg"></button></a>-->
+  <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="plus"     
+    style="width: 50px;
+    padding: 10px;
+    float: right;" /> 
+  
+  <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"     
+    style="width: 50px;
+    padding: 10px;
+    float: right;" />'; ?></a>
+
   </div>
+
+  <?php }
+
+
+  else {?>
+
+      <div id="header_image2">
+        <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />'; ?>
+       
+        </div>
+
+  <?php } ?>
+
+  
 
 
 

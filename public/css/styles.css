@@ -85,6 +85,15 @@ img.head-image{
 
 }
 
+img.head-image3{
+  /*float: center;*/
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+
+}
+
 img.head-image2{
   /*float: center;*/
 
