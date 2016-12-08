@@ -1,5 +1,8 @@
 <div id="content3">
 
+<svg width="960" height="880"></svg>
+
+
 <!-- the header image -->
 
 <svg width="700" height="300"></svg>
