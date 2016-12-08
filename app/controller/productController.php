@@ -186,6 +186,67 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+	public function getVizData() {
+		// get all blog posts
+		$blogs = Product::getAllProducts();
+
+		$blogs = array(); // array to hold json shirts
+
+		foreach($blogs as $blog) {
+			// get comments for this post
+			$reviews = Comment::fetchByPostId($blog->get('id'));
+
+			$jsonReviews = array(); // array to hold json reviews
+
+			if(count($reviews) > 0) {
+				foreach($reviews as $review) {
+					$reviewText = $review->get('comment');
+					// truncate if needed to fit into visualization
+					if(strlen($reviewText) > 20)
+						$reviewText = substr($reviewText, 0, 20).'...';
+
+					// the json review object
+					$jsonReview = array(
+						'name' => $reviewText,
+						'type' => 'review',
+						'parent' => $shirt->get('title')
+					);
+					$jsonReviews[] = $jsonReview;
+				}
+
+				// the json shirt object w/ children
+				$jsonShirt = array(
+					'name' => $shirt->get('title'),
+					'type' => 'shirt',
+					'id' => $shirt->get('id'),
+					'parent' => 'shirts',
+					'children' => $jsonReviews
+				);
+
+			} else {
+				// the json shirt object w/ no children
+				$jsonShirt = array(
+					'name' => $shirt->get('title'),
+					'type' => 'shirt',
+					'id' => $shirt->get('id'),
+					'parent' => 'shirts'
+				);
+			}
+
+			$jsonShirts[] = $jsonShirt;
+		}
+
+		// finally, the json root object
+		$json = array(
+			'name' => 'shirts',
+			'parent' => 'null',
+			'children' => $jsonShirts
+		);
+
+		header('Content-Type: application/json');
+		echo json_encode($json);
+	}
+
 
 
 	//when we add the product we add the fields, check them for validation and the products to
