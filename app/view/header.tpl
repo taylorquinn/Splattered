@@ -17,6 +17,7 @@ function isSelected($pn, $link) {
 
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="<?= BASE_URL ?>/public/js/d3.v4.min.js"></script>
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
 
 </head>
@@ -45,7 +46,7 @@ function isSelected($pn, $link) {
 					<li>	<!--  Start of View Cart Button Code  -->
 						<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" style="width: 20px; display: inline; padding-top: 20px;" method="post">
 						<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
-							<input type="hidden" name="cpp_header_image" value="https://yourwebsite.com/logo.jpg"> 
+							<input type="hidden" name="cpp_header_image" value="https://yourwebsite.com/logo.jpg">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="display" value="1">
 							<!-- Replace "business" value with your PayPal Email Address or Account ID -->
@@ -54,7 +55,7 @@ function isSelected($pn, $link) {
 							<input type="hidden" name="shopping_url" value="http://www.splattered.me/Splattered">
 							<input type="image"  src="<?= BASE_URL ?>/public/img/cart.jpg" border="0" style="width: 20px;" name="submit" alt="View Cart">
 							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form> 
+						</form>
 						<!--  End of View Cart Button Code  -->
 					</li>
 					<!--<li><a href="<?= BASE_URL ?>/checkout"> <img class = "cart_icon" src="<?= BASE_URL ?>/public/img/cart.jpg"></a></li>-->
@@ -100,6 +101,6 @@ function isSelected($pn, $link) {
 
 	<!--people profpics-->
 	<!--JohnnyDepp- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjp5LCH_6vQAhXCzFQKHfqnC7wQjRwIBw&url=%2Furl%3Fsa%3Di%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dimages%26cd%3D%26cad%3Drja%26uact%3D8%26ved%3D0ahUKEwjp5LCH_6vQAhXCzFQKHfqnC7wQjRwIBw%26url%3Dhttp%253A%252F%252Fwww.mirror.co.uk%252F3am%252Fcelebrity-news%252Fjohnny-depp-rolling-stone-interview-1969098%26bvm%3Dbv.138493631%2Cd.ZGg%26psig%3DAFQjCNGq0Ss7eChjKWGS3ibxCO-mRnR_vw%26ust%3D1479341586024173&bvm=bv.138493631,d.ZGg&psig=AFQjCNGq0Ss7eChjKWGS3ibxCO-mRnR_vw&ust=1479341586024173-->
-	
+
 
 </div>
