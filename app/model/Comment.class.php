@@ -66,13 +66,14 @@ class Comment extends DbObject {
   				$post_id
   			     );
   		//echo $query;
-  		$result = $this->lookup($query);
+  		// $result = $this->lookup($query);
+      $result = mysql_query($query);
 
   		if(!mysql_num_rows($result)) {
   			return null;
   		} else {
   			$row = mysql_fetch_assoc($result);
-  			$obj = new __CLASS__($row);
+  			$obj = new Comment($row);
   			return $obj;
   		}
     }

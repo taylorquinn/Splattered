@@ -14,7 +14,6 @@ class ProductController {
 
 	// route us to the appropriate class method for this action
 	public function route($action) {
-    echo "$action";
 		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') {
 					session_start();
 				}
@@ -94,7 +93,6 @@ class ProductController {
 					break;
 
       case 'getVizData':
-        echo "HERE";
 				$this->getVizData();
 				break;
 
@@ -169,6 +167,8 @@ class ProductController {
 		$q = "SELECT * FROM product ORDER BY date_created; ";
 		$result = mysql_query($q);
 
+    // $this->getVizData();
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/paintings.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -190,12 +190,10 @@ class ProductController {
   }
 
 	public function getVizData() {
-    // echo "HERE";
-
 		// get all blog posts
 		$blogs = Blog::getAllProducts();
 
-		$blogs = array(); // array to hold json blogs
+		$jsonBlogs = array(); // array to hold json blogs
 
 		foreach($blogs as $blog) {
 			// get comments for this post

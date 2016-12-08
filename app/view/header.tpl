@@ -16,6 +16,8 @@ function isSelected($pn, $link) {
 
 
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/bubble.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/shirts.css">
   <script type="text/javascript">
 		var baseURL = '<?= BASE_URL ?>';
 	</script>
