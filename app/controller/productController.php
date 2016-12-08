@@ -14,6 +14,7 @@ class ProductController {
 
 	// route us to the appropriate class method for this action
 	public function route($action) {
+    echo "$action";
 		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') {
 					session_start();
 				}
@@ -55,11 +56,8 @@ class ProductController {
 				break;
 
 			case 'addProduct':
-
 					$this->addProduct();
-
 					break;
-
 
 			case 'addProductProcess':
 			 	echo "CONNECTED";
@@ -84,16 +82,21 @@ class ProductController {
 			  	  $productID = $_GET['pid'];
 	 				$this->viewBlog($productID); //should send in the username as the id
 	 				break;
+
 			case 'follow':
 					$id = $_GET['pid'];
 					$this->followUser($id);
 					break;
+
 			case 'unfollow':
 					$id = $_GET['pid'];
 					$this->unfollowUser($id);
 					break;
 
-
+      case 'getVizData':
+        echo "HERE";
+				$this->getVizData();
+				break;
 
       // redirect to home page if all else fails
      		default:
@@ -187,60 +190,62 @@ class ProductController {
   }
 
 	public function getVizData() {
-		// get all blog posts
-		$blogs = Product::getAllProducts();
+    // echo "HERE";
 
-		$blogs = array(); // array to hold json shirts
+		// get all blog posts
+		$blogs = Blog::getAllProducts();
+
+		$blogs = array(); // array to hold json blogs
 
 		foreach($blogs as $blog) {
 			// get comments for this post
-			$reviews = Comment::fetchByPostId($blog->get('id'));
+			$comments = Comment::fetchByPostId($blog->get('id'));
 
-			$jsonReviews = array(); // array to hold json reviews
+			$jsonComments = array(); // array to hold json comments
 
-			if(count($reviews) > 0) {
-				foreach($reviews as $review) {
-					$reviewText = $review->get('comment');
+			if(count($comments) > 0) {
+				foreach($comments as $comment) {
+					$commentText = $comment->get('comment');
 					// truncate if needed to fit into visualization
-					if(strlen($reviewText) > 20)
-						$reviewText = substr($reviewText, 0, 20).'...';
+					if(strlen($commentText) > 20)
+						$commentText = substr($commentText, 0, 20).'...';
 
-					// the json review object
-					$jsonReview = array(
-						'name' => $reviewText,
-						'type' => 'review',
-						'parent' => $shirt->get('title')
+					// the json comment object
+					$jsonComment = array(
+						'name' => $commentText,
+						'type' => 'comment',
+						'parent' => $blog->get('title')
 					);
-					$jsonReviews[] = $jsonReview;
+					$jsonComments[] = $jsonComment;
 				}
 
-				// the json shirt object w/ children
-				$jsonShirt = array(
-					'name' => $shirt->get('title'),
-					'type' => 'shirt',
-					'id' => $shirt->get('id'),
-					'parent' => 'shirts',
-					'children' => $jsonReviews
+				// the json blog object w/ children
+				$jsonBlog = array(
+					'name' => $blog->get('title'),
+					'type' => 'blog',
+					'id' => $blog->get('id'),
+					'parent' => 'blogs',
+					'children' => $jsonComments
 				);
 
 			} else {
 				// the json shirt object w/ no children
-				$jsonShirt = array(
-					'name' => $shirt->get('title'),
-					'type' => 'shirt',
-					'id' => $shirt->get('id'),
-					'parent' => 'shirts'
+				$jsonBlog = array(
+					'name' => $blog->get('title'),
+					'type' => 'blog',
+					'id' => $blog->get('id'),
+					'parent' => 'blogs'
 				);
 			}
 
-			$jsonShirts[] = $jsonShirt;
+			$jsonBlogs[] = $jsonBlog;
 		}
 
 		// finally, the json root object
 		$json = array(
-			'name' => 'shirts',
+			'name' => 'blogs',
 			'parent' => 'null',
-			'children' => $jsonShirts
+			'children' => $jsonBlogs
 		);
 
 		header('Content-Type: application/json');

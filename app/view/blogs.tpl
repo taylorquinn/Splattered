@@ -2,10 +2,7 @@
 
 <svg width="960" height="880"></svg>
 
-
 <!-- the header image -->
-
-<svg width="700" height="300"></svg>
 
 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
     <div id="header_image2">

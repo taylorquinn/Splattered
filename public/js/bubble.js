@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
-	// calling this method draws the dendrogram viz using this JSON file
+	// calling this method draws the bubble chart viz using this JSON file
 	drawBubbleChart(baseURL+'/blogs/vizData/');
+
+    console.log("HERE");
 
 	// $('#editShirtTitleForm').submit(function(e){
 	// 	e.preventDefault(); // don't submit the form
@@ -46,11 +48,8 @@ function drawBubbleChart(jsonUrl) {
         .size([width, width])
         .padding(1.5);
 
-    d3.json(jsonUrl, function(d) {
-      d.value = +d.value;
-      if (d.value) return d;
-    }, function(error, classes) {
-      if (error) throw error;
+    d3.json(jsonUrl, function(error, classes) {
+    //   if (error) throw error;
 
       var root = d3.hierarchy({children: classes})
           .sum(function(d) { return d.value; })
