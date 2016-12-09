@@ -29,6 +29,9 @@ RewriteRule ^paintings/view/(\d+)/?$ app/controller/productController.php?action
 RewriteRule ^blogs/?$ app/controller/blogController.php?action=blogs [QSA,L]
 RewriteRule ^blogs/add/process/?$ app/controller/blogController.php?action=addBlogProcess [QSA,L]
 RewriteRule ^blogs/view/(\d+)/?$ app/controller/blogController.php?action=viewBlog&pid=$1 [QSA,L]
+RewriteRule ^blogs/delete/(\d+)/process/?$ app/controller/blogController.php?action=deleteBlogProcess&pid=$1 [QSA,L]
+RewriteRule ^blogs/edit/(\d+)/process/?$ app/controller/blogController.php?action=editBlogProcess&pid=$1 [QSA,L]
+RewriteRule ^blogs/edit/(\d+)/?$ app/controller/blogController.php?action=editBlog&pid=$1 [QSA,L]
 RewriteRule ^follow/(\d+)/?$ app/controller/productController.php?action=follow&pid=$1 [QSA,L]
 RewriteRule ^unfollow/(\d+)/?$ app/controller/productController.php?action=unfollow&pid=$1 [QSA,L]
 
