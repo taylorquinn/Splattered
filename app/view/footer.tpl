@@ -55,11 +55,11 @@
 	  		    <form  action="<?= BASE_URL ?>/footer/login" method="POST">
 	  		    <h2>Log in:</h2>
 				  Username:<br>
-				  <input type="text" name="un" placeholder="username">
+				  <input type="text" name="un" placeholder="username" required>
 
 				  <br>
 				  Password:<br>
-				  <input type="password" name="pw" placeholder="********">
+				  <input type="password" name="pw" placeholder="********" required>
 				  <br><br>
 				  <input type="submit" value="Submit" >
 				</form>
@@ -119,7 +119,7 @@
 	  		    <form  action="<?= BASE_URL ?>/footer/logout" method="POST">
 	  		    <h2>Are you sure you want to log out?</h2>
 
-				  <input class = "close1" type="submit" value="Log me out" >
+				  <input class = "close1" type="submit" value="Log me out">
 
 				</form>
 
