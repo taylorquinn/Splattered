@@ -121,8 +121,7 @@ INSERT INTO `product` (`id`, `title`, `description`, `sizes`, `price`, `img_url`
 (22, 'Ballerina', 'Classic ballerina dancing picture', 'Medium, Small', '20.00', 'dancer.jpg', '2016-11-16 02:07:04', 1),
 (29, 'Girl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '13.00', 'girl.jpg', '2016-11-16 02:01:11', 1),
 (30, 'Globe', 'And thus, the adventure begins', 'Medium', '22.00', 'globe.jpg', '2016-11-16 02:28:11', 1),
-(32, 'Mountains', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '15.00', 'triangles.jpg', '2016-11-16 02:29:38', 1),
-(33, 'Adventure', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', '', '30.00', 'adventure.jpg', '2016-10-17 18:44:40', 1);
+(32, 'Mountains', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis vestibulum lacus, quis pulvinar dolor scelerisque vitae. Fusce eu consequat tortor. Duis a ante sem. Fusce sapien sapien, faucibus id pretium quis, sagittis ut ex. Nulla a tortor eu neque posuere feugiat quis et libero. ', 'Large, Small', '15.00', 'triangles.jpg', '2016-11-16 02:29:38', 1);
 
 -- --------------------------------------------------------
 

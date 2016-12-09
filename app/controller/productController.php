@@ -72,21 +72,6 @@ class ProductController {
 				$this->checkout();
 				break;
 
-			// handles blog section
-			case 'blogs':
-	 			$this->blogs();
-	 			break;
-
-
-			case 'addBlogProcess':
-			    $this->addBlogProcess();
-					break;
-
-			case 'viewBlog':
-			  	  $productID = $_GET['pid'];
-	 				$this->viewBlog($productID); //should send in the username as the id
-	 				break;
-
 			case 'follow':
 					$id = $_GET['pid'];
 					$this->followUser($id);
@@ -414,58 +399,14 @@ class ProductController {
 		$query = sprintf("DELETE FROM product WHERE id = %d", $id, $conn);
 		mysql_query($query);
 
-
-
 		header('LOCATION: '.BASE_URL."/paintings");
-
-		//header('Location: '.BASE_URL);
-
-
-						/*
-		mysql_select_db($database);
-
-		$q = sprintf("SELECT * FROM product WHERE id = %d ",
-			mysql_real_escape_string($id)
-		);
-		$result = mysql_query($q);
-
-		$product = array();
-		while($row = mysql_fetch_assoc($result)) {
-			$product['title'] = $row['title'];
-			$product['description'] = $row['description'];
-			$product['sizes'] = $row['sizes'];
-			$product['price'] = $row['price'];
-			$product['img_url'] = $row['img_url'];
-		}
-
-*/
 		}
 
 
 		//view product based on the product id
 	public function viewProduct($id) {
 		$pageName = 'Product';
-
 		$p = Product::loadById($id);
-
-		// $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		// 	or die ('Error: Could not connect to MySql database');
-		// mysql_select_db(DB_DATABASE);
-		//
-		// $q = sprintf("SELECT * FROM product WHERE id = %d; ",
-		// 	$id
-		// 	);
-		// $result = mysql_query($q);
-
-		//while($row = mysql_fetch_assoc($result)) {
-			// $product['title'] = $p->get('title');
-			// $product['description'] = $p->get('description');
-			// $product['sizes'] = $p->get('sizes');
-			// $product['price'] = $p->get('price');
-			// $product['img_url'] = $p->get('img_url');
-		//}
-
-
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/product.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -524,24 +465,6 @@ class ProductController {
 		$price = $_POST['price'];
 		$img_url = $_POST['img_url'];
 
-
-		// create product
-		/*$newProduct = new Product();
-		$newProduct->set('title','Sweatshirt');*/
-
-
-		/*	$newProduct2 = new Product(
-			array(
-				'title' => $title,
-				'description' => $description,
-				'price' => $price,
-				'img_url' => $img_url,
-				'creator_id'=>1
-
-			)
-		);
-		$newProduct2->save();*/
-
 		//edit product - queries the data and uses the id to post the
 		//new product to the database
 		if($title!=''&&$description!=''&&$sizes!=''&&$price!=''&&$img_url!=''){
@@ -553,25 +476,6 @@ class ProductController {
 		$p->set('img_url', $img_url);
 		$p->save();
 		}
-		//
-		//
-		// // connect to DATABASE FIRST
-		// $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		// 	or die ('Error: Could not connect to MySql database');
-		// mysql_select_db(DB_DATABASE);
-		//
-		// $q = sprintf("UPDATE product
-		// 		SET title = '%s', description = '%s', sizes = '%s', price = %d, img_url = '%s'
-		// 		WHERE id = %d ",
-		// 		$title,
-		// 		$description,
-		// 		$sizes,
-		// 		$price,
-		// 		$img_url,
-		// 		$id
-		// 	);
-		// 	echo $q;
-		// 	mysql_query($q);
 
 		session_start();
 		$_SESSION['msg'] = "You edited the product called ".$title;
@@ -591,11 +495,6 @@ class ProductController {
 		$price = $_POST['price'];
 		$img_url = $_POST['img_url'];
 
-
-	// create product
-	/*	$newProduct = new Product();
-		$newProduct->set('title','Sweatshirt');*/
-
 		//checks to see if the products are null
 		if($title!=''&&$description!=''&&$sizes!=''&&$price!=''&&$img_url!=''){
 		$newProduct2 = new Product(
@@ -610,93 +509,11 @@ class ProductController {
 		);
 
 
-		$newProduct2->save();}
-
-
-/*
-		$p = Product::loadById($id);
-		$p->set('title', $title);
-		$p->set('description', $description);
-		$p->set('sizes', $sizes);
-		$p->set('price', $price);
-		$p->set('img_url', $img_url);
-		$p->save();
-*/
-		//
-		//
-		// // connect to DATABASE FIRST
-		// $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
-		// 	or die ('Error: Could not connect to MySql database');
-		// mysql_select_db(DB_DATABASE);
-		//
-		// $q = sprintf("UPDATE product
-		// 		SET title = '%s', description = '%s', sizes = '%s', price = %d, img_url = '%s'
-		// 		WHERE id = %d ",
-		// 		$title,
-		// 		$description,
-		// 		$sizes,
-		// 		$price,
-		// 		$img_url,
-		// 		$id
-		// 	);
-		// 	echo $q;
-		// 	mysql_query($q);
-
+		$newProduct2->save();
+	}
 		session_start();
 		$_SESSION['msg'] = "You edited the product called ".$title;
 		header('Location: '.BASE_URL);
 		$this->paintings();
 	}
-
-	//adds the blogs to the database
-	public function blogs() {
-		$pageName = 'Blogs';
-
-    $blogs = Blog::getAllProducts();
-
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/blogs.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-	//views the blogs of the database
-	public function viewBlog($id) {
-		$pageName = 'Single Blog';
-
-   		$b = Blog::loadById($id);
-
-
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/single_blog.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
-	}
-
-
-	//adds the blog to the database and then we will
-	// move the data and basically change the data
-	public function addBlogProcess()
-	{
-		$title = $_POST['title'];
-		$description = $_POST['description'];
-		$full_post = $_POST['full_post'];
-		$image_url = $_POST['image_url'];
-
-
-		$b = new Blog();
-
-		//load the product, make updates, and save to the database
-		$b->set('title', $title);
-		$b->set('description', $description);
-		$b->set('full_post', $full_post);
-		$b->set('id', $id);
-		$b->set('image_url', $image_url);
-		$b->set('username', $_SESSION['user']);
-
-		$b->save();
-
-		session_start();
-		$_SESSION['msg'] = "You added the blog called ".$title;
-		header('Location: '.BASE_URL.'/blogs');
-	}
-
 }
