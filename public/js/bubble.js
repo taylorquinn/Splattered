@@ -68,7 +68,13 @@ function drawDendrogram(jsonUrl) {
 	                "C" + (d.parent.y + 100) + "," + d.x +
 	                " " + (d.parent.y + 100) + "," + d.parent.x +
 	                " " + d.parent.y + "," + d.parent.x;
-	        });
+	        })
+					.on("mouseover",function(d){
+						d3.select(this).classed("hovered", true);
+					})
+					.on("mouseout",function(d){
+						d3.select(this).classed("hovered", false);
+					});
 
 			// create <g> nodes from dataset
 	    var node = g.selectAll(".node")
@@ -86,24 +92,26 @@ function drawDendrogram(jsonUrl) {
 					})
 					.on("mouseout",function(d){
 						d3.select(this).classed("hovered", false);
-					})
-					// click event handler to show/hide edit panel
-					.on("click", function(d) {
-						if(d.data.type == 'blog') {
-							if($('#editShirtTitleForm').is(':visible')) {
-								$('#editShirtTitleForm').hide();
-							} else {
-								$('#editShirtTitle').val(d.data.name);
-								$('#editShirtID').val(d.data.id);
-								$('#editShirtTitleForm').show();
-								$('#editShirtTitle').focus();
-							}
-						}
 					});
+
+
+
+					// click event handler to show/hide edit panel
+
 
 			// draw a circle and append to the node
 	    node.append("circle")
-	        .attr("r", 5);
+	        .attr("r", 5)
+					.on("mouseover",function(d){
+						d3.select(this).classed("hovered", true);
+						console.log("hhh");
+					})
+					.on("mouseout",function(d){
+						d3.select(this).classed("hovered", false);
+						console.log("hhh");
+
+					});
+
 
 			// draw text label and append to the node
 	    node.append("text")
@@ -111,6 +119,8 @@ function drawDendrogram(jsonUrl) {
 	        .attr("x", function(d) {
 	            return d.children ? -8 : 8;
 	        })
+
+
 	        .style("text-anchor", function(d) {
 	            return d.children ? "end" : "start";
 	        })
@@ -158,17 +168,36 @@ function drawBubbleChart(jsonUrl) {
           .enter().append("g")
           .attr("class", "node")
         //   .attr("transform", function(d) { return "translate(" + 100 + "," + 100 + ")"; });
-          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")";
+					})
+					.on("mouseover",function(d){
+						d3.select(this).classed("hovered", true);
+
+					})
+					.on("mouseout",function(d){
+						d3.select(this).classed("hovered", false);
+					})
+					.on("click", function(d) {
+							if($('#editShirtTitleForm').is(':visible')) {
+								$('#editShirtTitleForm').hide();
+							} else {
+								$('#editShirtTitle').val(d.data.name);
+								$('#editShirtID').val(d.data.id);
+								$('#editShirtTitleForm').show();
+								$('#editShirtTitle').focus();
+							}
+					});
+
 
       node.append("title")
           .text(function(d) { return d.data.className + ": " + format(d.value); });
 
       node.append("circle")
     //   .attr("r", 20)
-          .attr("r", function(d) { return d.r; })
-          .style("fill", function(d) {
-            return color(d.data.packageName);
-          });
+          .attr("r", function(d) { return d.r; });
+          // .style("fill", function(d) {
+          //   return color(d.data.packageName);
+          // });
 
       node.append("text")
           .attr("dy", ".3em")

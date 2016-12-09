@@ -900,6 +900,10 @@ overflow: scroll;
     opacity:.6;
 }
 
+.node.hovered circle {
+  fill: orange;
+}
+
 
 /*
 .image {
@@ -946,7 +950,7 @@ overflow: scroll;
            box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
           border-bottom:2px solid #fff;
           border-right:2px solid #fff;
-          margin:5% auto 0 auto; 
+          margin:5% auto 0 auto;
           background:url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg);
   background-size:cover;
 border-radius:5px;
@@ -976,14 +980,14 @@ overflow:hidden;}
 /*.item_box{
     height:500px;
 }
- 
+
 .photo-thumb{
     width:100%;
     height:auto;
-    float:left; 
+    float:left;
     border: thin solid #d1d1d1;
     margin:0 1em .5em 0;
-    float:left; 
+    float:left;
 }
 */
 
