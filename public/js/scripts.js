@@ -145,10 +145,26 @@ window.onclick = function(event) {
     }
   }*/
 
+
+function blogAppear() {
+   $("#addBlogPopup").css("display", "block");
+    console.log("did this.");
+}
+
+function blogDisappear() {
+   $("#addBlogPopup").css("display", "none");
+    console.log("did this.");
+}
+
+
+
+
+
 function loginAppear() {
    $("#myLoginPopup").css("display", "block");
     console.log("did this.");
 }
+
 
 function signupAppear() {
    $("#mySignupPopup").css("display", "block");
@@ -169,8 +185,8 @@ function deleteClose() {
 }
 
 function logoutAppear() {
-   $("#myLogoutPopup").css("display", "block");
-    console.log("did this.");
+   $("#logoutAppear").css("display", "block");
+    console.log("WHY AM I NOT THE BLOG.");
 }
 
 function logoutClose() {

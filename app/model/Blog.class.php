@@ -58,6 +58,29 @@ class Blog extends DbObject {
         return $obj;
     }
 
+    public static function deleteByTitle($title) {
+      $host     = DB_HOST;
+      $database = DB_DATABASE;
+      $username = DB_USER;
+      $password = DB_PASS;
+      $conn = mysql_connect($host, $username, $password)
+  			or die ('Error: Could not connect to MySql database');
+
+  		mysql_select_db($database);
+
+      $query = sprintf("DELETE FROM %s WHERE title = %s",self::DB_TABLE, $title, $conn);
+      echo($query);
+      $db = Db::instance();
+      $result = mysql_query($query);
+
+      if (mysql_affected_rows() > 0) {
+          return true;
+      }
+      else {
+          return false;
+      }
+    }
+
     // load all products
     public static function getAllProducts($limit=null) {
         $query = sprintf(" SELECT id FROM %s ORDER BY date_created DESC ",

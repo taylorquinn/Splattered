@@ -3,16 +3,20 @@
 <svg></svg>
 <form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
   <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
-  <input type="hidden" id="editShirtID" name="productID" value="">
+  <input type="hidden" id="editPostID" name="productID" value="">
   <input type="submit" name="submit" value="Edit">
   <button type="button" name="cancel">Cancel</button>
 </form>
-<!-- <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
-  <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
-  <input type="hidden" id="editShirtID" name="productID" value="">
+<form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
+  <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
+  <input type="hidden" id="deleteID" name="productID" value="">
+  <input type="submit" name="submit" value="Delete">
+</form>
+<form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
+  <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
   <input type="submit" name="submit" value="Edit">
   <button type="button" name="cancel">Cancel</button>
-</form> -->
+</form>
 
 <!-- the header image -->
 
@@ -23,12 +27,16 @@
   <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="plus"
     style="width: 50px;
     padding: 10px;
-    float: right;" />
+    float: right;" /></a>
 
-  <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
+  <a class = "editButton" onclick="blogAppear()"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
     style="width: 50px;
     padding: 10px;
     float: right;" />'; ?></a>
+
+
+  <!--<a onclick="logoutAppear()"><u name = "log_in">Log out</u></a> -->
+
 
   </div>
 
@@ -57,34 +65,41 @@ if(isset($_SESSION['user']))
   if($p->get('status') != 0) {
   echo '<div id="add_blog">
 
-  <h2>Add a Blog Post</h2>
-
-  <!--the form for submitting the information about a new prodcut including a title, description
-      price and image url -->
-  <form id="add_post" action="',BASE_URL,'/blogs/add/process" method="POST">
-
-  <label>Title: <input type="text" name="title" value=""></label> <br><br>
-
-  <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> <br><br>
-
-  <label>Description: <textarea rows="10" name="description" cols="50"> </textarea></label> <br><br>
-
-  <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
-
-
-
-
-
-  <br><input type="submit" value = "Add Blog Post">
-
-
-
-  </form>
+  
 
 </div>';
 }
 }
 ?>
+
+<div id="addBlogPopup" class="popup" style="height:100%; z-index:99; margin-top:-50px; overflow:scroll">
+
+      <div class="popup-content">
+            <span class="close" onclick="blogDisappear()">×</span>
+              <h2 style="color:black">Add a Blog Post</h2>
+            <!--the form for submitting the information about a new prodcut including a title, description
+      price and image url -->
+       <form id="add_post" action="<?= BASE_URL ?>/blogs/add/process" method="POST">
+
+         <label>Title: <input type="text" name="title" value=""></label>
+
+         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> 
+
+       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label> 
+
+        <label>Image URL: <input type="text" name="image_url" value=""></label> 
+        <input type="submit" value = "Add Blog Post">
+        </form>
+
+    </div>
+
+</div>
+
+
+
+ 
+
+
 
 <!-- loop through all of the blogs and display them
      uses the blog model class-->

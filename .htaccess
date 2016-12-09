@@ -48,7 +48,8 @@ RewriteRule ^photographs/?$ app/controller/productController.php?action=products
 
 RewriteRule ^checkout/?$ app/controller/productController.php?action=checkout [QSA,L]
 
-RewriteRule ^blogs/editTitle/process/?$ app/controller/productController.php?action=editTitleProcess [QSA,L]
-RewriteRule ^blogs/addComment/process/?$ app/controller/productController.php?action=addCommentProcess [QSA,L]
-
 RewriteRule ^blogs/vizData/?$ app/controller/productController.php?action=getVizData [QSA,L]
+RewriteRule ^blogs/editTitle/process/?$ app/controller/productController.php?action=editTitleProcess [QSA,L]
+RewriteRule ^blogs/deleteBlog/process/?$ app/controller/productController.php?action=deleteBlog [QSA,L]
+
+RewriteRule ^blogs/addComment/process/?$ app/controller/productController.php?action=addCommentProcess [QSA,L]

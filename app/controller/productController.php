@@ -15,8 +15,8 @@ class ProductController {
 	// route us to the appropriate class method for this action
 	public function route($action) {
 		if(!isset($_SESSION['user']) || $_SESSION['user'] == '') {
-					session_start();
-				}
+			session_start();
+		}
 		switch($action) {
 			case 'products':
         $productType = $_GET['ptype'];
@@ -46,6 +46,12 @@ class ProductController {
 					$productID = $_GET['pid'];
 					$this->editProduct($productID);
 					break;
+			case 'deleteBlog':
+				$blogID = $_POST['id'];
+				$title = $_POST['title'];
+				$this->deleteBlogProcess($blogID, $title);
+				break;
+
 
 
 			case 'popupProduct':
@@ -90,6 +96,12 @@ class ProductController {
 				$blogID = $_POST['id'];
 				$title = $_POST['title'];
 				$this->editTitleProcess($blogID, $title);
+				break;
+
+      case 'addCommentProcess':
+        $postID = $_POST['id'];
+				$comment = $_POST['comment'];
+				$this->addCommentProcess($postID, $comment);
 				break;
 
       // redirect to home page if all else fails
@@ -138,6 +150,7 @@ class ProductController {
 		$myUser = $myUsername->get('id');
 		$q = sprintf("DELETE FROM follow WHERE follower_id = %d AND followed_id = %d  ",
 			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
+
 	 mysql_query($q);
 
    if(isset($_SESSION['user'])) {
@@ -287,6 +300,76 @@ class ProductController {
 		echo json_encode($json);
 		exit();
 	}
+
+	public function deleteBlogProcess($id, $title) {
+		header('Content-Type: application/json');
+
+		// title can't be blank
+		if($title == '') {
+			$json = array('error' => 'Title cannot be blank.');
+			echo json_encode($json);
+			exit();
+		}
+
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$query = "DELETE FROM `post` WHERE `title` = '$title'";
+
+		mysql_query($query);
+
+			$json = array('success' => 'success');
+			echo json_encode($json);
+			exit();
+
+
+		// success! print the JSON
+
+	}
+  public function addCommentProcess($id, $comment) {
+    header('Content-Type: application/json');
+
+    $name = $_SESSION['user'];
+
+    // name can't be blank
+    if($name == '') {
+      $json = array('error' => 'Username cannot be blank.');
+      echo json_encode($json);
+      exit();
+    }
+
+    // comment can't be blank
+    if($comment == '') {
+      $json = array('error' => 'Title cannot be blank.');
+      echo json_encode($json);
+      exit();
+    }
+
+    // echo "$name ";
+    // echo "$id ";
+    // echo "$comment ";
+
+    $host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+
+    // $query = mysql_query("INSERT INTO postcomments(post_id, comment, user_name) values('$id', '$comment', '$name') ");
+    $query = "INSERT INTO `postcomments` (`post_id`, `comment`, `user_name`) VALUES ('$id', '$comment', '$name')";
+    mysql_query($query);
+
+    // success! print the JSON
+    $json = array('success' => 'success');
+    echo json_encode($json);
+    exit();
+  }
 
 	//when we add the product we add the fields, check them for validation and the products to
 	//the database
