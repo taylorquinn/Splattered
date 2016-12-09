@@ -140,8 +140,18 @@ class BlogController {
   {
     $b = Blog::loadById($id);
 
+    $host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+
     // delete from the database
-    $q = sprintf("DELETE FROM products WHERE id = %d ",
+    $q = sprintf("DELETE FROM post WHERE id = %d ",
       mysql_real_escape_string($id)
     );
     mysql_query($q);
