@@ -7,12 +7,12 @@
   <input type="submit" name="submit" value="Edit">
   <button type="button" name="cancel">Cancel</button>
 </form>
-<!-- <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
-  <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
-  <input type="hidden" id="editShirtID" name="productID" value="">
-  <input type="submit" name="submit" value="Edit">
+<form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
+  <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
+  <input type="hidden" id="deleteID" name="productID" value="">
+  <input type="submit" name="submit" value="Delete">
   <button type="button" name="cancel">Cancel</button>
-</form> -->
+</form>
 
 <!-- the header image -->
 
