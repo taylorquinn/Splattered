@@ -60,7 +60,7 @@ h3 {
   letter-spacing: 2px;
   text-transform: uppercase;
   font: 14px "Lato", sans-serif;
-  color: #111;
+  color: #000;
   margin-bottom: 0px;
 }
 h2 {
@@ -74,6 +74,28 @@ p {
   letter-spacing: 2px;
   text-transform: uppercase;
   font: 13px "Lato", sans-serif;
+  color: #111;
+}
+
+a {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font: 13px "Lato", sans-serif;
+  color: #666;
+  text-decoration: none;
+}
+.hi {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font: 13px "Lato", sans-serif;
+  color: #111;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+.hi:hover{
   color: #111;
 }
 </style>
@@ -99,9 +121,11 @@ p {
           <!--posts you've posted-->
               <h3>Your posts</h3>
               <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
-                <li><a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a><li>
+               <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <?= $row['title'] ?>·</a> 
               <?php endwhile; ?>
+              </li>
               </ul>
               <?php
               $username = $_SESSION['user'];
@@ -125,12 +149,18 @@ p {
 
           <!--people you follow-->
               <h3>People you follow</h3>
-              <?php while($row = mysql_fetch_assoc($result)): ?>
+
+              <ul id="notifications">
+               <li > 
+               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $puser = User::loadById($row['followed_id']);
                 ?>
-                <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
+                <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "><?= $puser->get('username') ?>·</a>
+
               <?php endwhile; ?>
+             </li>
+             </ul>
 
           <!-- people following you-->
             <h3>Followers</h3>
@@ -138,22 +168,34 @@ p {
               $q = "SELECT * FROM follow WHERE followed_id=$uid ";
               $result = mysql_query($q);
             ?>
+
+              <ul id="notifications">
+               <li > 
             <?php while($row = mysql_fetch_assoc($result)): ?>
               <?php
               $puser = User::loadById($row['follower_id']);
               ?>
-              <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <p class = "blog-author"> <?= $puser->get('username') ?></p> </a>
+              <a href="<?= BASE_URL ?>/profile/<?= $puser->get('username') ?> "> <?= $puser->get('username') ?>·</a>
             <?php endwhile; ?>
+            </li>
+            </ul>
 
           <!--your comments-->
               <h3>Your comments</h3>
+
+
               <?php
                 $q = "SELECT * FROM postcomments WHERE user_name='$username' ";
                 $result = mysql_query($q);
               ?>
+
+               <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
-                <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <p class = "blog-author"> <?= $row['comment'] ?></p> </a>
+                <a href="<?= BASE_URL ?>/blogs/view/<?= $row['post_id'] ?> "> <?= $row['comment'] ?>·</a>
               <?php endwhile; ?>
+              </li>
+              </ul>
 
           <!--products you've added-->
               <h3>Products you added</h3>
@@ -161,9 +203,13 @@ p {
                 $q = "SELECT * FROM product WHERE creator_id=$uid ";
                 $result = mysql_query($q);
               ?>
+               <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
-                <a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+                <a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?> "> <?= $row['title'] ?>·</a>
               <?php endwhile; ?>
+              </li>
+              </ul>
 
           <!--posts from people you follow-->
               <h3>Posts from people you follow</h3>
@@ -171,6 +217,9 @@ p {
               $q = "SELECT * FROM follow WHERE follower_id=$uid ";
               $result = mysql_query($q);
               ?>
+
+              <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $prof = User::loadById($row['followed_id']);
@@ -179,10 +228,14 @@ p {
                 $qtwo = "SELECT * FROM post WHERE username='$followedUser' ";
                 $resulttwo = mysql_query($qtwo);
                 ?>
+                 
                 <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['id'] ?> "><?= $row2['title'] ?>·</a>
                 <?php endwhile; ?>
+              
               <?php endwhile; ?>
+              </li>
+              </ul>
 
           <!--comments on your posts-->
               <h3>Comments on your posts</h3>
@@ -190,6 +243,9 @@ p {
               $q = "SELECT * FROM post WHERE username='$username' ";
               $result = mysql_query($q);
               ?>
+
+               <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $postid = $row['id'];
@@ -197,10 +253,14 @@ p {
                 $qtwo = "SELECT * FROM postcomments WHERE post_id=$postid ";
                 $resulttwo = mysql_query($qtwo);
                 ?>
+                
                 <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <?= $row2['comment'] ?>·</a>
                 <?php endwhile; ?>
+
               <?php endwhile; ?>
+              </li>
+                </ul>
 
           <!--People followed by people you follow-->
               <h3>People followed by people you follow</h3>
@@ -208,6 +268,9 @@ p {
               $q = "SELECT * FROM follow WHERE follower_id=$uid ";
               $result = mysql_query($q);
               ?>
+
+              <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $followedId = $row['followed_id'];
@@ -219,9 +282,11 @@ p {
                     $prof = User::loadById($row2['followed_id']);
                     $followedUser = $prof->get('username');
                   ?>
-                  <a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "> <p class = "blog-author"> <?= $followedUser ?></p> </a>
+                  <a href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "> <?= $followedUser ?>·</a>
                 <?php endwhile; ?>
               <?php endwhile; ?>
+              </li>
+              </ul>
 
 
           <!--comments by people you follow-->
@@ -230,6 +295,9 @@ p {
               $q = "SELECT * FROM follow WHERE follower_id=$uid ";
               $result = mysql_query($q);
               ?>
+
+             <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $prof = User::loadById($row['followed_id']);
@@ -239,9 +307,11 @@ p {
                 $resulttwo = mysql_query($qtwo);
                 ?>
                 <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <p class = "blog-author"> <?= $row2['comment'] ?></p> </a>
+                  <a href="<?= BASE_URL ?>/blogs/view/<?= $row2['post_id'] ?> "> <?= $row2['comment'] ?>·</a>
                 <?php endwhile; ?>
               <?php endwhile; ?>
+              </li>
+              </ul>
 
           <!--products added by people you follow-->
               <h3>Products added by people you follow</h3>
@@ -249,6 +319,9 @@ p {
               $q = "SELECT * FROM follow WHERE follower_id=$uid ";
               $result = mysql_query($q);
               ?>
+
+              <ul id="notifications">
+               <li > 
               <?php while($row = mysql_fetch_assoc($result)): ?>
                 <?php
                 $followedId = $row['followed_id'];
@@ -256,9 +329,12 @@ p {
                 $resulttwo = mysql_query($qtwo);
                 ?>
                 <?php while($row2 = mysql_fetch_assoc($resulttwo)): ?>
-                  <a href="<?= BASE_URL ?>/paintings/view/<?= $row2['id'] ?> "> <p class = "blog-author"> <?= $row2['title'] ?></p> </a>
+                  <a href="<?= BASE_URL ?>/paintings/view/<?= $row2['id'] ?> ">  <?= $row2['title'] ?>·</a>
                 <?php endwhile; ?>
               <?php endwhile; ?>
+
+              </li>
+              </ul>
 
          
 

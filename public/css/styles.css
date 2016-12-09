@@ -145,6 +145,13 @@ img.head-image2{
 
 /*FOOTER**********************************************************************************/
 
+#footer_list a{
+  text-decoration: none;
+}
+
+#footer_list u{
+  text-decoration: none;
+}
 
 img.icon{
    width: 60px;
