@@ -23,16 +23,29 @@ class BlogController {
 	 			$this->blogs();
 	 			break;
 
-
 			case 'addBlogProcess':
 			    $this->addBlogProcess();
 					break;
 
 			case 'viewBlog':
-			  	  $productID = $_GET['pid'];
-	 				  $this->viewBlog($productID); //should send in the username as the id
+			  	  $blogID = $_GET['pid'];
+	 				  $this->viewBlog($blogID); //should send in the username as the id
 	 				  break;
 
+      case 'editBlog':
+			  	  $blogID = $_GET['pid'];
+	 				  $this->editBlog($blogID); //should send in the username as the id
+	 				  break;
+
+      case 'editBlogProcess':
+			  	  $blogID = $_GET['pid'];
+	 				  $this->editBlogProcess($blogID); //should send in the username as the id
+	 				  break;
+
+      case 'deleteBlogProcess':
+            $blogID = $_GET['pid'];
+            $this->deleteBlogProcess($blogID); //should send in the username as the id
+            break;
     // redirect to home page if all else fails
    		default:
     		  	header('Location: '.BASE_URL);
@@ -67,8 +80,7 @@ class BlogController {
 
   //adds the blog to the database and then we will
   // move the data and basically change the data
-  public function addBlogProcess()
-  {
+  public function addBlogProcess() {
   	$title = $_POST['title'];
   	$description = $_POST['description'];
   	$full_post = $_POST['full_post'];
@@ -90,6 +102,53 @@ class BlogController {
   	session_start();
   	$_SESSION['msg'] = "You added the blog called ".$title;
   	header('Location: '.BASE_URL.'/blogs');
+  }
+
+  //allows the user to edit a blog posts
+  public function editBlog($id) {
+    $pageName = 'Edit Blog';
+
+    //load the appropriate product by id
+    $b = Blog::loadById($id);
+
+    include_once SYSTEM_PATH.'/view/header.tpl';
+    include_once SYSTEM_PATH.'/view/editBlog.tpl';
+    include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+
+  public function editBlogProcess($id) {
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $full_post = $_POST['full_post'];
+    $image_url = $_POST['image_url'];
+
+    //load the Blog, make updates, and save to the database
+    $b = Blog::loadById($id);
+    $b->set('title', $title);
+    $b->set('description', $description);
+    $b->set('full_post', $full_post);
+    $b->set('image_url', $image_url);
+    $b->save();
+
+    session_start();
+  	$_SESSION['msg'] = "You edited the blog called ".$title;
+  	header('Location: '.BASE_URL.'/blogs');
+  }
+
+  // processes the deletion of the product
+  public function deleteBlogProcess($id)
+  {
+    $b = Blog::loadById($id);
+
+    // delete from the database
+    $q = sprintf("DELETE FROM products WHERE id = %d ",
+      mysql_real_escape_string($id)
+    );
+    mysql_query($q);
+
+    session_start();
+    $_SESSION['msg'] = "You deleted the blog called ".$title;
+    header('Location: '.BASE_URL.'/blogs');
   }
 
 }
