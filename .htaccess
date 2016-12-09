@@ -26,9 +26,12 @@ RewriteRule ^profile/(.*)/?$ app/controller/profileController.php?action=viewPro
 # Product
 RewriteRule ^paintings/delete/?$ app/controller/productController.php?action=deleteProduct [QSA,L]
 RewriteRule ^paintings/view/(\d+)/?$ app/controller/productController.php?action=viewProduct&pid=$1 [QSA,L]
-RewriteRule ^blogs/?$ app/controller/productController.php?action=blogs [QSA,L]
-RewriteRule ^blogs/add/process/?$ app/controller/productController.php?action=addBlogProcess [QSA,L]
-RewriteRule ^blogs/view/(\d+)/?$ app/controller/productController.php?action=viewBlog&pid=$1 [QSA,L]
+RewriteRule ^blogs/?$ app/controller/blogController.php?action=blogs [QSA,L]
+RewriteRule ^blogs/add/process/?$ app/controller/blogController.php?action=addBlogProcess [QSA,L]
+RewriteRule ^blogs/view/(\d+)/?$ app/controller/blogController.php?action=viewBlog&pid=$1 [QSA,L]
+RewriteRule ^blogs/delete/(\d+)/process/?$ app/controller/blogController.php?action=deleteBlogProcess&pid=$1 [QSA,L]
+RewriteRule ^blogs/edit/(\d+)/process/?$ app/controller/blogController.php?action=editBlogProcess&pid=$1 [QSA,L]
+RewriteRule ^blogs/edit/(\d+)/?$ app/controller/blogController.php?action=editBlog&pid=$1 [QSA,L]
 RewriteRule ^follow/(\d+)/?$ app/controller/productController.php?action=follow&pid=$1 [QSA,L]
 RewriteRule ^unfollow/(\d+)/?$ app/controller/productController.php?action=unfollow&pid=$1 [QSA,L]
 
@@ -45,9 +48,8 @@ RewriteRule ^photographs/?$ app/controller/productController.php?action=products
 
 RewriteRule ^checkout/?$ app/controller/productController.php?action=checkout [QSA,L]
 
+RewriteRule ^blogs/vizData/?$ app/controller/productController.php?action=getVizData [QSA,L]
 RewriteRule ^blogs/editTitle/process/?$ app/controller/productController.php?action=editTitleProcess [QSA,L]
 RewriteRule ^blogs/deleteBlog/process/?$ app/controller/productController.php?action=deleteBlog [QSA,L]
 
 RewriteRule ^blogs/addComment/process/?$ app/controller/productController.php?action=addCommentProcess [QSA,L]
-
-RewriteRule ^blogs/vizData/?$ app/controller/productController.php?action=getVizData [QSA,L]
