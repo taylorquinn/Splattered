@@ -25,7 +25,7 @@ function isSelected($pn, $link) {
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/d3.v4.min.js"></script>
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/bubble.js"></script>
   <script type="text/javascript" src="<?= BASE_URL ?>/public/js/scripts.js"></script>
-	<link rel="icon" type="image/vnd.microsoft.icon" href="<?= BASE_URL ?>/favicon.ico" />
+	<link rel="icon" type="image/vnd.microsoft.icon" href="<?= BASE_URL ?>/public/img/favicon.ico" />
 </head>
 <body>
 <div id="wrapper">

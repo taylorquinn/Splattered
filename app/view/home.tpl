@@ -263,7 +263,7 @@
           echo "<div id='image' class='image' style='display: inline;'>        
                               
                <a href='{$pic_link}'>
-                <img class='insta' src='{$pic_src}' alt='{$pic_text}' style='width:20%' >
+                <img class='insta' src='{$pic_src}' alt='{$pic_text}' style='width:19.5%' >
                      
                 </a>
 
