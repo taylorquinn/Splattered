@@ -1,6 +1,54 @@
 
+<style>
+
+.bgimg-1{
+  position: relative;
+  opacity: 0.9;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bgimg-1 {
+  background-image: url("<?= BASE_URL ?>/public/img/paintingshead.jpg");
+  min-height: 500px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+</style>
 <!--header image-->
-<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />
+
+
+
+<div class="bgimg-1">
+  <div class="caption">
+  
+    <span class="border">PAINTINGS</span>
+
+  </div>
+</div>
+
+
+
+<!--<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />-->
 <div id="content">
 
 
@@ -31,7 +79,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 
 <!--formatting of a specific item cell-->
 
-<div class="product-cell product <?= $newStr?>"><!--.<?= $row['sizes'] ?>">-->
+<div class="product-cell product <?= $newStr?>" style="margin-top:50px"><!--.<?= $row['sizes'] ?>">-->
 
 	<a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?>"><img class="product-img" src="<?= BASE_URL ?>/public/img/<?= $row['img_url'] ?>" alt="<?= $row['title'] ?>" /></a>
 	<h3><a href="<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?>"><?= $row['title'] ?></a></h3>

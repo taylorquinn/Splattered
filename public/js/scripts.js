@@ -185,7 +185,7 @@ function deleteClose() {
 }
 
 function logoutAppear() {
-   $("#logoutAppear").css("display", "block");
+   $("#myLogoutPopup").css("display", "block");
     console.log("WHY AM I NOT THE BLOG.");
 }
 

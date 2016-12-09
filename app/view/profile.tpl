@@ -180,10 +180,10 @@
 	<?php endwhile; ?>
 
 </div>
-<!-- if the user is an admin, they may delete the user's profile page -->
+<!-- if the user is an admin, they may delete the user's profile page
  <?php if($_SESSION['user'] == $p->get('username')): ?>
  <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/user/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
  <?php elseif($b->get('status') == 2): ?>
  <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/admin/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
-
+-->
  <?php endif; ?>
