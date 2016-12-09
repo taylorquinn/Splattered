@@ -119,7 +119,7 @@
 	  		    <form  action="<?= BASE_URL ?>/footer/logout" method="POST">
 	  		    <h2>Are you sure you want to log out?</h2>
 
-				  <input class = "close1" type="submit" value="Log me out">
+				  <input class = "close" type="submit" value="Log me out" >
 
 				</form>
 

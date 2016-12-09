@@ -27,12 +27,16 @@
   <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="plus"
     style="width: 50px;
     padding: 10px;
-    float: right;" />
+    float: right;" /></a>
 
-  <a class = "editButton" href ="',BASE_URL,'/paintings"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
+  <a class = "editButton" onclick="blogAppear()"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
     style="width: 50px;
     padding: 10px;
     float: right;" />'; ?></a>
+
+
+  <!--<a onclick="logoutAppear()"><u name = "log_in">Log out</u></a> -->
+
 
   </div>
 
@@ -61,34 +65,42 @@ if(isset($_SESSION['user']))
   if($p->get('status') != 0) {
   echo '<div id="add_blog">
 
-  <h2>Add a Blog Post</h2>
-
-  <!--the form for submitting the information about a new prodcut including a title, description
-      price and image url -->
-  <form id="add_post" action="',BASE_URL,'/blogs/add/process" method="POST">
-
-  <label>Title: <input type="text" name="title" value=""></label> <br><br>
-
-  <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> <br><br>
-
-  <label>Description: <textarea rows="10" name="description" cols="50"> </textarea></label> <br><br>
-
-  <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
-
-
-
-
-
-  <br><input type="submit" value = "Add Blog Post">
-
-
-
-  </form>
+  
 
 </div>';
 }
 }
 ?>
+
+<div id="addBlogPopup" class="popup" style="height:100%; z-index:99; margin-top:-50px">
+
+      <div class="popup-content">
+            <span class="close" onclick="blogDisappear()">×</span>
+              <h2 style="color:black">Add a Blog Post</h2>
+            <!--the form for submitting the information about a new prodcut including a title, description
+      price and image url -->
+       <form id="add_post" action="<?= BASE_URL ?>/blogs/add/process" method="POST">
+
+         <label>Title: <input type="text" name="title" value=""></label> <br><br>
+
+         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> <br><br>
+
+       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label> <br><br>
+
+        <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
+
+          <br><input type="submit" value = "Add Blog Post">
+        </form>
+
+    </div>
+
+</div>
+
+
+
+ 
+
+
 
 <!-- loop through all of the blogs and display them
      uses the blog model class-->
