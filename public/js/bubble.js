@@ -8,7 +8,7 @@ $(document).ready(function(){
 		e.preventDefault(); // don't submit the form
 
 		var title = $('#editShirtTitle').val();
-		var id = $('#editShirtID').val();
+		var id = $('#editPostID').val();
 
 		$.post(
 			baseURL+'/blogs/editTitle/process/',
@@ -27,27 +27,31 @@ $(document).ready(function(){
 			},
 			'json'
 		);
+	});
 
-        //  $.ajax({
-        //     type: "post",
-        //     url: baseURL+'/blogs/editTitle/process/',
-        //     dataType:"json",
-        //     data:
-        //     {
-		// 		'title': title,
-		// 		'id': id
-		// 	},
-        //     success: function (response) {
-        //         if(response.success === "success") {
-        //             console.log("success");
-        //             // do something with response.message or whatever other data on success
-        //         }
-        //     },
-        //     error: function (errorResponse) {
-        //         console.log(errorResponse.responseText);
-        //     }
-        // })
-        // return false;
+    $('#addCommentForm').submit(function(e){
+		e.preventDefault(); // don't submit the form
+
+        var id = $('#editPostID').val();
+		var comment = $('#addedComment').val();
+
+		$.post(
+			baseURL+'/blogs/addComment/process/',
+			{
+				'comment': comment,
+                'id': id
+			},
+			function(data) {
+				if(data.success == 'success') {
+					// Edit successful
+					$('#addCommentForm').hide(); // hide edit panel
+					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
+				} else if (data.error != '') {
+					alert(data.error); // show error as popup
+				}
+			},
+			'json'
+		);
 	});
 
 });
@@ -101,13 +105,18 @@ function drawBubbleChart(jsonUrl) {
 					.on("click", function(d) {
 							if($('#editShirtTitleForm').is(':visible')) {
                                 $('#editShirtTitleForm').hide();
-                                // $('#addCommentForm').hide();
 							} else {
 								$('#editShirtTitle').val(d.data.title);
-								$('#editShirtID').val(d.data.id);
+								$('#editPostID').val(d.data.id);
 								$('#editShirtTitleForm').show();
 								$('#editShirtTitle').focus();
-                                // $('#addCommentForm').show();
+							}
+
+                            if($('#addCommentForm').is(':visible')) {
+                                $('#addCommentForm').hide();
+							} else {
+								$('#addedComment').focus();
+                                $('#addCommentForm').show();
 							}
 					});
 
