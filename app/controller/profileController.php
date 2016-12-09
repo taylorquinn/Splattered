@@ -168,24 +168,26 @@ public function changeStatusProcess($username) {
 
 /* the admin will be able to delete any users profile
    nothing will happen to their current session*/
-public function deleteProfileProcessAdmin($username){
+public function deleteProfileProcessAdmin($id){
 
 	// delete user from the database
-	$q = sprintf("DELETE FROM user WHERE username = $username ",
-		mysql_real_escape_string($username)
+	$q = sprintf("DELETE FROM user WHERE id = %d",
+		mysql_real_escape_string($id)
 	);
 	mysql_query($q);
 
+	//FROM `user` WHERE `user`.`id` = 8"?
+
 	session_start();
-	$_SESSION['msg'] = "You edited the profile called ".$title;
-	header('Location: '.BASE_URL.'');
+	$_SESSION['msg'] = "You deleted the profile called ".$title;
+	header('Location: '.BASE_URL.'/paintings');
 }
 
 /*the user may delete their own profile (including the admin).
   their session will termiante and their username and other data
 	will be removed from the database */
-public function deleteProfileProcessUser($username){
-	$p = User::loadByUsername($username);
+public function deleteProfileProcessUser($id){
+	$p = User::loadById($id);
 
 	// If it's desired to kill the session, also delete the session cookie.
 	// Note: This will destroy the session, and not just the session data!
@@ -200,13 +202,13 @@ public function deleteProfileProcessUser($username){
 	session_destroy();
 
 	// delete user from the database
-	$q = sprintf("DELETE FROM user WHERE username = $username ",
-		mysql_real_escape_string($username)
+	$q = sprintf("DELETE FROM user WHERE id = %d ",
+		mysql_real_escape_string($id)
 	);
 	mysql_query($q);
 
 	session_start();
-	$_SESSION['msg'] = "You edited the profile called ".$title;
+	$_SESSION['msg'] = "You deleted the profile called ".$title;
 	header('Location: '.BASE_URL.'');
 	}
 }

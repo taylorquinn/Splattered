@@ -37,6 +37,7 @@
 
            	 $userstatus = $p->get('status');
              $curr_username = $p->get('username');
+             $curr_username_id = $p->get('id');
 
 			 if(($b->get('status') == 2) && ($curr_username != ($_SESSION['user']))) {
 
@@ -179,7 +180,10 @@
 	<?php endwhile; ?>
 
 </div>
-<!-- if the user is an admin, they may delete the user's profile page-->
- <?php if($b->get('status') == 2 || $_SESSION['user'] == $p->get('username')): ?>
- <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/user/delete/<? $curr_username ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
+<!-- if the user is an admin, they may delete the user's profile page -->
+ <?php if($_SESSION['user'] == $p->get('username')): ?>
+ <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/user/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
+ <?php elseif($b->get('status') == 2): ?>
+ <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/admin/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
+
  <?php endif; ?>
