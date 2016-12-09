@@ -72,7 +72,7 @@ if(isset($_SESSION['user']))
 }
 ?>
 
-<div id="addBlogPopup" class="popup" style="height:100%; z-index:99; margin-top:-50px">
+<div id="addBlogPopup" class="popup" style="height:100%; z-index:99; margin-top:-50px; overflow:scroll">
 
       <div class="popup-content">
             <span class="close" onclick="blogDisappear()">×</span>
@@ -81,15 +81,14 @@ if(isset($_SESSION['user']))
       price and image url -->
        <form id="add_post" action="<?= BASE_URL ?>/blogs/add/process" method="POST">
 
-         <label>Title: <input type="text" name="title" value=""></label> <br><br>
+         <label>Title: <input type="text" name="title" value=""></label>
 
-         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> <br><br>
+         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> 
 
-       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label> <br><br>
+       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label> 
 
-        <label>Image URL: <input type="text" name="image_url" value=""></label> <br><br>
-
-          <br><input type="submit" value = "Add Blog Post">
+        <label>Image URL: <input type="text" name="image_url" value=""></label> 
+        <input type="submit" value = "Add Blog Post">
         </form>
 
     </div>
