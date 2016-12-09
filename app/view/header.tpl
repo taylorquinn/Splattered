@@ -12,7 +12,7 @@ function isSelected($pn, $link) {
 <head>
 	<meta charset="utf-8">
    <meta name="description" content="Splattered is a site manifesting creativity and aesthetics into a visual commercial interaction between seller and buyer.">
-	<title>Splattered | Paintings</title>
+	<title>Splattered</title>
 
 
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
@@ -38,9 +38,9 @@ function isSelected($pn, $link) {
 				<div id="search">
 				<ul id="primary-nav" style= "font-size: 15px;">
 
-					<li><a id="selected-nav" href="<?= BASE_URL ?>/paintings">Paintings</a></li>
-					<li><a href="<?= BASE_URL ?>/working">Photographs</a></li>
-					<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>
+					<li><a href="<?= BASE_URL ?>/paintings">Paintings</a></li>
+					<li><a href="<?= BASE_URL ?>/photographs">Photographs</a></li>
+					<!--<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>-->
 					<!--<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>-->
 					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
 

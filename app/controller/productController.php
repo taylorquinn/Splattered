@@ -23,7 +23,12 @@ class ProductController {
         if($productType == 'paintings') {
 				    $this->paintings();
         }
+         if($productType == 'photographs') {
+				    $this->photographs();
+        }
 				break;
+
+
 
 			case 'viewProduct':
      		   $productID = $_GET['pid'];
@@ -171,6 +176,25 @@ class ProductController {
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/paintings.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+
+
+  	//returns the page for the paintings.
+  public function photographs() {
+		$pageName = 'Photographs';
+
+		$conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
+			or die ('Error: Could not connect to MySql database');
+		mysql_select_db(DB_DATABASE);
+
+		$q = "SELECT * FROM product ORDER BY date_created; ";
+		$result = mysql_query($q);
+
+    // $this->getVizData();
+
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/photographs.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
