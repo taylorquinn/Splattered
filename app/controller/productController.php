@@ -23,7 +23,7 @@ class ProductController {
         if($productType == 'paintings') {
 				    $this->paintings();
         }
-         if($productType == 'photographs') {
+         else if($productType == 'photographs') {
 				    $this->photographs();
         }
 				break;
@@ -172,11 +172,11 @@ class ProductController {
 		$q = "SELECT * FROM product ORDER BY date_created; ";
 		$result = mysql_query($q);
 
-    $this->getVizData();
+  //  $this->getVizData();
 
-		// include_once SYSTEM_PATH.'/view/header.tpl';
-		// include_once SYSTEM_PATH.'/view/paintings.tpl';
-		// include_once SYSTEM_PATH.'/view/footer.tpl';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		 include_once SYSTEM_PATH.'/view/paintings.tpl';
+		 include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
 
