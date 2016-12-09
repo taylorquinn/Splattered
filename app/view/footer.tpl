@@ -77,22 +77,22 @@
   		    <form  action="<?= BASE_URL ?>/footer/signup" method="POST">
     		    <h2>Sign up:</h2>
             First Name:<br>
-  				      <input type="text" name="fname" placeholder="Bobby">
+  				      <input type="text" name="fname" placeholder="Bobby" required>
   				  <br>
             Last Name:<br>
-  				      <input type="text" name="lname" placeholder="Kins">
+  				      <input type="text" name="lname" placeholder="Kins" required>
   				  <br>
             Username:<br>
-  				      <input type="text" name="un" placeholder="username">
+  				      <input type="text" name="un" placeholder="username" required>
   				  <br>
   				  Password:<br>
-  				      <input type="password" name="pw" placeholder="********">
+  				      <input type="password" name="pw" placeholder="********" required> 
   				  <br>
             Confirm Password:<br>
-  				      <input type="password" name="confirmpw" placeholder="********">
+  				      <input type="password" name="confirmpw" placeholder="********" required>
   				  <br>
             Email Address:<br>
-  				      <input type="text" name="email" placeholder="test@gmail.com">
+  				      <input type="email" name="email" placeholder="test@gmail.com" required>
 
 						<br>
 						Age:<br>
