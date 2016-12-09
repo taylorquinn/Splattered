@@ -1,6 +1,6 @@
 <div id="content3">
 
-<svg width="960" height="880"></svg>
+<svg></svg>
 
 <!-- the header image -->
 

@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
 	// calling this method draws the bubble chart viz using this JSON file
-	// drawBubbleChart(baseURL+'/blogs/vizData/');
-    drawDendrogram(baseURL+'/blogs/vizData/');
+	drawBubbleChart(baseURL+'/blogs/vizData/');
+    // drawDendrogram(baseURL+'/blogs/vizData/');
 
 	// $('#editShirtTitleForm').submit(function(e){
 	// 	e.preventDefault(); // don't submit the form
@@ -125,64 +125,70 @@ function drawDendrogram(jsonUrl) {
 function drawBubbleChart(jsonUrl) {
 	$('svg').empty(); // clear any previous graphics elements
 
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+    var diameter = 960,
+    format = d3.format(",d"),
+    color = d3.scaleOrdinal(d3.schemeCategory20c);
 
-    var format = d3.format(",d");
-
-    var color = d3.scaleOrdinal(d3.schemeCategory20c);
-
-    var pack = d3.pack()
-        .size([width, height])
+    var bubble = d3.pack()
+        .size([diameter, diameter])
         .padding(1.5);
 
-    d3.json(jsonUrl, function(error, classes) {
-        console.log(jsonUrl);
+    var svg = d3.select("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
 
-    //   if (error) throw error;
+    // var svg = d3.select("body").append("svg")
+    //     .attr("width", diameter)
+    //     .attr("height", diameter)
+    //     .attr("class", "bubble");
 
-    //   var root = d3.hierarchy({children: classes})
-    //       .sum(function(d) { return d.value; })
-    //       .each(function(d) {
-    //         if (id = d.data.id) {
-    //           var id, i = id.lastIndexOf(".");
-    //           d.id = id;
-    //           d.package = id.slice(0, i);
-    //           d.class = id.slice(i + 1);
-    //         }
-    //       });
+    d3.json(jsonUrl/*baseURL+"/flare.json"*/, function(error, data) {
+      if (error) throw error;
 
-        // var root = d3.hierarchy(classes);
+      var root = d3.hierarchy(classes(data))
+          .sum(function(d) { return d.value; })
+          .sort(function(a, b) { return b.value - a.value; });
 
-        // console.log(root);
+      console.log(root);
 
-    //   var node = svg.selectAll(".node")
-    //     .data(pack(root).leaves())
-    //     .enter().append("g")
-    //       .attr("class", "node")
-    //       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-    //
-    //   node.append("circle")
-    //       .attr("id", function(d) { return d.id; })
-    //       .attr("r", function(d) { return d.r; })
-    //       .style("fill", function(d) { return color(d.package); });
-    //
-    //   node.append("clipPath")
-    //       .attr("id", function(d) { return "clip-" + d.id; })
-    //     .append("use")
-    //       .attr("xlink:href", function(d) { return "#" + d.id; });
-    //
-    //   node.append("text")
-    //       .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
-    //     .selectAll("tspan")
-    //     .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
-    //     .enter().append("tspan")
-    //       .attr("x", 0)
-    //       .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-    //       .text(function(d) { return d; });
-    //
-    //   node.append("title")
-    //       .text(function(d) { return d.id + "\n" + format(d.name); });
+      bubble(root);
+      var node = svg.selectAll(".node")
+          .data(root.children)
+          .enter().append("g")
+          .attr("class", "node")
+        //   .attr("transform", function(d) { return "translate(" + 100 + "," + 100 + ")"; });
+          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+      node.append("title")
+          .text(function(d) { return d.data.className + ": " + format(d.value); });
+
+      node.append("circle")
+    //   .attr("r", 20)
+          .attr("r", function(d) { return d.r; })
+          .style("fill", function(d) {
+            return color(d.data.packageName);
+          });
+
+      node.append("text")
+          .attr("dy", ".3em")
+          .style("text-anchor", "middle")
+        //   .text(function(d) { return d.data.title; });
+          .text(function(d) { return d.data.className.substring(0, d.r / 3); });
     });
+
+    // Returns a flattened hierarchy containing all leaf nodes under the root.
+    function classes(root) {
+      var classes = [];
+
+      function recurse(name, node) {
+        if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+        else classes.push({packageName: name, className: node.name, value: node.size});
+      }
+
+      recurse(null, root);
+      return {children: classes};
+    }
+
+    d3.select(self.frameElement).style("height", diameter + "px");
 }

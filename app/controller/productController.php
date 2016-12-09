@@ -172,11 +172,11 @@ class ProductController {
 		$q = "SELECT * FROM product ORDER BY date_created; ";
 		$result = mysql_query($q);
 
-    // $this->getVizData();
+    $this->getVizData();
 
-		include_once SYSTEM_PATH.'/view/header.tpl';
-		include_once SYSTEM_PATH.'/view/paintings.tpl';
-		include_once SYSTEM_PATH.'/view/footer.tpl';
+		// include_once SYSTEM_PATH.'/view/header.tpl';
+		// include_once SYSTEM_PATH.'/view/paintings.tpl';
+		// include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
 
@@ -223,31 +223,32 @@ class ProductController {
 			// get comments for this post
 			$comments = Comment::fetchByPostId($blog->get('id'));
 
-			$jsonComments = array(); // array to hold json comments
-
+			// $jsonComments = array(); // array to hold json comments
+      //
 			if(count($comments) > 0) {
-				foreach($comments as $comment) {
-					$commentText = $comment->get('comment');
-					// truncate if needed to fit into visualization
-					if(strlen($commentText) > 20)
-						$commentText = substr($commentText, 0, 20).'...';
-
-					// the json comment object
-					$jsonComment = array(
-						'name' => $commentText,
-						'type' => 'comment',
-						'parent' => $blog->get('title')
-					);
-					$jsonComments[] = $jsonComment;
-				}
+			// 	foreach($comments as $comment) {
+			// 		$commentText = $comment->get('comment');
+			// 		// truncate if needed to fit into visualization
+			// 		if(strlen($commentText) > 20)
+			// 			$commentText = substr($commentText, 0, 20).'...';
+      //
+			// 		// the json comment object
+			// 		$jsonComment = array(
+			// 			'name' => $commentText,
+			// 			'type' => 'comment',
+			// 			'parent' => $blog->get('title')
+			// 		);
+			// 		$jsonComments[] = $jsonComment;
+			// 	}
 
 				// the json blog object w/ children
 				$jsonBlog = array(
 					'name' => $blog->get('title'),
 					'type' => 'blog',
 					'id' => $blog->get('id'),
+          'size' => count($comments),
 					'parent' => 'blogs',
-					'children' => $jsonComments
+					// 'children' => $jsonComments
 				);
 
 			} else {
@@ -256,6 +257,7 @@ class ProductController {
 					'name' => $blog->get('title'),
 					'type' => 'blog',
 					'id' => $blog->get('id'),
+          'size' => 0,
 					'parent' => 'blogs'
 				);
 			}
@@ -267,6 +269,7 @@ class ProductController {
 		$json = array(
 			'name' => 'blogs',
 			'parent' => 'null',
+      'size' => count($blogs),
 			'children' => $jsonBlogs
 		);
 
