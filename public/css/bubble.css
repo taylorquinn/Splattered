@@ -39,20 +39,30 @@ text {
 }
 
 #editShirtTitleForm {
-  float: right;
+
   width: 200px;
+  height: 100px;
   display: none; /* hide by default */
+
 }
 
+#parent {
+  height: 500px;
+  position: relative;
+  float: right;
+}
 
 #deleteBlog {
-  float: right;
+  height: 100px;
   width: 200px;
   display: none; /* hide by default */
+
 }
 
 #addCommentForm {
-  float: right;
+  height: 100px;
   width: 200px;
   display: none; /* hide by default */
+  float: right;
+
 }
