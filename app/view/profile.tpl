@@ -114,7 +114,7 @@
     		width: 40%;
   	  		margin-bottom: 10px;"
     		class = "followed">
-	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Following:</h2>
+	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%; color:black">Following:</h2>
 
 		     <?php while($row = mysql_fetch_assoc($followed)): ?>
 		       <?php
@@ -158,7 +158,7 @@
     		float: left;
     		width: 40%;
   	  		margin-bottom: 10px;">
-	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%">Followers</h2>
+	     <h2 style="float: left; margin-left: 20px; font-size:24px; width:40%; color:black">Followers</h2>
 	     <?php while($row1 = mysql_fetch_assoc($follower)): ?>
 	       <?php
 	       $conn = mysql_connect(DB_HOST, DB_USER, DB_PASS)
