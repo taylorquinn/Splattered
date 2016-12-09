@@ -41,3 +41,5 @@ RewriteRule ^paintings/edit(\d+)/process/?$ app/controller/productController.php
 RewriteRule ^paintings/edit(\d+)/?$ app/controller/productController.php?action=editProduct&pid=$1 [QSA,L]
 RewriteRule ^paintings/?$ app/controller/productController.php?action=products&ptype=paintings [QSA,L]
 RewriteRule ^checkout/?$ app/controller/productController.php?action=checkout [QSA,L]
+
+RewriteRule ^blogs/vizData/?$ app/controller/productController.php?action=getVizData [QSA,L]

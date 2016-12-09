@@ -55,11 +55,8 @@ class ProductController {
 				break;
 
 			case 'addProduct':
-
 					$this->addProduct();
-
 					break;
-
 
 			case 'addProductProcess':
 			 	echo "CONNECTED";
@@ -84,16 +81,20 @@ class ProductController {
 			  	  $productID = $_GET['pid'];
 	 				$this->viewBlog($productID); //should send in the username as the id
 	 				break;
+
 			case 'follow':
 					$id = $_GET['pid'];
 					$this->followUser($id);
 					break;
+
 			case 'unfollow':
 					$id = $_GET['pid'];
 					$this->unfollowUser($id);
 					break;
 
-
+      case 'getVizData':
+				$this->getVizData();
+				break;
 
       // redirect to home page if all else fails
      		default:
@@ -166,6 +167,8 @@ class ProductController {
 		$q = "SELECT * FROM product ORDER BY date_created; ";
 		$result = mysql_query($q);
 
+    // $this->getVizData();
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/paintings.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -185,6 +188,67 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/working.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
+
+	public function getVizData() {
+		// get all blog posts
+		$blogs = Blog::getAllProducts();
+
+		$jsonBlogs = array(); // array to hold json blogs
+
+		foreach($blogs as $blog) {
+			// get comments for this post
+			$comments = Comment::fetchByPostId($blog->get('id'));
+
+			$jsonComments = array(); // array to hold json comments
+
+			if(count($comments) > 0) {
+				foreach($comments as $comment) {
+					$commentText = $comment->get('comment');
+					// truncate if needed to fit into visualization
+					if(strlen($commentText) > 20)
+						$commentText = substr($commentText, 0, 20).'...';
+
+					// the json comment object
+					$jsonComment = array(
+						'name' => $commentText,
+						'type' => 'comment',
+						'parent' => $blog->get('title')
+					);
+					$jsonComments[] = $jsonComment;
+				}
+
+				// the json blog object w/ children
+				$jsonBlog = array(
+					'name' => $blog->get('title'),
+					'type' => 'blog',
+					'id' => $blog->get('id'),
+					'parent' => 'blogs',
+					'children' => $jsonComments
+				);
+
+			} else {
+				// the json shirt object w/ no children
+				$jsonBlog = array(
+					'name' => $blog->get('title'),
+					'type' => 'blog',
+					'id' => $blog->get('id'),
+					'parent' => 'blogs'
+				);
+			}
+
+			$jsonBlogs[] = $jsonBlog;
+		}
+
+		// finally, the json root object
+		$json = array(
+			'name' => 'blogs',
+			'parent' => 'null',
+			'children' => $jsonBlogs
+		);
+
+		header('Content-Type: application/json');
+		echo json_encode($json);
+	}
 
 
 
