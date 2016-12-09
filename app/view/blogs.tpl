@@ -95,7 +95,7 @@ foreach ($blogs as $b)
 
   <div class="blog_description">
     <h4>Description</h4>
-    <p>'.$b->get("description").'</p>
+    <p style="text-transform:none">'.$b->get("description").'</p>
   </div>';
 }
 ?>
