@@ -1,8 +1,7 @@
 
-<!DOCTYPE html>
-<html>
 <head>
 <style>
+
 body, html {
   height: 100%;
   margin: 0;
@@ -34,10 +33,6 @@ body, html {
   min-height: 400px;
 }
 
-.bgimg-3 {
-  background-image: url("<?= BASE_URL ?>/public/img/photographer.jpeg");
-  min-height: 400px;
-}
 
 .caption {
   position: absolute;
@@ -98,10 +93,12 @@ a:hover {
 .hi:hover{
   color: #111;
 }
+
+
 </style>
 </head>
-<body>
 
+<body>
 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
 <div class="bgimg-0">
   <div class="caption">
@@ -373,7 +370,7 @@ a:hover {
     </ul>
   </div>
 
- <a href="<?= BASE_URL ?>/blog" style="text-decoration:none">
+ <a href="<?= BASE_URL ?>/blogs" style="text-decoration:none">
 <div class="bgimg-2">
   <div class="caption">
  
@@ -425,7 +422,6 @@ a:hover {
 
 
     </div>
-
 </div>
 
 
@@ -448,6 +444,3 @@ a:hover {
   </div>
 </div>
 -->
-
-</body>
-</html>

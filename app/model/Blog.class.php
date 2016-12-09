@@ -48,13 +48,6 @@ class Blog extends DbObject {
             'image_url' => $this->image_url,
             'username' => $this->username
             );
-        echo var_dump($this);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo var_dump($db_properties);
-        echo "<br>";
-        echo "<br>";
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
 

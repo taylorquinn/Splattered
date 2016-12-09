@@ -1,12 +1,18 @@
 <div id="content3">
 
 <svg></svg>
-<form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/shirts/editTitle/">
+<form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
   <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
   <input type="hidden" id="editShirtID" name="productID" value="">
   <input type="submit" name="submit" value="Edit">
   <button type="button" name="cancel">Cancel</button>
 </form>
+<!-- <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
+  <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
+  <input type="hidden" id="editShirtID" name="productID" value="">
+  <input type="submit" name="submit" value="Edit">
+  <button type="button" name="cancel">Cancel</button>
+</form> -->
 
 <!-- the header image -->
 

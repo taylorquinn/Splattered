@@ -101,6 +101,12 @@ class ProductController {
 				$this->getVizData();
 				break;
 
+      case 'editTitleProcess':
+				$blogID = $_POST['id'];
+				$title = $_POST['title'];
+				$this->editTitleProcess($blogID, $title);
+				break;
+
       // redirect to home page if all else fails
      		default:
       		  	header('Location: '.BASE_URL);
@@ -277,7 +283,25 @@ class ProductController {
 		echo json_encode($json);
 	}
 
+  public function editTitleProcess($id, $title) {
+		header('Content-Type: application/json');
 
+		// title can't be blank
+		if($title == '') {
+			$json = array('error' => 'Title cannot be blank.');
+			echo json_encode($json);
+			exit();
+		}
+
+		$product = Blog::loadById($id);
+		$product->set('title', $title);
+		$product->save();
+
+		// success! print the JSON
+		$json = array('success' => 'success');
+		echo json_encode($json);
+		exit();
+	}
 
 	//when we add the product we add the fields, check them for validation and the products to
 	//the database

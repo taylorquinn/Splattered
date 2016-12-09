@@ -13,7 +13,17 @@
   <!-- the description of the blog -->
   <div class="blog_description">
    <!-- <h4>Full Post</h4>-->
+
+
+<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
+
      <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> "> <p class = "blog-author"> <?= $b->get('username') ?></p> </a>
+
+      <?php } else {?>
+     <p class = "blog-author"> <?= $b->get('username') ?></p>
+      <?php } ?>
+
+
     <p class = "blog-text" style="text-transform:none; letter-spacing:.5px; "> <?= $b->get('full_post') ?></p>
   </div>
 
