@@ -21,6 +21,7 @@ $(document).ready(function(){
 					// Edit successful
 					$('#editShirtTitleForm').hide(); // hide edit panel
 					$('#deleteBlog').hide();
+                    $('#addCommentForm').hide();
 
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
@@ -46,7 +47,10 @@ $(document).ready(function(){
 			function(data) {
 				if(data.success == 'success') {
 					// Edit successful
-					$('#addCommentForm').hide(); // hide edit panel
+                    $('#editShirtTitleForm').hide(); // hide edit panel
+					$('#deleteBlog').hide();
+                    $('#addCommentForm').hide();
+
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
 					alert(data.error); // show error as popup
@@ -71,8 +75,9 @@ $(document).ready(function(){
 			function(data) {
 				if(data.success == 'success') {
 					// Edit successful
-					$('#editShirtTitleForm').hide(); // hide edit panel
-					$('deleteBlog').hide(); // hide edit panel
+                    $('#editShirtTitleForm').hide(); // hide edit panel
+					$('#deleteBlog').hide();
+                    $('#addCommentForm').hide();
 
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
@@ -136,8 +141,8 @@ function drawBubbleChart(jsonUrl) {
 					})
 					.on("click", function(d) {
 							if($('#editShirtTitleForm').is(':visible')) {
-                                $('#editShirtTitleForm').hide();
-																$('#deleteBlog').hide();
+                                $('#editShirtTitleForm').hide(); // hide edit panel
+            					$('#deleteBlog').hide();
                                 $('#addCommentForm').hide();
 							} else {
 								$('#editShirtTitle').val(d.data.title);

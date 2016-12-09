@@ -25,6 +25,13 @@
 
 
     <p class = "blog-text" style="text-transform:none; letter-spacing:.5px; "> <?= $b->get('full_post') ?></p>
+
+<!-- the user may edit or delete their own post, any admin may also edit or delete a post -->
+
+<?php if(isset($_SESSION['user']) == $b->get('username')) {?>
+    <a class = "editButton" href ="<?= BASE_URL ?>/blogs/edit/<?= $b->get('id') ?>"><button class="edit-button2">Edit</button></a>
+    <!--<a class = "editButton" href ="<?= BASE_URL ?>/blogs/delete/<?= $b->get('id') ?>/process"><button class="edit-button2">Delete</button></a>-->
+<?php } ?>
   </div>
 
        <script type="text/javascript">
