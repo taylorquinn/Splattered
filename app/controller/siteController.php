@@ -35,6 +35,10 @@ class SiteController {
 				$this->working();
 				break;
 
+			case 'blogvisualization':
+				$this->blogvisualization();
+				break;
+
 			case 'processLogout':
 				$this->logout();
 				break;
@@ -120,7 +124,15 @@ class SiteController {
 
   }
 
+
+public function blogvisualization() {
+		$pageName = 'Working';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/blogvisualization.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
 	//working page
+
 
 	public function working() {
 		$pageName = 'Working';

@@ -58,6 +58,12 @@ class Blog extends DbObject {
         return $obj;
     }
 
+    public static function loadByTitle($title) {
+        $db = Db::instance();
+        $obj = $db->fetchByTitle($title, __CLASS__, self::DB_TABLE);
+        return $obj;
+    }
+
     public static function deleteByTitle($title) {
       $host     = DB_HOST;
       $database = DB_DATABASE;

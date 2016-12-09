@@ -44,6 +44,27 @@ class Db {
 		}
 	}
 
+  public function fetchByTitle($title, $class_name, $db_table) {
+    if ($title === null) {
+      return null;
+    }
+
+    $query = sprintf("SELECT * FROM `%s` WHERE title = '%s';",
+        $db_table,
+        $title
+           );
+    //echo $query;
+    $result = $this->lookup($query);
+
+    if(!mysql_num_rows($result)) {
+      return null;
+    } else {
+      $row = mysql_fetch_assoc($result);
+      $obj = new $class_name($row);
+      return $obj;
+    }
+  }
+
   public function fetchByUsername($username, $class_name, $db_table) {
     if ($username === null) {
       return null;

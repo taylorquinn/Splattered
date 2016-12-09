@@ -144,6 +144,8 @@ function drawBubbleChart(jsonUrl) {
                                 $('#editShirtTitleForm').hide(); // hide edit panel
             					$('#deleteBlog').hide();
                                 $('#addCommentForm').hide();
+								$("div.temp").remove();
+
 							} else {
 								$('#editShirtTitle').val(d.data.title);
 								$('#deleteTitle').val(d.data.title);
@@ -156,8 +158,22 @@ function drawBubbleChart(jsonUrl) {
 								$('#deleteBlog').focus();
 								$('#editShirtTitle').focus();
 								$('#addedComment').focus();
-							}
-					});
+
+								$.ajax({
+										url: baseURL+'/comments/' + d.data.id + '/',
+										type: 'GET',
+										success: function(res) {
+												console.log(res);
+												var obj = jQuery.parseJSON( res );
+												$('#parent').append("<div class = 'temp'><h1> Comments </h1></div>");
+												for (i = 0; i < obj.length; i++) {
+													$('#parent').append("<div class = 'temp'>  " + obj[i] + "</div>");
+
+												}
+											}
+										});
+									}
+							});
 
 
       node.append("title")
