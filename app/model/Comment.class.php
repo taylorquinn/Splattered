@@ -65,16 +65,19 @@ class Comment extends DbObject {
   				self::DB_TABLE,
   				$post_id
   			     );
-  		//echo $query;
-  		// $result = $this->lookup($query);
-      $result = mysql_query($query);
+  		$db = Db::instance();
+      $result = $db->lookup($query);
+
+
 
   		if(!mysql_num_rows($result)) {
   			return null;
   		} else {
-  			$row = mysql_fetch_assoc($result);
-  			$obj = new Comment($row);
-  			return $obj;
+  			$objects = array();
+        while($row = mysql_fetch_assoc($result)) {
+          $objects[] = self::loadById($row['id']);
+        }
+        return ($objects);
   		}
     }
 
