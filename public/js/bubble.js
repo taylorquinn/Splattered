@@ -20,6 +20,8 @@ $(document).ready(function(){
 				if(data.success == 'success') {
 					// Edit successful
 					$('#editShirtTitleForm').hide(); // hide edit panel
+					$('#deleteBlog').hide();
+
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
 					alert(data.error); // show error as popup
@@ -53,6 +55,36 @@ $(document).ready(function(){
 			'json'
 		);
 	});
+
+	$('#deleteBlog').submit(function(e){
+		e.preventDefault(); // don't submit the form
+
+		var title = $('#deleteTitle').val();
+		var id = $('#deleteID').val();
+		console.log(id);
+		$.post(
+			baseURL+'/blogs/deleteBlog/process/',
+			{
+				'title': title,
+				'id': id
+			},
+			function(data) {
+				if(data.success == 'success') {
+					// Edit successful
+					$('#editShirtTitleForm').hide(); // hide edit panel
+					$('deleteBlog').hide(); // hide edit panel
+
+					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
+				} else if (data.error != '') {
+					alert(data.error); // show error as popup
+				}
+			},
+			'json'
+		);
+
+
+	});
+
 
 });
 
@@ -105,18 +137,20 @@ function drawBubbleChart(jsonUrl) {
 					.on("click", function(d) {
 							if($('#editShirtTitleForm').is(':visible')) {
                                 $('#editShirtTitleForm').hide();
-							} else {
-								$('#editShirtTitle').val(d.data.title);
-								$('#editPostID').val(d.data.id);
-								$('#editShirtTitleForm').show();
-								$('#editShirtTitle').focus();
-							}
-
-                            if($('#addCommentForm').is(':visible')) {
+																$('#deleteBlog').hide();
                                 $('#addCommentForm').hide();
 							} else {
+								$('#editShirtTitle').val(d.data.title);
+								$('#deleteTitle').val(d.data.title);
+								$('#editShirtID').val(d.data.id);
+								$('#deleteID').val(d.data.id);
+								$('#editPostID').val(d.data.id);
+								$('#editShirtTitleForm').show();
+								$('#deleteBlog').show();
+								$('#addCommentForm').show();
+								$('#deleteBlog').focus();
+								$('#editShirtTitle').focus();
 								$('#addedComment').focus();
-                                $('#addCommentForm').show();
 							}
 					});
 

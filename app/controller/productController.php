@@ -46,6 +46,12 @@ class ProductController {
 					$productID = $_GET['pid'];
 					$this->editProduct($productID);
 					break;
+			case 'deleteBlog':
+				$blogID = $_POST['id'];
+				$title = $_POST['title'];
+				$this->deleteBlogProcess($blogID, $title);
+				break;
+
 
 
 			case 'popupProduct':
@@ -144,6 +150,7 @@ class ProductController {
 		$myUser = $myUsername->get('id');
 		$q = sprintf("DELETE FROM follow WHERE follower_id = %d AND followed_id = %d  ",
 			mysql_real_escape_string($myUser), mysql_real_escape_string($userVariable));
+
 	 mysql_query($q);
 
    if(isset($_SESSION['user'])) {
@@ -294,6 +301,33 @@ class ProductController {
 		exit();
 	}
 
+	public function deleteBlogProcess($id, $title) {
+		header('Content-Type: application/json');
+
+		// title can't be blank
+		if($title == '') {
+			$json = array('error' => 'Title cannot be blank.');
+			echo json_encode($json);
+			exit();
+		}
+
+		$host     = DB_HOST;
+		$database = DB_DATABASE;
+		$username = DB_USER;
+		$password = DB_PASS;
+
+		$query = "DELETE FROM `post` WHERE `title` = '$title'";
+
+		mysql_query($query);
+
+			$json = array('success' => 'success');
+			echo json_encode($json);
+			exit();
+
+
+		// success! print the JSON
+
+	}
   public function addCommentProcess($id, $comment) {
     header('Content-Type: application/json');
 
