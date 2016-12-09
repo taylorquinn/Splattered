@@ -4,136 +4,59 @@ $(document).ready(function(){
 	drawBubbleChart(baseURL+'/blogs/vizData/');
     // drawDendrogram(baseURL+'/blogs/vizData/');
 
-	// $('#editShirtTitleForm').submit(function(e){
-	// 	e.preventDefault(); // don't submit the form
-    //
-	// 	var title = $('#editShirtTitle').val();
-	// 	var id = $('#editShirtID').val();
-    //
-	// 	$.post(
-	// 		baseURL+'/shirts/editTitle/process/',
-	// 		{
-	// 			'title': title,
-	// 			'id': id
-	// 		},
-	// 		function(data) {
-	// 			if(data.success == 'success') {
-	// 				// Edit successful
-	// 				$('#editShirtTitleForm').hide(); // hide edit panel
-	// 				drawDendrogram(baseURL+'/shirts/vizData/'); // redraw viz
-	// 			} else if (data.error != '') {
-	// 				alert(data.error); // show error as popup
-	// 			}
-	// 		},
-	// 		'json'
-	// 	);
-	// });
+	$('#editShirtTitleForm').submit(function(e){
+		e.preventDefault(); // don't submit the form
 
-});
+		var title = $('#editShirtTitle').val();
+		var id = $('#editShirtID').val();
 
-// source: http://bl.ocks.org/mbostock/4063570
-function drawDendrogram(jsonUrl) {
-	$('svg').empty(); // clear any previous graphics elements
+		$.post(
+			baseURL+'/blogs/editTitle/process/',
+			{
+				'title': title,
+				'id': id
+			},
+			function(data) {
+				if(data.success == 'success') {
+					// Edit successful
+					$('#editShirtTitleForm').hide(); // hide edit panel
+					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
+				} else if (data.error != '') {
+					alert(data.error); // show error as popup
+				}
+			},
+			'json'
+		);
 
-	// grab the SVG element
-	var svg = d3.select("svg"),
-	    width = +svg.attr("width"), // store width and height locally
-	    height = +svg.attr("height"),
-			// shift everything right so we can see root text label
-	    g = svg.append("g").attr("transform", "translate(40,0)");
-
-	// create dendrogram layout
-	var tree = d3.cluster()
-	    .size([height, width - 160]); // shift everything left to see text labels
-
-	// grab data to be visualized from JSON file
-	d3.json(jsonUrl, function(error, treeData) {
-	    if (error) throw error;
-
-			// create a root node from this dataset
-	    var root = d3.hierarchy(treeData);
-
-        console.log(root);
-        console.log(jsonUrl);
-
-	    tree(root); // lays out the dendrogram using this root node
-
-			// create paths from dataset
-	    var link = g.selectAll(".link")
-	        .data(root.descendants().slice(1))
-	        .enter().append("path")
-	        .attr("class", "link")
-	        .attr("d", function(d) {
-	            return "M" + d.y + "," + d.x +
-	                "C" + (d.parent.y + 100) + "," + d.x +
-	                " " + (d.parent.y + 100) + "," + d.parent.x +
-	                " " + d.parent.y + "," + d.parent.x;
-	        })
-					.on("mouseover",function(d){
-						d3.select(this).classed("hovered", true);
-					})
-					.on("mouseout",function(d){
-						d3.select(this).classed("hovered", false);
-					});
-
-			// create <g> nodes from dataset
-	    var node = g.selectAll(".node")
-	        .data(root.descendants())
-	        .enter().append("g")
-	        .attr("class", function(d) {
-	            return "node" + ((d.data.parent != 'blogs') ? " node--internal" : " node--leaf");
-	        })
-	        .attr("transform", function(d) {
-	            return "translate(" + d.y + "," + d.x + ")";
-	        })
-					// hover event handlers to change color
-					.on("mouseover",function(d){
-						d3.select(this).classed("hovered", true);
-					})
-					.on("mouseout",function(d){
-						d3.select(this).classed("hovered", false);
-					});
-
-
-
-					// click event handler to show/hide edit panel
-
-
-			// draw a circle and append to the node
-	    node.append("circle")
-	        .attr("r", 5)
-					.on("mouseover",function(d){
-						d3.select(this).classed("hovered", true);
-						console.log("hhh");
-					})
-					.on("mouseout",function(d){
-						d3.select(this).classed("hovered", false);
-						console.log("hhh");
-
-					});
-
-
-			// draw text label and append to the node
-	    node.append("text")
-	        .attr("dy", 3)
-	        .attr("x", function(d) {
-	            return d.children ? -8 : 8;
-	        })
-
-
-	        .style("text-anchor", function(d) {
-	            return d.children ? "end" : "start";
-	        })
-	        .text(function(d) {
-	            return d.data.name;
-	        });
+        //  $.ajax({
+        //     type: "post",
+        //     url: baseURL+'/blogs/editTitle/process/',
+        //     dataType:"json",
+        //     data:
+        //     {
+		// 		'title': title,
+		// 		'id': id
+		// 	},
+        //     success: function (response) {
+        //         if(response.success === "success") {
+        //             console.log("success");
+        //             // do something with response.message or whatever other data on success
+        //         }
+        //     },
+        //     error: function (errorResponse) {
+        //         console.log(errorResponse.responseText);
+        //     }
+        // })
+        // return false;
 	});
 
-}
+});
 
 // source: http://bl.ocks.org/mbostock/4063269
 function drawBubbleChart(jsonUrl) {
 	$('svg').empty(); // clear any previous graphics elements
+
+    console.log("BUBBLE");
 
     var diameter = 960,
     format = d3.format(",d"),
@@ -160,8 +83,6 @@ function drawBubbleChart(jsonUrl) {
           .sum(function(d) { return d.value; })
           .sort(function(a, b) { return b.value - a.value; });
 
-      console.log(root);
-
       bubble(root);
       var node = svg.selectAll(".node")
           .data(root.children)
@@ -179,18 +100,20 @@ function drawBubbleChart(jsonUrl) {
 					})
 					.on("click", function(d) {
 							if($('#editShirtTitleForm').is(':visible')) {
-								$('#editShirtTitleForm').hide();
+                                $('#editShirtTitleForm').hide();
+                                // $('#addCommentForm').hide();
 							} else {
-								$('#editShirtTitle').val(d.data.name);
+								$('#editShirtTitle').val(d.data.title);
 								$('#editShirtID').val(d.data.id);
 								$('#editShirtTitleForm').show();
 								$('#editShirtTitle').focus();
+                                // $('#addCommentForm').show();
 							}
 					});
 
 
       node.append("title")
-          .text(function(d) { return d.data.className + ": " + format(d.value); });
+          .text(function(d) { return d.data.title + ": " + format(d.value); });
 
       node.append("circle")
     //   .attr("r", 20)
@@ -203,7 +126,7 @@ function drawBubbleChart(jsonUrl) {
           .attr("dy", ".3em")
           .style("text-anchor", "middle")
         //   .text(function(d) { return d.data.title; });
-          .text(function(d) { return d.data.className.substring(0, d.r / 3); });
+          .text(function(d) { return d.data.title.substring(0, d.r / 3); });
     });
 
     // Returns a flattened hierarchy containing all leaf nodes under the root.
@@ -212,7 +135,7 @@ function drawBubbleChart(jsonUrl) {
 
       function recurse(name, node) {
         if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-        else classes.push({packageName: name, className: node.name, value: node.size});
+        else classes.push({packageName: name, id: node.id, title: node.name, value: node.size});
       }
 
       recurse(null, root);

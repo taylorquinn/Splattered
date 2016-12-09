@@ -18,7 +18,7 @@
 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
 
      <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> "> <p class = "blog-author"> <?= $b->get('username') ?></p> </a>
-     
+
       <?php } else {?>
      <p class = "blog-author"> <?= $b->get('username') ?></p>
       <?php } ?>
@@ -67,12 +67,12 @@
        </script>
 <?php
 if(isset($_SESSION['user']))
-{ 
+{
 $user = $_SESSION['user'];
 
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
-             
+
                </br>
 
               <input type="text" name="name" id="name" value=',$user,' readonly="readonly"  style="margin-left: 5px;
@@ -80,15 +80,15 @@ echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-s
                       display: inline-block;
                       height: 0px;
                       margin-left: 20%;
-                      border:none" 
+                      border:none"
                       />
            <!--    <p style = "    width: 60%; margin-left: 20%;  font-size: 18px; display: inline; margin-bottom: 20px;" >:</p> -->
               <!--<p style= "margin-left: 40px; display:inline-block;"> Comment: </p>-->
-              <textarea style = "width:60%; height:100px; margin-left: 20%;" class="add-textbox"  name="message" id="message" placeholder = "Join the conversation, ',$user,'! Enter a new comment." name="description"></textarea> 
-               
-               
+              <textarea style = "width:60%; height:100px; margin-left: 20%;" class="add-textbox"  name="message" id="message" placeholder = "Join the conversation, ',$user,'! Enter a new comment." name="description"></textarea>
 
-              
+
+
+
 
              <!-- <p name="name" id= "name" style="margin-left: 5px;
                       display: inline-block;
