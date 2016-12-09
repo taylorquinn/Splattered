@@ -13,8 +13,8 @@
   <!-- the description of the blog -->
   <div class="blog_description">
    <!-- <h4>Full Post</h4>-->
-     By: <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> "> <p class = "blog-author"> <?= $b->get('username') ?></p> </a>
-    <p class = "blog-text"> <?= $b->get('full_post') ?></p>
+     <a href="<?= BASE_URL ?>/profile/<?= $b->get('username') ?> "> <p class = "blog-author"> <?= $b->get('username') ?></p> </a>
+    <p class = "blog-text" style="text-transform:none; letter-spacing:.5px; "> <?= $b->get('full_post') ?></p>
   </div>
 
        <script type="text/javascript">
