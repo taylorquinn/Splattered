@@ -60,7 +60,7 @@ h3 {
   letter-spacing: 2px;
   text-transform: uppercase;
   font: 14px "Lato", sans-serif;
-  color: #000;
+  color: #b3b3b3;
   margin-bottom: 0px;
 }
 h2 {
@@ -81,7 +81,7 @@ a {
   letter-spacing: 2px;
   text-transform: uppercase;
   font: 13px "Lato", sans-serif;
-  color: #666;
+  color: #000;
   text-decoration: none;
 }
 .hi {
