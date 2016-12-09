@@ -30,7 +30,7 @@ function isSelected($pn, $link) {
 <body>
 <div id="wrapper">
 
-		<div id="header">
+		<div id="header" style="margin-top:-15px">
 			<div id = "menubar">
 
 			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov2.png" alt="SPLATTERED"> </a></img></h1>

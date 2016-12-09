@@ -1,14 +1,108 @@
-<!--If logged in, show an activity feed on the right, with all of the interactions-->
 
-      <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
-        <div id="activity_feed">
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-0, .bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.9;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bgimg-0 {
+  background-image: url("<?= BASE_URL ?>/public/img/background1.jpeg");
+  min-height: 500px;
+}
+.bgimg-1 {
+  background-image: url("<?= BASE_URL ?>/public/img/photographer.jpeg");
+  min-height: 500px;
+}
+
+.bgimg-2 {
+  background-image: url("<?= BASE_URL ?>/public/img/desk.jpeg");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("<?= BASE_URL ?>/public/img/photographer.jpeg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font: 14px "Lato", sans-serif;
+  color: #111;
+  margin-bottom: 0px;
+}
+h2 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: white;
+}
+
+p {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font: 13px "Lato", sans-serif;
+  color: #111;
+}
+</style>
+</head>
+<body>
+
+<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
+<div class="bgimg-0">
+  <div class="caption">
+  <a href="<?= BASE_URL ?>/paintings" style="text-decoration:none">
+    <span class="border">Welcome back <?=$_SESSION['user']?>!</span>
+    </a>
+  </div>
+</div>
+
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding-top:10px;text-align: center; font-size:25px">
+
+ 
           <h2>Activity Feed</h2>
 
           <!--posts you've posted-->
               <h3>Your posts</h3>
+              <ul id="notifications">
               <?php while($row = mysql_fetch_assoc($result)): ?>
-                <a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a>
+                <li><a href="<?= BASE_URL ?>/blogs/view/<?= $row['id'] ?> "> <p class = "blog-author"> <?= $row['title'] ?></p> </a><li>
               <?php endwhile; ?>
+              </ul>
               <?php
               $username = $_SESSION['user'];
               $uid = -1; // if the uid stays negative -1, there is no one logged in
@@ -166,39 +260,31 @@
                 <?php endwhile; ?>
               <?php endwhile; ?>
 
-            </div>
-
-          <?php } ?>
+         
 
 
-<!--if user is set, make the width of the header image smaller to account for the activity feed-->
-  <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
-  <div id="header_image" style="width: 66%">
 
 
-   <img class="head-image" src="<?= BASE_URL ?>/public/img/photographer.jpeg" alt="Header image"/>
-    <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
+    </div>
+ </div>
+
+ <?php } ?>
+
+
+
+
+
+
+<div class="bgimg-1">
+  <div class="caption">
+  <a href="<?= BASE_URL ?>/paintings" style="text-decoration:none">
+    <span class="border">SHOP NEW ARRIVALS</span>
+    </a>
   </div>
-
-  <?php }
-
+</div>
 
 
-  else {?>
-
-  <div id="header_image" style="width: 100%">
-
-
-   <img class="head-image" src="<?= BASE_URL ?>/public/img/photographer.jpeg"  alt="Header image"/>
-    <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
-  </div>
-
-
-  <?php } ?>
-
-
-<!--tile images across the screen-->
-  <div id= "tileImages">
+   <div id= "tileImages" style="color: #777; background-color:white; text-align:center; text-align: center;">
     <ul id="tiles">
 
           <li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
@@ -211,33 +297,21 @@
     </ul>
   </div>
 
-  <!--second header-->
+ <a href="<?= BASE_URL ?>/blog" style="text-decoration:none">
+<div class="bgimg-2">
+  <div class="caption">
+ 
+    <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">CHECK OUT NEW POSTS</span>
+    
+  </div>
+</div>
+</a>
 
-      <div id="header_image2">
-        <img class="head-image2" src="<?= BASE_URL ?>/public/img/paint.jpeg" alt="Header image" />
-         <input type="button" class="shopfavorites" onclick="location.href='paintings'" value="Shop Our Favorites" />
-         <!--edited from the image found here:  https://www.google.com/imgres?imgurl=http%3A%2F%2F67.media.tumblr.com%2Fac1a5aee391576c9bb410bd93d57550e%2Ftumblr_ndx3yvFet41qc91i1o1_1280.jpg&imgrefurl=http%3A%2F%2Fartistandstudio.tumblr.com%2Fpage%2F3&docid=Eun42Gye6mFtzM&tbnid=CmwQOamtM-yBFM%3A&w=1000&h=667&hl=en&bih=475&biw=1262&ved=0ahUKEwj__fKDia7PAhXEFj4KHZODDX0QMwgfKAEwAQ&iact=mrc&uact=8 -->
-      </div>
-
-
-<!--popular item tiles-->
-  <!--<div id="Favorites">
-
-  
-  <div id="popular">
-    <ul id="popular">
-
-          <li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
-          <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
-          <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/stairs.jpg" alt="Home Decor" /></a> </li>
-          <li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
-          <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
-
-    </ul>
-    </div>-->
-
-    <h2>Follow our adventures on Instagram!</h2>
-    <div id = "Instagram_feed">
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: center; font-size:25px">
+    <h2>FOLLOW OUR ADVENTURES ON INSTAGRAM</h2>
+  </div>
+   <div id = "Instagram_feed" style="background-color:white;">
         <?php
         // use this instagram access token generator http://instagram.pixelunion.net/
         $access_token="4243791441.1677ed0.7397dce5702e4c1a8403ba9217927a08";
@@ -275,4 +349,29 @@
 
 
     </div>
-    </div>
+
+</div>
+
+
+<!--
+<div class="bgimg-3">
+  <div class="caption">
+    <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+    <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+  </div>
+</div>
+
+<div class="bgimg-1">
+  <div class="caption">
+    <span class="border">COOL!</span>
+  </div>
+</div>
+-->
+
+</body>
+</html>
