@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
   // event handler for checkboxes with name "size"
@@ -32,7 +33,15 @@ $(document).ready(function(){
     $(this).prop("checked", true); // check the box
   })
 
+
+
+
+    
+
+
+
 });
+
 
 
 

@@ -176,7 +176,7 @@
   <div id="header_image" style="width: 66%">
 
 
-   <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image"/>
+   <img class="head-image" src="<?= BASE_URL ?>/public/img/photographer.jpeg" alt="Header image"/>
     <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
   </div>
 
@@ -189,7 +189,7 @@
   <div id="header_image" style="width: 100%">
 
 
-   <img class="head-image" src="<?= BASE_URL ?>/public/img/site_header.jpg" alt="Header image"/>
+   <img class="head-image" src="<?= BASE_URL ?>/public/img/photographer.jpeg"  alt="Header image"/>
     <input type="button" class="shopnewarrivals" onclick="location.href='paintings'" value="Shop New Arrivals" />
   </div>
 
@@ -214,16 +214,16 @@
   <!--second header-->
 
       <div id="header_image2">
-        <img class="head-image2" src="<?= BASE_URL ?>/public/img/cover_photo.jpg" alt="Header image" />
+        <img class="head-image2" src="<?= BASE_URL ?>/public/img/paint.jpeg" alt="Header image" />
          <input type="button" class="shopfavorites" onclick="location.href='paintings'" value="Shop Our Favorites" />
          <!--edited from the image found here:  https://www.google.com/imgres?imgurl=http%3A%2F%2F67.media.tumblr.com%2Fac1a5aee391576c9bb410bd93d57550e%2Ftumblr_ndx3yvFet41qc91i1o1_1280.jpg&imgrefurl=http%3A%2F%2Fartistandstudio.tumblr.com%2Fpage%2F3&docid=Eun42Gye6mFtzM&tbnid=CmwQOamtM-yBFM%3A&w=1000&h=667&hl=en&bih=475&biw=1262&ved=0ahUKEwj__fKDia7PAhXEFj4KHZODDX0QMwgfKAEwAQ&iact=mrc&uact=8 -->
       </div>
 
 
 <!--popular item tiles-->
-  <div id="Favorites">
+  <!--<div id="Favorites">
 
-  <h2>Most Popular Items</h2>
+  
   <div id="popular">
     <ul id="popular">
 
@@ -234,5 +234,45 @@
           <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
 
     </ul>
+    </div>-->
+
+    <h2>Follow our adventures on Instagram!</h2>
+    <div id = "Instagram_feed">
+        <?php
+        // use this instagram access token generator http://instagram.pixelunion.net/
+        $access_token="4243791441.1677ed0.7397dce5702e4c1a8403ba9217927a08";
+        $photo_count=9;
+             
+        $json_link="https://api.instagram.com/v1/users/self/media/recent/?";
+        $json_link.="access_token={$access_token}&count={$photo_count}";
+
+
+        $json = file_get_contents($json_link);
+        $obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+
+        foreach ($obj['data'] as $post) {
+     
+          $pic_text=$post['caption']['text'];
+          $pic_link=$post['link'];
+          $pic_like_count=$post['likes']['count'];
+          $pic_comment_count=$post['comments']['count'];
+          $pic_src=str_replace("http://", "https://", $post['images']['standard_resolution']['url']);
+          $pic_created_time=date("F j, Y", $post['caption']['created_time']);
+          $pic_created_time=date("F j, Y", strtotime($pic_created_time . " +1 days"));
+           
+          echo "<div id='image' class='image' style='display: inline;'>        
+                              
+               <a href='{$pic_link}'>
+                <img class='insta' src='{$pic_src}' alt='{$pic_text}' style='width:20%' >
+                     
+                </a>
+
+                </div>";
+       }
+
+        ?>
+
+
+
     </div>
     </div>
