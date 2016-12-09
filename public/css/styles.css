@@ -1024,5 +1024,5 @@ overflow: scroll;
 
 /*FORM INPUT */
 input:invalid{
-    box-shadow: 0 0 2px .5px blue;
+    box-shadow: 0 0 2px .5px #66ccff;
 }
