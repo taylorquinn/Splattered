@@ -206,6 +206,13 @@ public function blogvisualization() {
 			or die ('Error: Could not connect to MySql database');
 		mysql_select_db(DB_DATABASE);
 
+		 $q = "SELECT * FROM user WHERE username='$username'";
+    	$result = mysql_query($q);
+    	 $numberOfRows = mysql_num_rows($result);
+
+    	 echo($numberOfRows);
+
+		
 		//checks if each of the of the fields are empty or not
 		if(!isset($email) || trim($email) == '' || !isset($firstName) || trim($firstName) == '' || !isset($lastName) || trim($lastName) == ''
 
@@ -220,6 +227,14 @@ public function blogvisualization() {
 
 		}
 
+		else if(trim($confirm) != trim($password) || $numberOfRows != 0 ){
+			header('Location: '.BASE_URL.'/error');
+
+
+
+     		 exit();
+		}
+
 		//starts a session
     $q = sprintf("INSERT INTO user (first_name, last_name, email, username, pw, age, profpic) VALUES ('$firstName', '$lastName', '$email', '$username', '$password', '$age', '$profpic')");
 		mysql_query($q);
@@ -227,6 +242,8 @@ public function blogvisualization() {
     session_start();
     $_SESSION['user'] = $username;
     header('Location: '.BASE_URL);
+
+    echo($numberOfRows);
     exit();
 	}
 

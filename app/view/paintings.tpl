@@ -46,6 +46,34 @@
   </div>
 </div>
 
+<svg></svg>
+<div id = "parent">
+  <div>
+  <form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
+    <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
+    <input type="hidden" id="editPostID" name="productID" value="">
+    <input type="submit" name="submit" value="Edit">
+    <button type="button" name="cancel">Cancel</button>
+  </form>
+  </div>
+
+  <div>
+  <form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
+    <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
+    <input type="hidden" id="deleteID" name="productID" value="">
+    <input type="submit" name="submit" value="Delete">
+  </form>
+  </div>
+  <div>
+  <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
+    <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
+    <input type="submit" name="submit" value="Edit">
+    <button type="button" name="cancel">Cancel</button>
+  </form>
+  </div>
+  
+</div>
+
 
 
 <!--<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />-->
@@ -237,7 +265,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 			<label><input type="checkbox" name="size" value="bw" /> Black & White</label>
 
 
-			<button class= "sidebar-button" onclick="clearFilters()" >Clear filters</button>
+			<!--<button class= "sidebar-button" onclick="clearFilters()" >Clear filters</button>-->
 			<button class= "sidebar-button" onclick="sidebarDisappear()">Hide Sidebar</button>
 		</div>
 
