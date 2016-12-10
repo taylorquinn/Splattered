@@ -327,6 +327,11 @@ class ProductController {
 		$username = DB_USER;
 		$password = DB_PASS;
 
+    $conn = mysql_connect($host, $username, $password)
+			or die ('Error: Could not connect to MySql database');
+
+		mysql_select_db($database);
+
 		$query = "DELETE FROM `post` WHERE `title` = '$title'";
 
 		mysql_query($query);
