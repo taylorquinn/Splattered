@@ -23,6 +23,8 @@ $(document).ready(function(){
 					$('#deleteBlog').hide();
                     $('#addCommentForm').hide();
 
+                    $("div.temp").remove();
+
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
 					alert(data.error); // show error as popup
@@ -51,6 +53,8 @@ $(document).ready(function(){
 					$('#deleteBlog').hide();
                     $('#addCommentForm').hide();
 
+                    $("div.temp").remove();
+
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
 					alert(data.error); // show error as popup
@@ -78,6 +82,8 @@ $(document).ready(function(){
                     $('#editShirtTitleForm').hide(); // hide edit panel
 					$('#deleteBlog').hide();
                     $('#addCommentForm').hide();
+
+                    $("div.temp").remove();
 
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {

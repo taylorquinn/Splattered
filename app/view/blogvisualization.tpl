@@ -12,7 +12,7 @@
   </div>
 
   <div>
-  <form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
+  <form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deleteBlog/">
     <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
     <input type="hidden" id="deleteID" name="productID" value="">
     <input type="submit" name="submit" value="Delete">
@@ -21,11 +21,11 @@
   <div>
   <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
     <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
-    <input type="submit" name="submit" value="Edit">
+    <input type="submit" name="submit" value="Add">
     <button type="button" name="cancel">Cancel</button>
   </form>
   </div>
-  
+
 </div>
 
 

@@ -46,13 +46,12 @@ class ProductController {
 					$productID = $_GET['pid'];
 					$this->editProduct($productID);
 					break;
+
 			case 'deleteBlog':
 				$blogID = $_POST['id'];
 				$title = $_POST['title'];
 				$this->deleteBlogProcess($blogID, $title);
 				break;
-
-
 
 			case 'popupProduct':
 
@@ -332,13 +331,10 @@ class ProductController {
 
 		mysql_query($query);
 
-			$json = array('success' => 'success');
-			echo json_encode($json);
-			exit();
-
-
 		// success! print the JSON
-
+    $json = array('success' => 'success');
+    echo json_encode($json);
+    exit();
 	}
 
 	public function showComments($id) {
@@ -373,7 +369,7 @@ class ProductController {
 
     // comment can't be blank
     if($comment == '') {
-      $json = array('error' => 'Title cannot be blank.');
+      $json = array('error' => 'Comment cannot be blank.');
       echo json_encode($json);
       exit();
     }
