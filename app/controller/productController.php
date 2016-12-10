@@ -82,6 +82,10 @@ class ProductController {
 					$id = $_GET['pid'];
 					$this->followUser($id);
 					break;
+			case 'comments':
+					$id = $_GET['id'];
+					$this->showComments($id);
+					break;
 
 			case 'unfollow':
 					$id = $_GET['pid'];
@@ -333,6 +337,25 @@ class ProductController {
 
 
 		// success! print the JSON
+
+	}
+
+	public function showComments($id) {
+		$comments = Comment::fetchByPostId($id);
+		$jsonComments = array(); // array to hold json blogs
+
+		foreach($comments as $comment) {
+			$commentText = $comment->get('comment');
+			// truncate if needed to fit into visualization
+			if(strlen($commentText) > 20)
+				$commentText = substr($commentText, 0, 20).'...';
+
+			// the json comment object
+			$jsonComment = $commentText;
+			$jsonComments[] = $jsonComment;
+
+		}
+		echo json_encode($jsonComments);
 
 	}
   public function addCommentProcess($id, $comment) {

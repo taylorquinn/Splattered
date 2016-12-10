@@ -1,22 +1,32 @@
 <div id="content3">
 
 <svg></svg>
-<form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
-  <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
-  <input type="hidden" id="editPostID" name="productID" value="">
-  <input type="submit" name="submit" value="Edit">
-  <button type="button" name="cancel">Cancel</button>
-</form>
-<form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
-  <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
-  <input type="hidden" id="deleteID" name="productID" value="">
-  <input type="submit" name="submit" value="Delete">
-</form>
-<form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
-  <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
-  <input type="submit" name="submit" value="Edit">
-  <button type="button" name="cancel">Cancel</button>
-</form>
+<div id = "parent">
+  <div>
+  <form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
+    <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
+    <input type="hidden" id="editPostID" name="productID" value="">
+    <input type="submit" name="submit" value="Edit">
+    <button type="button" name="cancel">Cancel</button>
+  </form>
+  </div>
+
+  <div>
+  <form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
+    <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
+    <input type="hidden" id="deleteID" name="productID" value="">
+    <input type="submit" name="submit" value="Delete">
+  </form>
+  </div>
+  <div>
+  <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
+    <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
+    <input type="submit" name="submit" value="Edit">
+    <button type="button" name="cancel">Cancel</button>
+  </form>
+  </div>
+  
+</div>
 
 <!-- the header image -->
 
@@ -65,7 +75,7 @@ if(isset($_SESSION['user']))
   if($p->get('status') != 0) {
   echo '<div id="add_blog">
 
-  
+
 
 </div>';
 }
@@ -83,11 +93,11 @@ if(isset($_SESSION['user']))
 
          <label>Title: <input type="text" name="title" value=""></label>
 
-         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label> 
+         <label>Full Post: <textarea rows="10" name="full_post" cols="50"> </textarea></label>
 
-       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label> 
+       <label>Description: <textarea rows="3" name="description" cols="50"> </textarea></label>
 
-        <label>Image URL: <input type="text" name="image_url" value=""></label> 
+        <label>Image URL: <input type="text" name="image_url" value=""></label>
         <input type="submit" value = "Add Blog Post">
         </form>
 
@@ -97,7 +107,7 @@ if(isset($_SESSION['user']))
 
 
 
- 
+
 
 
 
