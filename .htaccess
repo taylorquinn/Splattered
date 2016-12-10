@@ -6,8 +6,10 @@ RewriteEngine on
 
 # Site
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
-RewriteRule ^contact/?$ app/controller/siteController.php?action=contact [QSA,L]
+RewriteRule ^error/?$ app/controller/siteController.php?action=error [QSA,L]
 RewriteRule ^working/?$ app/controller/siteController.php?action=working [QSA,L]
+RewriteRule ^blogvisualization/?$ app/controller/siteController.php?action=blogvisualization [QSA,L]
+
 RewriteRule ^signup/?$ app/controller/siteController.php?action=signup [QSA,L]
 RewriteRule ^footer/login/?$ app/controller/siteController.php?action=processLogin [QSA,L]
 RewriteRule ^footer/logout/?$ app/controller/siteController.php?action=processLogout [QSA,L]
