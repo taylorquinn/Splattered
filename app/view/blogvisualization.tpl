@@ -2,6 +2,7 @@
 
 <svg></svg>
 <div id = "parent">
+  <?php if(isset($_SESSION['user'])) {?>
   <div>
   <form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
     <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
@@ -25,6 +26,8 @@
     <button type="button" name="cancel">Cancel</button>
   </form>
   </div>
+  <?php } ?>
+
 
 </div>
 

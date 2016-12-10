@@ -83,7 +83,7 @@ $(document).ready(function(){
 					$('#deleteBlog').hide();
                     $('#addCommentForm').hide();
 
-                    $("div.temp").remove();
+          $("div.temp").remove();
 
 					drawBubbleChart(baseURL+'/blogs/vizData/'); // redraw viz
 				} else if (data.error != '') {
@@ -146,11 +146,13 @@ function drawBubbleChart(jsonUrl) {
 						d3.select(this).classed("hovered", false);
 					})
 					.on("click", function(d) {
+						$("div.temp").remove();
+
 							if($('#editShirtTitleForm').is(':visible')) {
                                 $('#editShirtTitleForm').hide(); // hide edit panel
             					$('#deleteBlog').hide();
                                 $('#addCommentForm').hide();
-								$("div.temp").remove();
+								//$("div.temp").remove();
 
 							} else {
 								$('#editShirtTitle').val(d.data.title);
