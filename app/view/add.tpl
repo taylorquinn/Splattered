@@ -23,21 +23,21 @@
 	  		    	<form id="add-product" action="<?= BASE_URL ?>/add/process" method="POST">
 
 
-				  <input type="text" name="title" class="add-text" placeholder="INSERT TITLE OF ITEM">
+				  <input type="text" name="title" class="add-text" placeholder="INSERT TITLE OF ITEM" required>
 				 	 <br>
-				  <input type="text" name="price" class="add-text" placeholder="INSERT PRICE $$$">
+				  <input type="text" name="price" class="add-text" placeholder="INSERT PRICE $$$" required>
 				 	 <br>
 
-				 	 <input type="text" name="sizes" class="add-text" placeholder="INSERT SIZES">
+				 	 <input type="text" name="sizes" class="add-text" placeholder="INSERT SIZES" required>
 				 	 <br>
-				 	 <input type="text" name="img_url" class="add-text" placeholder="INSERT IMAGE URL">
+				 	 <input type="text" name="img_url" class="add-text" placeholder="INSERT IMAGE URL" required>
 						<br>
-				 		<textarea  class="add-textbox"  placeholder = "Enter Description" name="description"></textarea>
+				 		<textarea  class="add-textbox"  placeholder = "Enter Description" name="description" required></textarea>
 				 	<br>
-				  <input type="submit" name="butt-add" class="add-button" value="Add item to site" onclick="addItems()">
+				  <input type="submit" name="butt-add" class="add-button" value="Add item to site" onclick="addItems()" required>
 
 				<!--  <input type="submit" name="submit" value="Add item">-->
-				  <input type="button" name="butt-can" class="cancel-button" value="Cancel" onclick="location.href='<?= BASE_URL ?>/add'"">
+				  <input type="button" name="butt-can" class="cancel-button" value="Cancel" onclick="location.href='<?= BASE_URL ?>/add'"" required>
 				</form>
 
 	  		    </ul>

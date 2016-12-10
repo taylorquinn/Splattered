@@ -578,7 +578,7 @@ class ProductController {
 	}
 		session_start();
 		$_SESSION['msg'] = "You edited the product called ".$title;
-		header('Location: '.BASE_URL);
+		header('Location: '.BASE_URL."/paintings");
 		$this->paintings();
 	}
 }
