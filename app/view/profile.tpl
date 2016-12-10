@@ -185,5 +185,5 @@
  <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/user/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
  <?php elseif($b->get('status') == 2): ?>
  <a class = "editButton" href ="<?= BASE_URL ?>/profile/process/admin/delete/<? $curr_username_id ?>"><button class="buttonFollow buttonFollow2">Delete Profile</button></a>
--->
- <?php endif; ?>
+
+ <?php endif; ?> -->
