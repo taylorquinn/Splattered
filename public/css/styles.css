@@ -120,6 +120,14 @@ a {
 a:hover {
   color: white;
 }
+
+
+
+
+#follower_name:hover {
+  color: #b3b3b3;
+}
+
 .hi:hover{
   color: #111;
 }

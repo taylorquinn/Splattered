@@ -132,7 +132,7 @@
 		       		list-style: none;
 					    margin-left: 0px;
 					    display: inline;">
-			       <li style= ""><a style="float: left; display: inline; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser?></a>
+			       <li ><a id="follower_name" style="float: left; display: inline; margin-left: 20px; font-size:22px;" href="<?= BASE_URL ?>/profile/<?= $followedUser ?> "><?= $followedUser?></a>
 			       <a class = "followLink" href = "<?= BASE_URL ?>/unfollow/<?= $row['followed_id'] ?>"></li>
 
                <li style="    display: inline;
@@ -169,7 +169,7 @@
 	       $followedUser1 = $prof->get('username');       ?>
 
 	       <div class ="userFollowing">
-	       <a style="float: left; width:100%; text-align: left; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser1 ?> "><?= $followedUser1 ?></a>
+	       <a id="follower_name" style="float: left; width:100%; text-align: left; margin-left: 20px; font-size:22px" href="<?= BASE_URL ?>/profile/<?= $followedUser1 ?> "><?= $followedUser1 ?></a>
 	       </div>
 	   <?php endwhile; ?>
 
