@@ -52,13 +52,13 @@ class Product extends DbObject {
             'img_url' => $this->img_url,
             'creator_id' => $this->creator_id
             );
-        echo var_dump($this);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo var_dump($db_properties);
-        echo "<br>";
-        echo "<br>";
+        // echo var_dump($this);
+        // echo "<br>";
+        // echo "<br>";
+        // echo "<br>";
+        // echo var_dump($db_properties);
+        // echo "<br>";
+        // echo "<br>";
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
 
