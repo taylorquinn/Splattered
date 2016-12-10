@@ -1,32 +1,5 @@
 <div id="content3">
 
-<svg></svg>
-<div id = "parent">
-  <div>
-  <form id="editShirtTitleForm" method="POST" action="<?= BASE_URL ?>/blogs/editTitle/">
-    <label>Edit Title: <input type="text" id="editShirtTitle" name="title" value=""></label>
-    <input type="hidden" id="editPostID" name="productID" value="">
-    <input type="submit" name="submit" value="Edit">
-    <button type="button" name="cancel">Cancel</button>
-  </form>
-  </div>
-
-  <div>
-  <form id="deleteBlog" method="POST" action="<?= BASE_URL ?>/blogs/deletePost/">
-    <label>Delete: <input type="text" id="deleteTitle" name="title" value=""></label>
-    <input type="hidden" id="deleteID" name="productID" value="">
-    <input type="submit" name="submit" value="Delete">
-  </form>
-  </div>
-  <div>
-  <form id="addCommentForm" method="POST" action="<?= BASE_URL ?>/blogs/addComment/">
-    <label>Add Comment: <input type="text" id="addedComment" name="title" value=""></label>
-    <input type="submit" name="submit" value="Edit">
-    <button type="button" name="cancel">Cancel</button>
-  </form>
-  </div>
-  
-</div>
 
 <!-- the header image -->
 
@@ -34,7 +7,7 @@
     <div id="header_image2">
   <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />
  <!-- <a class = "editButton" href ="',BASE_URL,'/paintings"><button class="button3" src="',BASE_URL,'/public/img/plus.jpg"></button></a>-->
-  <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="plus"
+  <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
     style="width: 50px;
     padding: 10px;
     float: right;" /></a>
@@ -56,9 +29,14 @@
   else {?>
 
       <div id="header_image2">
-        <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />'; ?>
+        <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />
+        <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
+      style="width: 50px;
+     padding: 10px;
+     float: right;" /></a>
 
-        </div>
+
+        </div>'; ?>
 
   <?php } ?>
 
