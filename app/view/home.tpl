@@ -360,11 +360,11 @@ a:hover {
    <div id= "tileImages" style="color: #777; background-color:white; text-align:center; text-align: center;">
     <ul id="tiles">
 
-          <li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/necklace.jpg" alt="Necklace" /> </a> </li>
+          <li><a href="paintings"> <img class="tile" src="<?= BASE_URL ?>/public/img/paintingtile.jpg" alt="Painting pic"  style = "height:  "/> </a> </li>
             <!--edited from the image found here: https://www.google.com/search?sa=G&hl=en&q=side+braid&tbm=isch&tbs=simg:CAQSlQEJoIMPJccrmF0aiQELEKjU2AQaAggDDAsQsIynCBpiCmAIAxIo6RmGD7cPyhnJELQPoQ_1UEIoP1w_1eMNkw3zDgMOEwyCXiMPM71S7bMBowfjlhgnYthk6MjBxNqmzMtdnOX039F_18vRhoU7RcO-UtPcjMMStEtTzbhNEEa_1j24IAQMCxCOrv4IGgoKCAgBEgQ_1pMqMDA&ved=0ahUKEwjt1MnGia7PAhXEez4KHQD9CHgQwg4IGygA-->
-          <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/painting1.jpg" alt="Painting pic" /></a> </li>
+          <li><a href="photography"><img class="tile" src="<?= BASE_URL ?>/public/img/photographertile.jpeg" alt="Photography pic" /></a> </li>
             <!--edited from the image found here: https://lh3.googleusercontent.com/OCWLteVrjHjzDUVIRRIbIrbYZuYXXzTSz0a0akUn0V1u4WPICt3dmR8X28sen953deeSTFQ=s85-->
-          <li><a href="paintings"><img class="tile" src="<?= BASE_URL ?>/public/img/stairs.jpg" alt="Home Decor" /></a> </li>
+          <li><a href="blogs"><img class="tile" src="<?= BASE_URL ?>/public/img/blogtile.jpg" alt="Home Decor" /></a> </li>
             <!--edited from the image found here: https://lh3.googleusercontent.com/7S9F_10_tSqAwFJNUV3a0KJ0e8c-XZxTp_hxWP-DBHmocVRL7yXbwzIrLPCJjm-zgLdRmA=s85-->
 
     </ul>

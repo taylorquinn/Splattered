@@ -126,9 +126,7 @@ public function editProfileProcess($username) {
   if(!isset($first_name) || trim($first_name) == '' || !isset($last_name) || trim($last_name) == '' || !isset($email) || trim($email) == ''
   || !isset($bio) || trim($bio) == '' || !isset($age) || trim($age) == '' || !isset($profpic) || trim($profpic) == '' || !isset($pw) || trim($pw) == '') {
 
-    include_once SYSTEM_PATH.'/view/header.tpl';
-    include_once SYSTEM_PATH.'/view/error.tpl';
-    include_once SYSTEM_PATH.'/view/footer.tpl';
+  	header('Location: '.BASE_URL.'/error');
     exit();
 
   }

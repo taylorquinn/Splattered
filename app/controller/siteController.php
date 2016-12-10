@@ -35,6 +35,10 @@ class SiteController {
 				$this->working();
 				break;
 
+			case 'error':
+				$this->error();
+				break;
+
 			case 'blogvisualization':
 				$this->blogvisualization();
 				break;
@@ -96,7 +100,13 @@ class SiteController {
 
   }
 
-
+ 
+	public function error(){
+		$pageName = 'Error';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/error.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
 
 	//this page provides the contact info for the user
 	public function contact() {
@@ -161,10 +171,8 @@ public function blogvisualization() {
 
     if(!isset($u) || trim($u) == '' || !isset($p) || trim($p) == '') {
 
-      include_once SYSTEM_PATH.'/view/header.tpl';
-  		include_once SYSTEM_PATH.'/view/error.tpl';
-  		include_once SYSTEM_PATH.'/view/footer.tpl';
-      exit();
+ 			 header('Location: '.BASE_URL.'/error');
+        exit();
 
 		}
 
@@ -185,9 +193,9 @@ public function blogvisualization() {
 			// header('Location: '.BASE_URL);
       // $this->login();
 			// exit();
-      include_once SYSTEM_PATH.'/view/header.tpl';
-  		include_once SYSTEM_PATH.'/view/error.tpl';
-  		include_once SYSTEM_PATH.'/view/footer.tpl';
+    header('Location: '.BASE_URL.'/error');
+
+   
       exit();
     }
 
@@ -204,9 +212,10 @@ public function blogvisualization() {
 		|| !isset($username) || trim($username) == '' || !isset($password) || trim($password) == '' || !isset($confirm) || trim($confirm) == ''
     || $confirm!=$password) {
 
-      include_once SYSTEM_PATH.'/view/header.tpl';
-  		include_once SYSTEM_PATH.'/view/error.tpl';
-  		include_once SYSTEM_PATH.'/view/footer.tpl';
+  			header('Location: '.BASE_URL.'/error');
+
+
+
       exit();
 
 		}

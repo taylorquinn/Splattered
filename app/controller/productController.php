@@ -217,6 +217,13 @@ class ProductController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
+   public function blogvisualization() {
+		$pageName = 'Working';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/blogvisualization.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+
 	public function getVizData() {
 		// get all blog posts
 		$blogs = Blog::getAllProducts();
