@@ -32,7 +32,7 @@
 
 
 <!-- displays an error message when the user does not input valid data for sign up, login, or edit profile -->
-<h3 style="text-align: center; width:100%;">VISUALIZATION PAGE OMG SO PURDY</h3>
-<form  action="<?= BASE_URL ?>/" method="POST">
-  <input style="margin-left: calc(50% - 65px);" class="buttonFollow buttonFollow2" type="submit" value="Go Home" >
+<!--<h3 style="text-align: center; width:100%;">VISUALIZATION PAGE OMG SO PURDY</h3>-->
+<form  action="<?= BASE_URL ?>/blogs" method="POST">
+  <input style="margin-left: calc(50% - 65px);" class="buttonFollow buttonFollow2" type="submit" value="Go Back" >
 </form>

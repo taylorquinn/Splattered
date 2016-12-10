@@ -1,3 +1,39 @@
+<style>
+
+.bgimg-1{
+  position: relative;
+  opacity: 0.9;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bgimg-1 {
+  background-image: url("<?= BASE_URL ?>/public/img/blogheader.jpg");
+  min-height: 500px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+</style>
+
 <div id="content3">
 
 
@@ -5,7 +41,16 @@
 
 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
     <div id="header_image2">
-  <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />
+  <?php  echo '
+
+  <div class="bgimg-1">
+  <div class="caption">
+  
+    <span class="border">BLOGS</span>
+
+  </div>
+</div>
+
  <!-- <a class = "editButton" href ="',BASE_URL,'/paintings"><button class="button3" src="',BASE_URL,'/public/img/plus.jpg"></button></a>-->
   <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
     style="width: 50px;
@@ -29,7 +74,16 @@
   else {?>
 
       <div id="header_image2">
-        <?php  echo '<img class="head-image2" src="',BASE_URL,'/public/img/blog.jpg" alt="Header image" />
+        <?php  echo '
+
+         <div class="bgimg-1">
+            <div class="caption">
+            
+              <span class="border">BLOGS</span>
+
+            </div>
+          </div>
+
         <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
       style="width: 50px;
      padding: 10px;
