@@ -82,8 +82,9 @@ class ProductController {
 					$id = $_GET['pid'];
 					$this->followUser($id);
 					break;
-			case 'comments':
-					$id = $_GET['id'];
+
+			case 'showComments':
+					$id = $_GET['pid'];
 					$this->showComments($id);
 					break;
 

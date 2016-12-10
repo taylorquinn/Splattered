@@ -40,13 +40,13 @@ class Comment extends DbObject {
           'user_name' => null,
           'post_id' => null
           );
-        echo var_dump($this);
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo var_dump($db_properties);
-        echo "<br>";
-        echo "<br>";
+        // echo var_dump($this);
+        // echo "<br>";
+        // echo "<br>";
+        // echo "<br>";
+        // echo var_dump($db_properties);
+        // echo "<br>";
+        // echo "<br>";
         $db->store($this, __CLASS__, self::DB_TABLE, $db_properties);
     }
 

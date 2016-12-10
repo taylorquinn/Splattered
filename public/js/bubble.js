@@ -160,7 +160,7 @@ function drawBubbleChart(jsonUrl) {
 								$('#addedComment').focus();
 
 								$.ajax({
-										url: baseURL+'/comments/' + d.data.id + '/',
+										url: baseURL + '/comments/' + d.data.id + '/',
 										type: 'GET',
 										success: function(res) {
 												console.log(res);
