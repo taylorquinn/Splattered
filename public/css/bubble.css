@@ -4,7 +4,7 @@ text {
 }
 
 .node.hovered circle {
-  fill: orange;
+  fill: #C1CCCF;
 }
 
 .node circle {
@@ -35,7 +35,7 @@ text {
 }
 
 .node.hovered circle {
-  fill: orange;
+  fill: #C1CCCF;
 }
 
 #editShirtTitleForm {
