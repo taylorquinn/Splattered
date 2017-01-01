@@ -77,8 +77,19 @@ if(isset($_SESSION['user']))
 {
 $user = $_SESSION['user'];
 }
-else{
-  $user = 'temp';
+else{ ?>
+
+  <input type="text" name="username" id="name" placeholder="Enter your username!"  style="margin-left: 5px;
+                     
+                      display: inline-block;
+                      height: 0px;
+                      margin-left: 20%;
+                      border:none"
+                      />
+
+<?php
+
+  $user = $_POST['username'];
 }
 
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
