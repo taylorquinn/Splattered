@@ -73,31 +73,34 @@
                });
        </script>
 <?php
-echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1>';
-
-
 if(isset($_SESSION['user']))
 {
 $user = $_SESSION['user'];
 }
 else{ ?>
-     <input type="text" name="username" id="username" placeholder="Enter your username here!"  style="margin-left: 5px;
+
+  
+  <input type="text" name="username" id="name" placeholder="Enter your name to join the conversation!"  style="margin-left: 5px;
                      
                       display: inline-block;
-                      font-size: 30px;
-                      height: 40px;
+                      height: 20px;
+                      font-size: 60px;
+                      width: 60%;
                       margin-left: 20%;
                       border:none"
                       />
 
 <?php
 
+  if($_POST['username'] == ''){
+    $user = 'anonymous'
+  }
+  else{
   $user = $_POST['username'];
+  }
 }
 
-?>
-
-<form id="new_comment">
+echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
 
                </br>
@@ -111,15 +114,9 @@ else{ ?>
                       />
            <!--    <p style = "    width: 60%; margin-left: 20%;  font-size: 18px; display: inline; margin-bottom: 20px;" >:</p> -->
               <!--<p style= "margin-left: 40px; display:inline-block;"> Comment: </p>-->
+              <textarea style = "width:60%; height:100px; margin-left: 20%;" class="add-textbox"  name="message" id="message" placeholder = " Enter a new comment!" name="description"></textarea>
 
 
-
-
-
-              <textarea style = "width:60%; height:100px; margin-left: 20%;" class="add-textbox"  name="message" id="message" placeholder = "Join the conversation! Enter a new comment." name="description"></textarea>
-
-
-        
 
 
 
@@ -135,10 +132,8 @@ else{ ?>
 
 
                <div id="info" />
-               </form>
+               </form>';
 
-
-
-
+?>
 
 </div>
