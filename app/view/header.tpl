@@ -32,7 +32,7 @@ function isSelected($pn, $link) {
 		<div id="header" style="margin-top:-15px">
 			<div id = "menubar">
 
-			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov3.jpg" alt="SPLATTERED"> </a></img></h1>
+			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov3.png" alt="SPLATTERED"> </a></img></h1>
 
 				<div id="search">
 				<ul id="primary-nav" style= "font-size: 15px;">
