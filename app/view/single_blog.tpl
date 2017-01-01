@@ -73,7 +73,31 @@
                });
        </script>
 <?php
-echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
+echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1>';
+
+
+if(isset($_SESSION['user']))
+{
+$user = $_SESSION['user'];
+}
+else{ ?>
+     <input type="text" name="username" id="username" placeholder="Enter your username!"  style="margin-left: 5px;
+                     
+                      display: inline-block;
+                      height: 40px;
+                      margin-left: 20%;
+                      border:none"
+                      />
+
+<?php
+
+  $user = $_POST['username'];
+}
+
+?>
+
+
+ echo '<form id="new_comment">
 
 
                </br>
@@ -95,15 +119,7 @@ echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-s
               <textarea style = "width:60%; height:100px; margin-left: 20%;" class="add-textbox"  name="message" id="message" placeholder = "Join the conversation! Enter a new comment." name="description"></textarea>
 
 
-           <input type="text" name="username" id="username" placeholder="Enter your username!"  style="margin-left: 5px;
-                     
-                     visibility: hidden;
-                      display: inline-block;
-                      height: 40px;
-                      margin-left: 20%;
-                      border:none"
-                      />
-
+        
 
 
 
@@ -122,20 +138,6 @@ echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-s
                </form>';
 
 
-if(isset($_SESSION['user']))
-{
-$user = $_SESSION['user'];
-}
-else{ ?>
-
-   document.getElementById('username').style.visibility = 'visible';
-
-<?php
-
-  $user = $_POST['username'];
-}
-
-?>
 
 
 
