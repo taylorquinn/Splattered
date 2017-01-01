@@ -37,12 +37,13 @@ function isSelected($pn, $link) {
 				<div id="search">
 				<ul id="primary-nav" style= "font-size: 15px;">
 
-					<li><a href="<?= BASE_URL ?>/paintings">Paintings</a></li>
+					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
 					<li><a href="<?= BASE_URL ?>/photographs">Photographs</a></li>
+					<li><a href="<?= BASE_URL ?>/paintings">Paintings</a></li>
+					
 					<!--<li><a href="<?= BASE_URL ?>/working">Clothing & Accessories</a></li>-->
 					<!--<li><a href="<?= BASE_URL ?>/working">Home & Decor</a></li>-->
-					<li><a href="<?= BASE_URL ?>/blogs">Blog</a></li>
-
+				
 					<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { ?>
 					<li><a href="<?= BASE_URL ?>/profile/<?= $_SESSION['user'] ?>">Profile</a></li>
 					<?php } ?>
