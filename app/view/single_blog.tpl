@@ -93,7 +93,7 @@ else{ ?>
 <?php
 
   if($_POST['username'] == ''){
-    $user = 'anonymous'
+    $user = 'anonymous';
   }
   else{
   $user = $_POST['username'];
