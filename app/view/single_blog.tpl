@@ -76,6 +76,10 @@
 if(isset($_SESSION['user']))
 {
 $user = $_SESSION['user'];
+}
+else{
+  $user = "temp";
+}
 
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
