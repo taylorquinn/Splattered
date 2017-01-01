@@ -73,27 +73,6 @@
                });
        </script>
 <?php
-if(isset($_SESSION['user']))
-{
-$user = $_SESSION['user'];
-}
-else{ ?>
-
-  
-  <input type="text" name="username" id="name" placeholder="Enter your username!"  style="margin-left: 5px;
-                     
-                      display: inline-block;
-                      height: 20px;
-                      margin-left: 20%;
-                      border:none"
-                      />
-
-<?php
-
-  $user = $_POST['username'];
-}
-if($user!=''){
-
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
 
@@ -128,7 +107,28 @@ echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-s
                <div id="info" />
                </form>';
 
-}?>
+
+if(isset($_SESSION['user']))
+{
+$user = $_SESSION['user'];
+}
+else{ ?>
+
+  
+  <input type="text" name="username" id="name" placeholder="Enter your username!"  style="margin-left: 5px;
+                     
+                      display: inline-block;
+                      height: 20px;
+                      margin-left: 20%;
+                      border:none"
+                      />
+
+<?php
+
+  $user = $_POST['username'];
+}
+
+?>
 
 
 
