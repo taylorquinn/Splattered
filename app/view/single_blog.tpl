@@ -80,17 +80,7 @@ $user = $_SESSION['user'];
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
 
-             <input type="text" name="username" id="name" placeholder='Enter your name'  style="margin-left: 5px;
-                      visibility: hidden;
-                      display: inline-block;
-                      height: 0px;
-                      margin-left: 20%;
-                      border:none"
-                      />
-
                </br>
-
-
 
               <input type="text" name="name" id="name" value=',$user,' readonly="readonly"  style="margin-left: 5px;
                       visibility: hidden;

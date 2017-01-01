@@ -43,7 +43,7 @@
 
 <!-- the header image -->
 
-<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
+
     <div id="header_image2">
   <?php  echo '
 
@@ -61,7 +61,7 @@
     style="width: 50px;
     padding: 10px;
     float: right;" /></a>-->
-
+<?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') {?>
   <a class = "editButton" onclick="blogAppear()"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
     style="width: 50px;
     padding: 10px;
