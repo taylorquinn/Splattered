@@ -350,8 +350,8 @@ a:hover {
 
 <div class="bgimg-1">
   <div class="caption">
-  <a href="<?= BASE_URL ?>/paintings" style="text-decoration:none">
-    <span class="border">SHOP NEW ARRIVALS</span>
+  <a href="<?= BASE_URL ?>/photographs" style="text-decoration:none">
+    <span class="border">SEE NEW PHOTOGRAPHS</span>
     </a>
   </div>
 </div>
@@ -382,7 +382,7 @@ a:hover {
 
 <div style="position:relative;">
   <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: center; font-size:25px">
-    <h2>FOLLOW OUR ADVENTURES ON INSTAGRAM</h2>
+    <h2>FOLLOW MY ADVENTURES ON INSTAGRAM</h2>
   </div>
    <div id = "Instagram_feed" style="background-color:white;">
         <?php

@@ -55,11 +55,12 @@
   </div>
 </div>
 
+
  <!-- <a class = "editButton" href ="',BASE_URL,'/paintings"><button class="button3" src="',BASE_URL,'/public/img/plus.jpg"></button></a>-->
-  <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
+ <!-- <a class = "editButton" href ="',BASE_URL,'/blogvisualization"><img class="add-button2" src="',BASE_URL,'/public/img/circles.jpg" alt="circles"
     style="width: 50px;
     padding: 10px;
-    float: right;" /></a>
+    float: right;" /></a>-->
 
   <a class = "editButton" onclick="blogAppear()"><img class="add-button2" src="',BASE_URL,'/public/img/plus.jpg" alt="plus"
     style="width: 50px;

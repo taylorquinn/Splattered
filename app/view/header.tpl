@@ -11,8 +11,8 @@ function isSelected($pn, $link) {
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-   <meta name="description" content="Splattered is a site manifesting creativity and aesthetics into a visual commercial interaction between seller and buyer.">
-	<title>Splattered</title>
+   <meta name="description" content="This is the personal/ professional site of Taylor Quinn">
+	<title>Taylor Quinn</title>
 
 
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css">
@@ -32,7 +32,7 @@ function isSelected($pn, $link) {
 		<div id="header" style="margin-top:-15px">
 			<div id = "menubar">
 
-			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov2.png" alt="SPLATTERED"> </a></img></h1>
+			<h1><a href="<?= BASE_URL ?>/"> <img src = "<?= BASE_URL ?>/public/img/logov3.jpg" alt="SPLATTERED"> </a></img></h1>
 
 				<div id="search">
 				<ul id="primary-nav" style= "font-size: 15px;">
