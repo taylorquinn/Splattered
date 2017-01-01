@@ -82,7 +82,7 @@ else{ ?>
   <input type="text" name="username" id="name" placeholder="Enter your username!"  style="margin-left: 5px;
                      
                       display: inline-block;
-                      height: 0px;
+                      height: 20px;
                       margin-left: 20%;
                       border:none"
                       />
