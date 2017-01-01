@@ -76,15 +76,11 @@
 if(isset($_SESSION['user']))
 {
 $user = $_SESSION['user'];
-}
-else{
-  $user = "visitor";
-}
 
 echo'<br> <h1 id = "comment"  style= "list-style: none; margin-left: 20%; font-size: 20px;" > Please Comment</h1><form id="new_comment">
 
 
-             <input type="text" name="username" id="name" placeholder='Enter your username'  style="margin-left: 5px;
+             <input type="text" name="username" id="name" placeholder='Enter your name'  style="margin-left: 5px;
                       visibility: hidden;
                       display: inline-block;
                       height: 0px;
