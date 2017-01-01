@@ -64,7 +64,7 @@ function isSelected($pn, $link) {
 						<!--  End of View Cart Button Code  -->
 					</li>
 					<!--<li><a href="<?= BASE_URL ?>/checkout"> <img class = "cart_icon" src="<?= BASE_URL ?>/public/img/cart.jpg"></a></li>-->
-					<li><input type="text" placeholder="Search products" /> <button>Go</button></li>
+				<!--	<li><input type="text" placeholder="Search products" /> <button>Go</button></li>-->
 				</ul>
 
 				</div>
