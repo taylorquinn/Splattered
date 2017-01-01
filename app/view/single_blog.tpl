@@ -128,7 +128,7 @@ $user = $_SESSION['user'];
 }
 else{ ?>
 
-   $('#username').show();
+   document.getElementById('username').style.visibility = 'visible';
 
 <?php
 
