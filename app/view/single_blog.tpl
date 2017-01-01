@@ -81,9 +81,10 @@ if(isset($_SESSION['user']))
 $user = $_SESSION['user'];
 }
 else{ ?>
-     <input type="text" name="username" id="username" placeholder="Enter your username!"  style="margin-left: 5px;
+     <input type="text" name="username" id="username" placeholder="Enter your username here!"  style="margin-left: 5px;
                      
                       display: inline-block;
+                      font-size: 30px;
                       height: 40px;
                       margin-left: 20%;
                       border:none"
@@ -96,8 +97,7 @@ else{ ?>
 
 ?>
 
-
- echo '<form id="new_comment">
+<form id="new_comment">
 
 
                </br>
@@ -135,7 +135,7 @@ else{ ?>
 
 
                <div id="info" />
-               </form>';
+               </form>
 
 
 
