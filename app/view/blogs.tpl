@@ -73,9 +73,7 @@
 
   </div>
 
-  <?php }
-
-
+ 
      <!-- <div id="header_image2">
         <?php  echo '
 
@@ -95,7 +93,7 @@
 
         </div>'; ?>-->
 
-
+  <?php } ?>
 
 
 
@@ -103,7 +101,7 @@
 
 <!-- this will be a place to add a blog -->
 
-<?php
+<!--<?php
 if(isset($_SESSION['user']))
 {
  $p = User::loadByUsername($_SESSION['user']);
@@ -115,7 +113,7 @@ if(isset($_SESSION['user']))
 </div>';
 }
 }
-?>
+?>-->
 
 <div id="addBlogPopup" class="popup" style="height:100%; z-index:99; margin-top:-50px; overflow:scroll">
 
