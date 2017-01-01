@@ -45,7 +45,7 @@
 
 
     <div id="header_image2">
-  <?php  echo '
+ 
 
   <div class="bgimg-1">
   <div class="caption">
@@ -76,8 +76,6 @@
   <?php }
 
 
-  else {?>
-
      <!-- <div id="header_image2">
         <?php  echo '
 
@@ -97,7 +95,7 @@
 
         </div>'; ?>-->
 
-  <?php } ?>
+
 
 
 
