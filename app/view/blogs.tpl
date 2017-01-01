@@ -73,14 +73,12 @@
 
   </div>
 
-  <?php } ?>
-
-  <!--<?php }
+  <?php }
 
 
   else {?>
 
-      <div id="header_image2">
+     <!-- <div id="header_image2">
         <?php  echo '
 
          <div class="bgimg-1">
@@ -97,10 +95,10 @@
      float: right;" /></a>
 
 
-        </div>'; ?>
+        </div>'; ?>-->
 
   <?php } ?>
--->
+
 
 
 
