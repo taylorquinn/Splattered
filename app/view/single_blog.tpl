@@ -80,11 +80,12 @@ $user = $_SESSION['user'];
 else{ ?>
 
   
-  <input type="text" name="username" id="name" placeholder="Enter your name to join the conversation!"  style="margin-left: 5px;
+  <h2> Join the conversation: </h2> 
+  <input type="text" name="username" id="name" placeholder="Enter your name here!"  style="margin-left: 5px;
                      
                       display: inline-block;
-                      height: 20px;
-                      font-size: 60px;
+                      height: 40px;
+                      font-size: 36px;
                       width: 60%;
                       margin-left: 20%;
                       border:none"
