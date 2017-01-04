@@ -149,9 +149,9 @@ if(isset($_SESSION['user']))
 <?php
 foreach ($blogs as $b)
 {
-  echo '<a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"><div class="banner">
+  echo '<div class="banner">
       <img class="blog_image" alt="'.$b->get("title").'" src="'.BASE_URL.'/public/img/'.$b->get("image_url").'">
-      <div class="bannerText">
+      <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"><div class="bannerText">
         <p class="blog_title">'.$b->get("title").'
         </p>
       </div></a>
