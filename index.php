@@ -3,7 +3,7 @@
       xmlns:fb="http://ogp.me/ns/fb#">
    <head>
  	
- 	<meta property="og:image" content="http://splattered.me/ktq/public/img/girlonmountain.jpg" />
+ 	<meta property="og:image" content="http://splattered.me/ktq/public/img/naples.jpg" />
 	<meta charset="utf-8">
    <meta property="og:description" content="Welcome! Check out my photos and blog posts!">
    <meta property="og:url" content="http://www.splattered.me" />
