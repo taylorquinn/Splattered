@@ -158,7 +158,7 @@ foreach ($blogs as $b)
   </div>
 
   <div class="blog_description">
-    <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"> <h2>.$b->get("title").'</h2></a>
+    <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"> <h2>'.$b->get("title").'</h2>
        
     <h4>Description</h4>
     <p style="text-transform:none">'.$b->get("description").'</p>
