@@ -59,7 +59,7 @@
 						</select></li>
 					<!--<li><BUTTON class= "checkout-button">Add to Cart</BUTTON></li>-->
 
-
+<!--
 					<li>	<form method="post" action="https://www.paypal.com/cgi-bin/webscr">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="add" value="1">
@@ -76,7 +76,7 @@
 							<input type="image" src="http://www.paypalobjects.com/en_US/i/btn/x-click-but22.gif" border="0" name="submit" width="87" height="23" alt="Make payments with PayPal - it's fast, free and secure!">
 						</form> </li>
 
-
+-->
 					 <?php if(isset($_SESSION['user']) && $_SESSION['user'] != '') { 
              $p = User::loadByUsername($_SESSION['user']);
 

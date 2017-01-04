@@ -92,7 +92,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 		 <a><input type="image" src="<?= BASE_URL ?>/public/img/zoomIn.jpg" name="saveForm" class="product-icon" id="popupButt" action="" onclick="location.href='<?= BASE_URL ?>/paintings/view/<?= $row['id'] ?>'"></a>
 		 <!--onclick = popup.Appear()-->
 
-
+<!--
 
 		 	<form method="post" action="https://www.paypal.com/cgi-bin/webscr"  style=" display: inline-block; text-align:  left;">
 							<input type="hidden" name="cmd" value="_cart">
@@ -109,7 +109,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 							<input type="hidden" name="undefined_quantity" value="1">
 							<input type="image" src="<?= BASE_URL ?>/public/img/addToCart.png"  style=" width: 25px;" border="0" name="submit" width="87" height="23" alt="+cart">
 						</form>
-
+-->
 		<!--<a href="#"> <img class = "product-icon2" src="<?= BASE_URL ?>/public/img/addToCart.png"></a>-->
 
 		<!--<button type="submit" action="<?= BASE_URL ?>/paintings/edit/<?= $row['id'] ?>" method="POST">Edit</button>-->
