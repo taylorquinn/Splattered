@@ -149,15 +149,17 @@ if(isset($_SESSION['user']))
 <?php
 foreach ($blogs as $b)
 {
-  echo '<div class="banner">
+  echo '<a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"><div class="banner">
       <img class="blog_image" alt="'.$b->get("title").'" src="'.BASE_URL.'/public/img/'.$b->get("image_url").'">
-      <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"><div class="bannerText">
+      <div class="bannerText">
         <p class="blog_title">'.$b->get("title").'
         </p>
       </div></a>
   </div>
 
   <div class="blog_description">
+    <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"> <h2>.$b->get("title").'</h2></a>
+       
     <h4>Description</h4>
     <p style="text-transform:none">'.$b->get("description").'</p>
   </div>';
