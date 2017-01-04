@@ -50,6 +50,7 @@
 <!--<img class="head-image" src="<?= BASE_URL ?>/public/img/painting_header1.jpg" alt="Header image" />-->
 <div id="content">
 
+<h2 style="color:black">NO PAINTINGS WILL BE SOLD WHILE ABROAD</h2>
 
 
 <!--get all paintings in database-->
@@ -206,7 +207,7 @@ for( $i = 0; $i <= strlen( $str ); $i++ ) {
 						  <option value="2">2</option>
 						  <option value="3">3</option>
 						</select></li>
-					<li><BUTTON class= "popup-button">Add to Cart</BUTTON>
+					<!-- BUTTON TO ADD TO CART <li><BUTTON class= "popup-button">Add to Cart</BUTTON>-->
 	  		    </ul>
 			</div>
 

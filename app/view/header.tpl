@@ -8,8 +8,13 @@ function isSelected($pn, $link) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">>
+
+
 <head>
+	<meta property="og:image" content="<?= BASE_URL ?>/public/img/girlonmountain.jpg" />
 	<meta charset="utf-8">
    <meta name="description" content="This is the personal/ professional site of Taylor Quinn">
 	<title>Taylor Quinn</title>
