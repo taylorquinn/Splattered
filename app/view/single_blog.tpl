@@ -88,7 +88,7 @@ else{ ?>
                       font-size: 36px;
                       width: 60%;
                       margin-left: 20%;
-                      border:none"
+                      "
                       />
 
 <?php
