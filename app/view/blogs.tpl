@@ -32,6 +32,11 @@
   letter-spacing: 10px;
 }
 
+.blog_title2:hover{
+  color: #5D6E73;
+}
+
+
 </style>
 
 
@@ -158,7 +163,7 @@ foreach ($blogs as $b)
   </div>
 
   <div class="blog_description">
-    <a href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"> <h2 style="color:black">'.$b->get("title").'</h2></a>
+    <a class = "blog_title2" href="'.BASE_URL.'/blogs/view/'.$b->get("id").'"> <h2 style="color:black">'.$b->get("title").'</h2></a>
        
     <h4>Description</h4>
     <p style="text-transform:none">'.$b->get("description").'</p>
